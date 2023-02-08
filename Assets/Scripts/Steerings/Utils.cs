@@ -54,7 +54,7 @@ public class Utils
 
 	public static bool InCone(GameObject me, GameObject target, float totalAngle)
 	{
-		float dotProd = Utils.DotProduct(Utils.OrientationToVector(me.transform.eulerAngles.z),
+		float dotProd = Utils.DotProduct(Utils.OrientationToVector(me.transform.eulerAngles.y),
 									 (target.transform.position - me.transform.position).normalized
 									);
 		return dotProd > Mathf.Cos(totalAngle / 2 * Mathf.Deg2Rad);

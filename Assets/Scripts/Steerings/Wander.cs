@@ -26,7 +26,7 @@ public class Wander : SteeringBehaviour
                 //me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.z) * me.wanderOffset;
                 me.transform.position + me.m_Velocity.normalized * me.m_WanderOffset;
         else
-            SURROGATE_TARGET.transform.position += me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.z) * me.m_WanderOffset;
+            SURROGATE_TARGET.transform.position += me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
 
         // show some gizmos before returning
         if (me.m_ShowWanderGizmos)
