@@ -28,7 +28,7 @@ public class Align : SteeringBehaviour
 			requiredRotation = 360 + requiredRotation; // map to positive angles
 
 		if (requiredRotation > 180)
-			requiredRotation = (360 - requiredRotation); // don't rotate more than 180 degs. just reverse rotation sense
+			requiredRotation = -(360 - requiredRotation); // don't rotate more than 180 degs. just reverse rotation sense
 
 		// when here, required rotation is in [-180, +180]
 

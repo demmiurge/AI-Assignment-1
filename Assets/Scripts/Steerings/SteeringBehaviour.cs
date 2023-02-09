@@ -57,7 +57,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
 
         float dt = Time.fixedDeltaTime;
         Vector3 l_VelIncrement = l_Acceleration * dt;
-        m_Context.m_Velocity = new Vector3(m_Context.m_Velocity.x + l_VelIncrement.x, m_Context.m_Velocity.y, m_Context.m_Velocity.z + l_VelIncrement.z);
+        m_Context.m_Velocity += l_VelIncrement;
 
         if(m_Context.m_ClipVelocity)
         {
@@ -89,8 +89,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
                 m_Context.m_AngularSpeed = m_Context.m_MaxAngularSpeed *
                                              Mathf.Sign(m_Context.m_AngularSpeed);
 
-        float orientation = transform.rotation.eulerAngles.y +
-                            m_Context.m_AngularSpeed * dt + 0.5f * l_acceleration * dt * dt;
+        float orientation = transform.rotation.eulerAngles.y + m_Context.m_AngularSpeed * dt + 0.5f * l_acceleration * dt * dt;
         transform.rotation = Quaternion.Euler(0, orientation, 0);
     }
 

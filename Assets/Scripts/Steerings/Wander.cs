@@ -16,15 +16,15 @@ public class Wander : SteeringBehaviour
         me.m_WanderTargetOrientation += me.m_WanderRate * Utils.binomial();
 
         // place surrogate target on circle of wanderRadius
-        SURROGATE_TARGET.transform.position = Utils.OrientationToVector(me.m_WanderTargetOrientation) * me.m_WanderRadius;
+        SURROGATE_TARGET.transform.position = Utils.OrientationToVector(me.m_WanderTargetOrientation) * me.m_WanderRadius/2;
 
         // place circle  "in front"
         // in front of me or in front of my velocity?
-        // in fron of my velocity, definitely. Othewise, behaviour with policies different from lwyg is questionable
+        // in fron of my velocity, definitely. Otherwise, behaviour with policies different from lwyg is questionable
         if (me.m_Velocity.magnitude > 0.01f)
             SURROGATE_TARGET.transform.position +=
                 //me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
-                me.transform.position + new Vector3(me.m_Velocity.x * me.m_WanderOffset, me.m_Velocity.y * me.m_WanderOffset, me.m_Velocity.z * me.m_WanderOffset);
+                me.transform.position + new Vector3(me.m_Velocity.normalized.x * me.m_WanderOffset, me.m_Velocity.normalized.y, me.m_Velocity.normalized.z * me.m_WanderOffset);
                 //me.transform.position + me.m_Velocity.normalized * me.m_WanderOffset;
         else
             SURROGATE_TARGET.transform.position += me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
@@ -40,7 +40,7 @@ public class Wander : SteeringBehaviour
             DebugExtension.DebugCircle(me.transform.position +
                                                              //Utils.OrientationToVector(me.transform.eulerAngles.z) * me.wanderOffset,
                                                              me.m_Velocity.normalized * me.m_WanderOffset,
-                                       new Vector3(0, 0, 1),
+                                       new Vector3(0, 1, 0),
                                        Color.red,
                                        me.m_WanderRadius);
             DebugExtension.DebugPoint(SURROGATE_TARGET.transform.position,
