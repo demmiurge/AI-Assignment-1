@@ -57,7 +57,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
 
         float dt = Time.fixedDeltaTime;
         Vector3 l_VelIncrement = l_Acceleration * dt;
-        m_Context.m_Velocity += l_VelIncrement;
+        m_Context.m_Velocity = new Vector3(m_Context.m_Velocity.x + l_VelIncrement.x, m_Context.m_Velocity.y, m_Context.m_Velocity.z + l_VelIncrement.z);
 
         if(m_Context.m_ClipVelocity)
         {
@@ -158,18 +158,18 @@ public abstract class SteeringBehaviour : MonoBehaviour
                 if (Mathf.Abs(m_Context.m_AngularSpeed) > m_Context.m_MaxAngularSpeed)
                     m_Context.m_AngularSpeed = m_Context.m_MaxAngularSpeed * Mathf.Sign(m_Context.m_AngularSpeed);
             // apply to rigidbody
-            m_Rigidbody.angularVelocity = new Vector3(m_Context.m_AngularSpeed, 0, 0);
+            m_Rigidbody.angularVelocity = new Vector3(0, m_Context.m_AngularSpeed, 0);
         }
         else
         {
-            m_Rigidbody.AddTorque(acceleration * m_Rigidbody.inertiaTensor * Mathf.Deg2Rad, ForceMode.Force);
+            m_Rigidbody.AddTorque(acceleration * m_Rigidbody.inertiaTensor/4 * Mathf.Deg2Rad, ForceMode.Force);
 
             if (m_Context.m_ClipAngularSpeed)
                 if (Mathf.Abs((m_Rigidbody.angularVelocity).magnitude) > m_Context.m_MaxAngularSpeed)
-                    m_Rigidbody.angularVelocity = new Vector3(m_Context.m_MaxAngularSpeed * Mathf.Sign(m_Rigidbody.angularVelocity.magnitude), 0, 0);
+                    m_Rigidbody.angularVelocity = new Vector3(0, m_Context.m_MaxAngularSpeed * Mathf.Sign(m_Rigidbody.angularVelocity.magnitude), 0);
 
             // cache
-            m_Context.m_AngularSpeed = m_Rigidbody.angularVelocity.x;
+            m_Context.m_AngularSpeed = m_Rigidbody.angularVelocity.y;
 
         }
     }

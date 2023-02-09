@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FSM_Shark", menuName = "Finite State Machines/FSM_Shark", order = 1)]
 public class FSM_Shark : FiniteStateMachine
 {
-    private WanderAround m_WanderAround;
+    private Arrive m_WanderAround;
     private SteeringContext m_SteeringContext;
     private Shark_Blackboard m_Blackboard;
 
@@ -12,7 +12,7 @@ public class FSM_Shark : FiniteStateMachine
     public override void OnEnter()
     {
         m_Blackboard = GetComponent<Shark_Blackboard>();
-        m_WanderAround = GetComponent<WanderAround>();
+        m_WanderAround = GetComponent<Arrive>();
         base.OnEnter(); // do not remove
     }
 
@@ -22,7 +22,7 @@ public class FSM_Shark : FiniteStateMachine
          * It's equivalent to the on exit action of any state 
          * Usually this code turns off behaviours that shouldn't be on when one the FSM has
          * been exited. */
-        //base.DisableAllSteerings();
+        base.DisableAllSteerings();
         base.OnExit();
     }
 
@@ -32,13 +32,13 @@ public class FSM_Shark : FiniteStateMachine
          *-----------------------------------------------*/
          
        State goingA = new State("Going_A",
-           () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.target_A; elapsedTime = 0; },
+           () => { m_WanderAround.enabled = true; m_WanderAround.target = m_Blackboard.target_A; elapsedTime = 0; },
            () => { elapsedTime += Time.deltaTime; }, 
            () => { m_WanderAround.enabled = false; }
        );
 
         State goingB = new State("Going_B",
-           () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.target_B; elapsedTime = 0; },
+           () => { m_WanderAround.enabled = true; m_WanderAround.target = m_Blackboard.target_B; elapsedTime = 0; },
            () => { elapsedTime += Time.deltaTime; },
            () => { m_WanderAround.enabled = false; }
        );

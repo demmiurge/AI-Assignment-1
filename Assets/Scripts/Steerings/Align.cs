@@ -24,11 +24,11 @@ public class Align : SteeringBehaviour
 
 		float requiredRotation = targetOrientation - me.transform.eulerAngles.y;  // how many degs do we have to rotate?
 
-		/*if (requiredRotation < 0)
+		if (requiredRotation < 0)
 			requiredRotation = 360 + requiredRotation; // map to positive angles
 
 		if (requiredRotation > 180)
-			requiredRotation = -(360 - requiredRotation); // don't rotate more than 180 degs. just reverse rotation sense*/
+			requiredRotation = -(360 - requiredRotation); // don't rotate more than 180 degs. just reverse rotation sense
 
 		// when here, required rotation is in [-180, +180]
 

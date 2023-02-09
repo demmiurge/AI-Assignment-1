@@ -12,9 +12,9 @@ public class WanderNaive : SteeringBehaviour
     public static Vector3 GetLinearAcceleration(SteeringContext me)
     {
         // slightly change the orientation
-        float orientation = me.transform.rotation.eulerAngles.z;
+        float orientation = me.transform.rotation.eulerAngles.y;
         orientation += Utils.binomial() * me.m_WanderRate;
-        me.transform.rotation = Quaternion.Euler(0, 0, orientation);
+        me.transform.rotation = Quaternion.Euler(0, orientation, 0);
 
         // and go where you look
         return GoWhereYouLook.GetLinearAcceleration(me);
