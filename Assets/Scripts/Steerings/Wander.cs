@@ -23,8 +23,9 @@ public class Wander : SteeringBehaviour
         // in fron of my velocity, definitely. Othewise, behaviour with policies different from lwyg is questionable
         if (me.m_Velocity.magnitude > 0.01f)
             SURROGATE_TARGET.transform.position +=
-                //me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.z) * me.wanderOffset;
-                me.transform.position + new Vector3(me.m_Velocity.x * me.m_WanderOffset, me.m_Velocity.y * me.m_WanderOffset, me.m_Velocity.z * me.m_WanderOffset);
+                //me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
+                //me.transform.position + new Vector3(me.m_Velocity.x * me.m_WanderOffset, me.m_Velocity.y * me.m_WanderOffset, me.m_Velocity.z * me.m_WanderOffset);
+                me.transform.position + me.m_Velocity.normalized * me.m_WanderOffset;
         else
             SURROGATE_TARGET.transform.position += me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
 
