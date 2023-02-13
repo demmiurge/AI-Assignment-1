@@ -16,7 +16,7 @@ public class Wander : SteeringBehaviour
         me.m_WanderTargetOrientation += me.m_WanderRate * Utils.binomial();
 
         // place surrogate target on circle of wanderRadius
-        SURROGATE_TARGET.transform.position = Utils.OrientationToVector(me.m_WanderTargetOrientation) * me.m_WanderRadius/2;
+        SURROGATE_TARGET.transform.position = Utils.OrientationToVector(me.m_WanderTargetOrientation) * me.m_WanderRadius;
 
         // place circle  "in front"
         // in front of me or in front of my velocity?
