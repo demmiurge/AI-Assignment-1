@@ -47,50 +47,48 @@ public abstract class SteeringBehaviour : MonoBehaviour
 
     private void ApplyLinearAccelerationWithoutRigidBody()
     {
-        Vector3 l_Acceleration = GetLinearAcceleration();
+        Vector3 acceleration = GetLinearAcceleration();
+        // zero acceleration implies stop...
 
-        if(l_Acceleration.Equals(Vector3.zero))
+        if (acceleration.Equals(Vector3.zero))
         {
             m_Context.m_Velocity = Vector3.zero;
             return;
         }
 
         float dt = Time.fixedDeltaTime;
-        Vector3 l_VelIncrement = l_Acceleration * dt;
-        m_Context.m_Velocity += l_VelIncrement;
+        Vector3 velIncrement = acceleration * dt;
+        m_Context.m_Velocity += velIncrement;
 
-        if(m_Context.m_ClipVelocity)
-        {
-            if(m_Context.m_Velocity.magnitude > m_Context.m_MaxSpeed)
-            {
+        if (m_Context.m_ClipVelocity)
+            if (m_Context.m_Velocity.magnitude > m_Context.m_MaxSpeed)
                 m_Context.m_Velocity = m_Context.m_Velocity.normalized * m_Context.m_MaxSpeed;
-            }
-        }
 
-        transform.position += m_Context.m_Velocity * dt + 0.5f * l_Acceleration * dt * dt;
+        transform.position += m_Context.m_Velocity * dt + 0.5f * acceleration * dt * dt;
     }
 
     private void ApplyAngularAccelerationWithoutRigidbody()
     {
-        float l_acceleration = GetAngularAcceleration();
+        float acceleration = GetAngularAcceleration();
         // zero acceleration implies stop
 
-        if (l_acceleration == 0)
+        if (acceleration == 0)
         {
             m_Context.m_AngularSpeed = 0;
             return;
         }
 
         float dt = Time.fixedDeltaTime;
-        m_Context.m_AngularSpeed += l_acceleration * dt;
+        m_Context.m_AngularSpeed += acceleration * dt;
 
         if (m_Context.m_ClipAngularSpeed)
             if (Mathf.Abs(m_Context.m_AngularSpeed) > m_Context.m_MaxAngularSpeed)
                 m_Context.m_AngularSpeed = m_Context.m_MaxAngularSpeed *
-                                             Mathf.Sign(m_Context.m_AngularSpeed);
+                                           Mathf.Sign(m_Context.m_AngularSpeed);
 
-        float orientation = transform.rotation.eulerAngles.y + m_Context.m_AngularSpeed * dt + 0.5f * l_acceleration * dt * dt;
-        transform.rotation = Quaternion.Euler(0, orientation, 0);
+        float orientation = transform.rotation.eulerAngles.z +
+                            m_Context.m_AngularSpeed * dt + 0.5f * acceleration * dt * dt;
+        transform.rotation = Quaternion.Euler(0, 0, orientation);
     }
 
     private void ApplyLinearAccelerationWithRigidbody()
