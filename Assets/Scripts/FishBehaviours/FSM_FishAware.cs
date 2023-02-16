@@ -87,7 +87,7 @@ public class FSM_FishAware : FiniteStateMachine
         Transition perilDetected = new Transition("Peril detected",
             () =>
             {
-                peril = SensingUtils.FindInstanceWithinRadius(gameObject, "BATCAT", blackboard.perilDetectableRadius);
+                peril = SensingUtils.FindInstanceWithinRadius(gameObject, "SHARK", blackboard.perilDetectableRadius);
                 return peril != null;
             }, // write the condition checkeing code in {}
             () => { }

@@ -24,10 +24,10 @@ public class Wander : SteeringBehaviour
         if (me.m_Velocity.magnitude > 0.01f)
             SURROGATE_TARGET.transform.position +=
                 //me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
-                me.transform.position + new Vector3(me.m_Velocity.normalized.x * me.m_WanderOffset, me.m_Velocity.normalized.y, me.m_Velocity.normalized.z * me.m_WanderOffset);
-                //me.transform.position + me.m_Velocity.normalized * me.m_WanderOffset;
+                //me.transform.position + new Vector3(me.m_Velocity.normalized.x * me.m_WanderOffset, me.m_Velocity.normalized.y, me.m_Velocity.normalized.z * me.m_WanderOffset);
+                me.transform.position + me.m_Velocity.normalized * me.m_WanderOffset;
         else
-            SURROGATE_TARGET.transform.position += me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.y) * me.m_WanderOffset;
+            SURROGATE_TARGET.transform.position += me.transform.position + Utils.OrientationToVector(me.transform.eulerAngles.z) * me.m_WanderOffset;
 
         // show some gizmos before returning
         if (me.m_ShowWanderGizmos)
@@ -40,7 +40,7 @@ public class Wander : SteeringBehaviour
             DebugExtension.DebugCircle(me.transform.position +
                                                              //Utils.OrientationToVector(me.transform.eulerAngles.z) * me.wanderOffset,
                                                              me.m_Velocity.normalized * me.m_WanderOffset,
-                                       new Vector3(0, 1, 0),
+                                       new Vector3(0, 0, 1),
                                        Color.red,
                                        me.m_WanderRadius);
             DebugExtension.DebugPoint(SURROGATE_TARGET.transform.position,

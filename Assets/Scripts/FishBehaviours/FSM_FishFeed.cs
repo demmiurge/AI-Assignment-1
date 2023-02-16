@@ -81,7 +81,7 @@ public class FSM_FishFeed : FiniteStateMachine
            () => {
                if (!blackboard.Hungry()) return false;
                cheese = SensingUtils.FindInstanceWithinRadius(gameObject,
-                                    "CHEESE", blackboard.cheeseDetectableRadius);
+                                    "SHARK", blackboard.cheeseDetectableRadius);
                return cheese != null;
            },
            () => { blackboard.globalBlackboard.AnnounceCheese(cheese); }

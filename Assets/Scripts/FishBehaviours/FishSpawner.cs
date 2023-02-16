@@ -22,7 +22,7 @@ public class FishSpawner : MonoBehaviour
     {
         //sample = Resources.Load<GameObject>("Fish1");
         if (sample == null)
-            Debug.LogError("No Fish1 prefab found as a resource");
+            Debug.LogError("No Fish1 prefab found");
 
         globalBlackboard = GetComponent<FISH_GLOBAL_Blackboard>();
         if (globalBlackboard == null)
