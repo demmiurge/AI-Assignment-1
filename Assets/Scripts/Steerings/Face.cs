@@ -18,7 +18,8 @@ public class Face : SteeringBehaviour
     public static float GetAngularAcceleration(SteeringContext me, GameObject target)
     {
         Vector3 directionToTarget = target.transform.position - me.transform.position;
-        SURROGATE_TARGET.transform.rotation = Quaternion.Euler(0, Utils.VectorToOrientation(directionToTarget), 0);
+        SURROGATE_TARGET.transform.rotation = Quaternion.Euler(0, 0,
+            Utils.VectorToOrientation(directionToTarget));
 
         return Align.GetAngularAcceleration(me, SURROGATE_TARGET);
     }

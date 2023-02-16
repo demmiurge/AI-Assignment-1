@@ -11,7 +11,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
 
     public SteeringContext m_Context { get => GetComponent<SteeringContext>(); }
 
-    new Rigidbody m_Rigidbody;
+    new Rigidbody2D m_Rigidbody;
 
     private bool m_HasRigidbody;
 
@@ -20,7 +20,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody = GetComponent<Rigidbody2D>();
         m_HasRigidbody = m_Rigidbody != null;
 
         if(SURROGATE_TARGET == null)
@@ -124,7 +124,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
 
         else  // if rigidbody is not kinematic then it is dynamic ("controlled" by forces)
         {
-            m_Rigidbody.AddForce(acceleration * m_Rigidbody.mass, ForceMode.Force);
+            m_Rigidbody.AddForce(acceleration * m_Rigidbody.mass, ForceMode2D.Force);
 
             if (m_Context.m_ClipVelocity)
             {
@@ -144,7 +144,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
         float acceleration = GetAngularAcceleration();
         if (acceleration == 0)
         {
-            m_Rigidbody.angularVelocity = new Vector3(0,0,0);
+            m_Rigidbody.angularVelocity = 0;
             m_Context.m_AngularSpeed = 0;
         }
 
@@ -157,18 +157,18 @@ public abstract class SteeringBehaviour : MonoBehaviour
                 if (Mathf.Abs(m_Context.m_AngularSpeed) > m_Context.m_MaxAngularSpeed)
                     m_Context.m_AngularSpeed = m_Context.m_MaxAngularSpeed * Mathf.Sign(m_Context.m_AngularSpeed);
             // apply to rigidbody
-            m_Rigidbody.angularVelocity = new Vector3(0, m_Context.m_AngularSpeed, 0);
+            m_Rigidbody.angularVelocity = m_Context.m_AngularSpeed;
         }
         else
         {
-            m_Rigidbody.AddTorque(acceleration * m_Rigidbody.inertiaTensor/4 * Mathf.Deg2Rad, ForceMode.Force);
+            m_Rigidbody.AddTorque(acceleration * m_Rigidbody.inertia * Mathf.Deg2Rad, ForceMode2D.Force);
 
             if (m_Context.m_ClipAngularSpeed)
-                if (Mathf.Abs((m_Rigidbody.angularVelocity).magnitude) > m_Context.m_MaxAngularSpeed)
-                    m_Rigidbody.angularVelocity = new Vector3(0, m_Context.m_MaxAngularSpeed * Mathf.Sign(m_Rigidbody.angularVelocity.magnitude), 0);
+                if (Mathf.Abs(m_Rigidbody.angularVelocity) > m_Context.m_MaxAngularSpeed)
+                    m_Rigidbody.angularVelocity = m_Context.m_MaxAngularSpeed * Mathf.Sign(m_Rigidbody.angularVelocity);
 
             // cache
-            m_Context.m_AngularSpeed = m_Rigidbody.angularVelocity.y;
+            m_Context.m_AngularSpeed = m_Rigidbody.angularVelocity;
 
         }
     }
@@ -224,7 +224,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
         // if (context.velocity.Equals(Vector3.zero)) angAcceleration = 0;
         else
         {
-            SURROGATE_TARGET.transform.rotation = Quaternion.Euler(0, Utils.VectorToOrientation(m_Context.m_Velocity), 0);
+            SURROGATE_TARGET.transform.rotation = Quaternion.Euler(0, 0, Utils.VectorToOrientation(m_Context.m_Velocity));
             angAcceleration = Align.GetAngularAcceleration(m_Context, SURROGATE_TARGET);
         }
         return angAcceleration;
@@ -236,11 +236,11 @@ public abstract class SteeringBehaviour : MonoBehaviour
         // this policy does not generate an acceleration. It changes the orientation of the go directly!!!
         if (m_HasRigidbody)
         {
-            m_Rigidbody.rotation = Quaternion.Euler(0, Utils.VectorToOrientation(m_Context.m_Velocity), 0);
+            m_Rigidbody.rotation = Utils.VectorToOrientation(m_Context.m_Velocity);
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, Utils.VectorToOrientation(m_Context.m_Velocity), 0);
+            transform.rotation = Quaternion.Euler(0, 0, Utils.VectorToOrientation(m_Context.m_Velocity));
         }
     }
 
@@ -264,7 +264,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
         }
 
         Vector3 directionToTarget = target.transform.position - transform.position;
-        Quaternion orientation = Quaternion.Euler(0, Utils.VectorToOrientation(directionToTarget), 0);
+        float orientation = Utils.VectorToOrientation(directionToTarget);
 
         if (m_HasRigidbody)
         {
@@ -272,7 +272,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
         }
         else
         {
-            transform.rotation = orientation;
+            transform.rotation = Quaternion.Euler(0, 0, orientation);
         }
 
     }
