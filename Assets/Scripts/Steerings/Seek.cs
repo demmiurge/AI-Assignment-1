@@ -27,7 +27,6 @@ public class Seek : SteeringBehaviour
 
         // give max acceleration towards the target
         acceleration = directionToTarget * me.m_MaxAcceleration;
-        //acceleration.y /= 2;
 
         return acceleration;
     }
