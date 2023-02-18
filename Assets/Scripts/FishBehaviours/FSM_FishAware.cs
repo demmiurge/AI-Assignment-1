@@ -59,7 +59,7 @@ public class FSM_FishAware : FiniteStateMachine
         State FLEE_PERIL = new State("FLEEING",
             () =>
             {
-                // sometimes scared mice get an "extra boost" of speed. But not always
+                // sometimes scared fish get an "extra boost" of speed. But not always
                 if (Random.value > 0.6f)
                 {
                     float boostFactor = 1.3f + Random.value;
@@ -87,7 +87,7 @@ public class FSM_FishAware : FiniteStateMachine
         Transition perilDetected = new Transition("Peril detected",
             () =>
             {
-                peril = SensingUtils.FindInstanceWithinRadius(gameObject, "SHARK", blackboard.perilDetectableRadius);
+                peril = SensingUtils.FindInstanceWithinRadius(gameObject, blackboard.perilLabel, blackboard.perilDetectableRadius);
                 return peril != null;
             }, // write the condition checkeing code in {}
             () => { }

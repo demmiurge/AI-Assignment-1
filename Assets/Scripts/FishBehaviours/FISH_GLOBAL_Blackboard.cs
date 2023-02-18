@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class FISH_GLOBAL_Blackboard : MonoBehaviour
 {
-    public GameObject announcedCheese;      // the cheese some mouse has found
-    public float cheeseAnnounceTTL = 30f;   // the time the announce will last
+    public GameObject announcedPlankton;      // the cheese some mouse has found
+    public float planktonAnnounceTTL = 30f;   // the time the announce will last
 
     public float elapsedTime = 0;
 
     public void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime >= cheeseAnnounceTTL)
-            announcedCheese = null; // 
+        if (elapsedTime >= planktonAnnounceTTL)
+            announcedPlankton = null; // 
     }
 
-    public void AnnounceCheese(GameObject Cheese)
+    public void AnnouncePlankton(GameObject Plankton)
     {
-        announcedCheese = Cheese;
+        announcedPlankton = Plankton;
         elapsedTime = 0f;
     }
 }

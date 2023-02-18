@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 4263251416633172584}
   - component: {fileID: 1281347604214868390}
   - component: {fileID: 1591012657718564878}
-  - component: {fileID: 180439001474380009}
+  - component: {fileID: 5858454323904002518}
   m_Layer: 0
   m_Name: Fish1
-  m_TagString: Untagged
+  m_TagString: FISH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,15 +29,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4463730944262204904}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3195047506377003403}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &263777446064166008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,11 +70,13 @@ MonoBehaviour:
   hungerLowEnough: 10
   normalHungerIncrement: 5.5
   bitesPerSecond: 1
-  cheeseHungerDecrement: 10
-  cheeseDetectableRadius: 40
-  cheeseReachedRadius: 10
+  planktonHungerDecrement: 10
+  planktonDetectableRadius: 20
+  planktonReachedRadius: 1
+  planktonLabel: PLANKTON
   perilDetectableRadius: 100
   perilSafetyRadius: 200
+  perilLabel: SHARK
   globalBlackboard: {fileID: 0}
 --- !u!114 &4263251416633172584
 MonoBehaviour:
@@ -88,24 +90,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4dd4701851b5d41b92f65599e18e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxAcceleration: 20
-  m_MaxSpeed: 5
+  m_MaxAcceleration: 8
+  m_MaxSpeed: 2
   m_ClipVelocity: 1
   m_MaxAngularAcceleration: 360
   m_MaxAngularSpeed: 90
   m_ClipAngularSpeed: 1
   m_TimeToDesiredSpeed: 0.1
   m_CloseEnoughRadius: 1
-  m_SlowDownRadius: 5
+  m_SlowDownRadius: 2
   m_TimeToDesiredAngularSpeed: 0.1
   m_CloseEnoughAngle: 2
   m_SlowDownAngle: 10
   m_MaxPredictionTime: 3
   m_ShowFutureTargetGizmos: 0
-  m_IdTag: 
+  m_IdTag: FISH
   m_RepulsionThreshold: 15
   m_CohesionThreshold: 30
-  m_ConeOfVisionAngle: 270
+  m_ConeOfVisionAngle: 360
   m_ApplyVision: 0
   m_CohesionWeight: 0.3
   m_RepulsionWeight: 0.5
@@ -116,7 +118,7 @@ MonoBehaviour:
   m_WanderOffset: 5
   m_ShowWanderGizmos: 1
   m_WanderTargetOrientation: 0
-  m_SeekWeight: 0.2
+  m_SeekWeight: 0.09
   m_LookAheadLength: 4
   m_AvoidDistance: 2
   m_SecondaryWhiskerAngle: 12
@@ -158,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationalPolicy: 0
   target: {fileID: 0}
---- !u!114 &180439001474380009
+--- !u!114 &5858454323904002518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,10 +169,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4463730944262204904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91d1be08ce6d1b544bf8ff8c6fbaf2a6, type: 3}
+  m_Script: {fileID: 11500000, guid: e4c9c820cc377364c9a42bae5c98f7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationalPolicy: 0
+  position: {x: 0, y: 0, z: 0}
+  backToInitial: 1
 --- !u!1 &7058730382544254308
 GameObject:
   m_ObjectHideFlags: 0

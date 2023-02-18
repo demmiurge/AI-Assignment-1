@@ -8,10 +8,11 @@ public class FSM_FishFeed : FiniteStateMachine
 {
 
     private FISH_Blackboard blackboard;
-    private WanderPlusAvoid wanderPlusAvoid;
+    //private WanderPlusAvoid wanderPlusAvoid;
+    private FlockingAroundPlusAvoidance flockingPlusAvoid;
     private ArrivePlusOA arrive;
     private float timeSinceLastBite;
-    private GameObject cheese;
+    private GameObject plankton;
 
     public override void OnEnter()
     {
@@ -19,7 +20,8 @@ public class FSM_FishFeed : FiniteStateMachine
          * It's equivalent to the on enter action of any state 
          * Usually this code includes .GetComponent<...> invocations */
         blackboard = GetComponent<FISH_Blackboard>();
-        wanderPlusAvoid = GetComponent<WanderPlusAvoid>();
+        //wanderPlusAvoid = GetComponent<WanderPlusAvoid>();
+        flockingPlusAvoid = GetComponent<FlockingAroundPlusAvoidance>();
         arrive = GetComponent<ArrivePlusOA>();
         base.OnEnter(); // do not remove
     }
@@ -42,13 +44,13 @@ public class FSM_FishFeed : FiniteStateMachine
         /* STAGE 1: create the states with their logic(s) */
 
         State WANDERING = new State("WANDERING",
-            () => { wanderPlusAvoid.enabled = true; },
+            () => { flockingPlusAvoid.enabled = true; },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-            () => { wanderPlusAvoid.enabled = false; }
+            () => { flockingPlusAvoid.enabled = false; }
         );
 
-        State REACHING = new State("REACHING CHEESE",
-            () => { arrive.target = cheese; arrive.enabled = true; },
+        State REACHING = new State("REACHING PLANKTON",
+            () => { arrive.target = plankton; arrive.enabled = true; },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
             () => {
                 arrive.enabled = false;
@@ -60,8 +62,8 @@ public class FSM_FishFeed : FiniteStateMachine
             () => {
                 if (timeSinceLastBite >= 1 / blackboard.bitesPerSecond)
                 {
-                    cheese.SendMessage("BeBitten");
-                    blackboard.hunger -= blackboard.cheeseHungerDecrement;
+                    plankton.SendMessage("BeBitten");
+                    blackboard.hunger -= blackboard.planktonHungerDecrement;
                     timeSinceLastBite = 0;
                 }
                 else
@@ -77,30 +79,30 @@ public class FSM_FishFeed : FiniteStateMachine
         /* STAGE 2: create the transitions with their logic(s)
          * --------------------------------------------------- */
 
-        Transition hungryAndCheeseDetected = new Transition("Cheese Detected",
+        Transition hungryAndPlanktonDetected = new Transition("Plankton Detected",
            () => {
                if (!blackboard.Hungry()) return false;
-               cheese = SensingUtils.FindInstanceWithinRadius(gameObject,
-                                    "SHARK", blackboard.cheeseDetectableRadius);
-               return cheese != null;
+               plankton = SensingUtils.FindInstanceWithinRadius(gameObject,
+                                    blackboard.planktonLabel, blackboard.planktonDetectableRadius);
+               return plankton != null;
            },
-           () => { blackboard.globalBlackboard.AnnounceCheese(cheese); }
+           () => { blackboard.globalBlackboard.AnnouncePlankton(plankton); }
         );
 
-        Transition hungryAndCheeseAnnounced = new Transition("Cheese Announced",
+        Transition hungryAndPlanktonAnnounced = new Transition("Plankton Announced",
            () => {
                return blackboard.Hungry()
-                           && blackboard.globalBlackboard.announcedCheese != null;
+                           && blackboard.globalBlackboard.announcedPlankton != null;
            },
-           () => { cheese = blackboard.globalBlackboard.announcedCheese; }
+           () => { plankton = blackboard.globalBlackboard.announcedPlankton; }
         );
 
-        Transition cheeseVanished = new Transition("Cheese vanished",
-            () => { return cheese == null || cheese.Equals(null); }
+        Transition planktonVanished = new Transition("Plankton vanished",
+            () => { return plankton == null || plankton.Equals(null); }
         );
 
-        Transition cheeseReached = new Transition("Cheese reached",
-            () => { return SensingUtils.DistanceToTarget(gameObject, cheese) < blackboard.cheeseReachedRadius; } // write the condition checkeing code in {}
+        Transition planktonReached = new Transition("Plankton reached",
+            () => { return SensingUtils.DistanceToTarget(gameObject, plankton) < blackboard.planktonReachedRadius; } // write the condition checkeing code in {}
         );
 
         Transition satiated = new Transition("satiated",
@@ -113,11 +115,11 @@ public class FSM_FishFeed : FiniteStateMachine
 
         AddStates(WANDERING, REACHING, EATING);
 
-        AddTransition(WANDERING, hungryAndCheeseDetected, REACHING);
-        AddTransition(WANDERING, hungryAndCheeseAnnounced, REACHING);
-        AddTransition(REACHING, cheeseVanished, WANDERING);
-        AddTransition(REACHING, cheeseReached, EATING);
-        AddTransition(EATING, cheeseVanished, WANDERING);
+        AddTransition(WANDERING, hungryAndPlanktonDetected, REACHING);
+        AddTransition(WANDERING, hungryAndPlanktonAnnounced, REACHING);
+        AddTransition(REACHING, planktonVanished, WANDERING);
+        AddTransition(REACHING, planktonReached, EATING);
+        AddTransition(EATING, planktonVanished, WANDERING);
         AddTransition(EATING, satiated, WANDERING);
 
         /* STAGE 4: set the initial state */
