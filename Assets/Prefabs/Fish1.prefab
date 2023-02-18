@@ -105,12 +105,12 @@ MonoBehaviour:
   m_MaxPredictionTime: 3
   m_ShowFutureTargetGizmos: 0
   m_IdTag: FISH
-  m_RepulsionThreshold: 15
-  m_CohesionThreshold: 30
+  m_RepulsionThreshold: 3
+  m_CohesionThreshold: 6
   m_ConeOfVisionAngle: 360
   m_ApplyVision: 0
-  m_CohesionWeight: 0.3
-  m_RepulsionWeight: 0.5
+  m_CohesionWeight: 0.4
+  m_RepulsionWeight: 0.6
   m_AlignmentWeight: 0.2
   m_AddWanderIfZero: 1
   m_WanderRate: 15
