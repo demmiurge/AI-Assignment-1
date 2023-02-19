@@ -23,6 +23,7 @@ public class Align : SteeringBehaviour
         float targetOrientation = target.transform.eulerAngles.z; // BEWARE...
 
         float requiredRotation = targetOrientation - me.transform.eulerAngles.z;  // how many degs do we have to rotate?
+        float requiredRotationY = 0f;
 
         if (requiredRotation < 0)
             requiredRotation = 360 + requiredRotation; // map to positive angles
