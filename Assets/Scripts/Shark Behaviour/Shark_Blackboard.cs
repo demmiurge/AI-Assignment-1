@@ -11,7 +11,14 @@ public class Shark_Blackboard : MonoBehaviour
     public float initialSeekWeight = 0.2f;
     public float incrementOfSeek = 0.2f;
     public float locationReachedRadius = 10f;
-
+    public float m_SalmonDetectionRadius = 20f;
+    public float m_SalmonReachedRadius = 5f;
+    public float m_TimeToEatSalmon = 2f;
+    public float m_FishDetectionRadius = 20f;
+    public float m_FishReachedRadius = 2f;
+    public float m_FishEscaped = 100f;
+    public float m_RestingTime = 3f;
+    public float m_PursueTime = 7f;
 
     // Start is called before the first frame update
     void Start()

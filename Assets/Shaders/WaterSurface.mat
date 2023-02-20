@@ -61,7 +61,7 @@ Material:
     m_Floats:
     - _Ambient_Factor: 0.55
     - _Brightness: 1
-    - _Distortion_Factor: 1
+    - _Distortion_Factor: 1.79
     - _Distortion_Speed: 0
     - _Metallic: 0
     - _QueueControl: 0

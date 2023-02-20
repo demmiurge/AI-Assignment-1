@@ -30,8 +30,10 @@ public class FSM_Shark : FiniteStateMachine
     {
         /* STAGE 1: create the states with their logic(s)
          *-----------------------------------------------*/
-         
-       State goingA = new State("Going_A",
+
+        FiniteStateMachine Chase = ScriptableObject.CreateInstance<FSM_SharkChase>();
+
+        State goingA = new State("Going_A",
            () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.target_A; elapsedTime = 0; },
            () => { elapsedTime += Time.deltaTime; }, 
            () => { m_WanderAround.enabled = false; }
@@ -62,11 +64,15 @@ public class FSM_Shark : FiniteStateMachine
             () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight += m_Blackboard.incrementOfSeek; elapsedTime = 0; }
         );
 
+        Transition TimeOut = new Transition("Time Out",
+           () => { return elapsedTime >= m_Blackboard.intervalBetweenTimeOuts; },
+           () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight += m_Blackboard.incrementOfSeek; elapsedTime = 0; }
+       );
 
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------*/
-            
-         AddStates(goingA, goingB);
+
+        AddStates(goingA, goingB);
 
         AddTransition(goingA, locationAReached, goingB);
         AddTransition(goingB, locationBReached, goingA);
