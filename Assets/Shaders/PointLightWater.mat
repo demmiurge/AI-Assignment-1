@@ -59,7 +59,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambient_Factor: 0.29
+    - _Ambient_Factor: 0.15
     - _Brightness: 1
     - _Distortion_Factor: 1
     - _Distortion_Speed: 0
@@ -68,9 +68,9 @@ Material:
     - _Rotation: 90
     - _Speed: 0.1
     - _Strength: 5
-    - _Tile: 0.15
+    - _Tile: 0.05
     m_Colors:
     - _Color: {r: 0, g: 0, b: 5, a: 0}
     - _Second_Color: {r: 0.1424995, g: 0.12646845, b: 0.5471698, a: 1}
-    - _WaterColor: {r: 0.3612495, g: 0.7365487, b: 0.7735849, a: 1}
+    - _WaterColor: {r: 0.36124948, g: 0.7365487, b: 0.7735849, a: 1}
   m_BuildTextureStacks: []
