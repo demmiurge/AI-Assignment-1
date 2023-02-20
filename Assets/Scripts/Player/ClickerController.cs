@@ -18,17 +18,6 @@ public class ClickerController : MonoBehaviour
     {
         Vector3 mousePos;
 
-        //if (Input.GetButtonDown("Fire1")) {
-        //    mousePos = Input.mousePosition;
-        //    Debug.Log("PosX: " + mousePos.x);
-        //    Debug.Log("PosY: " + mousePos.y);
-
-        //    if (m_Meet)
-        //    {
-        //        Instantiate(m_Meet, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
-        //    }
-        //}
-
         if (Input.GetMouseButtonDown(0))
             Clicked();
 
@@ -42,12 +31,12 @@ public class ClickerController : MonoBehaviour
 
         RaycastHit l_RayCast = new RaycastHit();
 
-        if (Physics.Raycast(l_Ray, out l_RayCast))
+        if (Physics.Raycast(l_Ray, out l_RayCast)) {
             if (m_Meet)
             {
                 m_Meet.transform.position = new Vector3(l_RayCast.point.x, l_RayCast.point.y, 0);
                 m_Meet.SetActive(true);
             }
-        //Instantiate(m_Meet, new Vector3(l_RayCast.point.x, l_RayCast.point.y, 0), Quaternion.identity);
+        }
     }
 }
