@@ -294,7 +294,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44536
+  m_Name: pb_Mesh-124820
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -10816,6 +10816,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4610718345083821357, guid: ead57ca0c3192b746b3bb87860a7e93e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ead57ca0c3192b746b3bb87860a7e93e, type: 3}
@@ -10851,6 +10856,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5143316124812297609, guid: 6aa916738ac0d0d419405cea89a821d6,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143316124812297609, guid: 6aa916738ac0d0d419405cea89a821d6,
+        type: 3}
       propertyPath: m_ListToIgnoreColliders.Array.data[0]
       value: 
       objectReference: {fileID: 2057932287}
@@ -10873,6 +10883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143316124812297650, guid: 6aa916738ac0d0d419405cea89a821d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5143316124812297655, guid: 6aa916738ac0d0d419405cea89a821d6,
         type: 3}
