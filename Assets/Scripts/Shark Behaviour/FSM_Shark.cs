@@ -64,14 +64,6 @@ public class FSM_Shark : FiniteStateMachine
             () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight += m_Blackboard.incrementOfSeek; elapsedTime = 0; }
         );
 
-<<<<<<< Updated upstream
-       // Transition TimeOut = new Transition("Time Out",
-       //    () => { return elapsedTime >= m_Blackboard.intervalBetweenTimeOuts; },
-       //    () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight += m_Blackboard.incrementOfSeek; elapsedTime = 0; }
-       //);
-=======
->>>>>>> Stashed changes
-
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------*/
 
