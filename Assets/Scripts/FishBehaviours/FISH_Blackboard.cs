@@ -23,6 +23,7 @@ public class FISH_Blackboard : MonoBehaviour
     public GameObject coral;
     public string coralLabel = "CORAL";
     public float coralReachedRadius = 2f;
+    public GameObject defaultAttractor;
 
     public FISH_GLOBAL_Blackboard globalBlackboard; // the blackboard that all fish share
 

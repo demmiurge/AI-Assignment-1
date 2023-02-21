@@ -9,6 +9,8 @@ public class FSM_PlanktonCollection : FiniteStateMachine
     private FISH_Blackboard blackboard;
     private ArrivePlusOA arrive;
     private float timeSinceLastBite;
+    private SteeringContext context;
+    private FlockingAroundPlusAvoidance flockingPlusAvoid;
 
     public override void OnEnter()
     {
@@ -18,6 +20,8 @@ public class FSM_PlanktonCollection : FiniteStateMachine
 
         blackboard = GetComponent<FISH_Blackboard>();
         arrive = GetComponent<ArrivePlusOA>();
+        context = GetComponent<SteeringContext>();
+        flockingPlusAvoid = GetComponent<FlockingAroundPlusAvoidance>();
 
         base.OnEnter(); // do not remove
     }
@@ -50,19 +54,34 @@ public class FSM_PlanktonCollection : FiniteStateMachine
         //States
 
         State REACHING = new State("REACHING PLANKTON",
-            () => { arrive.target = blackboard.plankton; arrive.enabled = true;},
+            () => { flockingPlusAvoid.enabled = true; flockingPlusAvoid.attractor = blackboard.plankton; context.m_SeekWeight = 0.8f; },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
             () =>
             {
-                arrive.enabled = false;
+                flockingPlusAvoid.attractor = blackboard.defaultAttractor; flockingPlusAvoid.enabled = false; context.m_SeekWeight = 0.09f;
             }
         );
 
+        //State REACHING = new State("REACHING PLANKTON",
+        //    () => { arrive.target = blackboard.plankton; arrive.enabled = true;},
+        //    () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
+        //    () =>
+        //    {
+        //        arrive.enabled = false;
+        //    }
+        //);
+
         State TRANSPORTING = new State("TRANSPORTING",
-           () => { arrive.target = blackboard.coral; arrive.enabled = true; blackboard.plankton.transform.SetParent(gameObject.transform); },
+           () => { flockingPlusAvoid.attractor = blackboard.coral; flockingPlusAvoid.enabled = true; context.m_SeekWeight = 0.8f; blackboard.plankton.transform.SetParent(gameObject.transform); },
            () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-           () => { arrive.enabled = false; blackboard.plankton.transform.SetParent(null); }
+           () => { flockingPlusAvoid.enabled = false; flockingPlusAvoid.attractor = blackboard.defaultAttractor; context.m_SeekWeight = 0.09f; blackboard.plankton.transform.SetParent(null); }
        );
+
+       // State TRANSPORTING = new State("TRANSPORTING",
+       //    () => { arrive.target = blackboard.coral; arrive.enabled = true; blackboard.plankton.transform.SetParent(gameObject.transform); },
+       //    () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
+       //    () => { arrive.enabled = false; blackboard.plankton.transform.SetParent(null); }
+       //);
 
         State EATING = new State("EATING",
             () => { timeSinceLastBite = 100; },
@@ -86,7 +105,6 @@ public class FSM_PlanktonCollection : FiniteStateMachine
 
         Transition hungryAndPlanktonDetected = new Transition("Plankton Detected",
            () => {
-               Debug.Log("Checking out");
                if (!blackboard.Hungry()) return false;
                blackboard.plankton = SensingUtils.FindInstanceWithinRadius(gameObject,
                                     blackboard.planktonLabel, blackboard.planktonDetectableRadius);

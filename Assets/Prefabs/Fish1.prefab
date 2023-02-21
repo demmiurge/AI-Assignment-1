@@ -82,6 +82,8 @@ MonoBehaviour:
   coral: {fileID: 74251234105571896, guid: b74b3f01dc911864cbaeefabaff6a771, type: 3}
   coralLabel: CORAL
   coralReachedRadius: 2
+  defaultAttractor: {fileID: 4217584091696050898, guid: ccd7d6f3f79100d4abf6695abd738987,
+    type: 3}
   globalBlackboard: {fileID: 0}
 --- !u!114 &4263251416633172584
 MonoBehaviour:
