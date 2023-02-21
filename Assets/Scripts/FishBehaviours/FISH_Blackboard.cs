@@ -18,6 +18,9 @@ public class FISH_Blackboard : MonoBehaviour
     public float perilDetectableRadius = 20f; // at this distance enenmy is detectable
     public float perilSafetyRadius = 40f; // at this distance, enemy is no longer a peril
     public string perilLabel = "SHARK";
+    public GameObject coral;
+    public string coralLabel = "CORAL";
+    public float coralReackedRadius = 2f;
 
     public FISH_GLOBAL_Blackboard globalBlackboard; // the blackboard that all fish share
 

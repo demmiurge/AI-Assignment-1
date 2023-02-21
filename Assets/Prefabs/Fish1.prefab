@@ -77,6 +77,9 @@ MonoBehaviour:
   perilDetectableRadius: 100
   perilSafetyRadius: 200
   perilLabel: SHARK
+  coral: {fileID: 0}
+  coralLabel: CORAL
+  coralReackedRadius: 2
   globalBlackboard: {fileID: 0}
 --- !u!114 &4263251416633172584
 MonoBehaviour:
@@ -105,8 +108,8 @@ MonoBehaviour:
   m_MaxPredictionTime: 3
   m_ShowFutureTargetGizmos: 0
   m_IdTag: FISH
-  m_RepulsionThreshold: 3
-  m_CohesionThreshold: 6
+  m_RepulsionThreshold: 1
+  m_CohesionThreshold: 2
   m_ConeOfVisionAngle: 360
   m_ApplyVision: 0
   m_CohesionWeight: 0.4

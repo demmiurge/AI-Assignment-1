@@ -13,6 +13,7 @@ public class FSM_FishFeed : FiniteStateMachine
     private ArrivePlusOA arrive;
     private float timeSinceLastBite;
     private GameObject plankton;
+    private SteeringContext context;
 
     public override void OnEnter()
     {
@@ -20,6 +21,7 @@ public class FSM_FishFeed : FiniteStateMachine
          * It's equivalent to the on enter action of any state 
          * Usually this code includes .GetComponent<...> invocations */
         blackboard = GetComponent<FISH_Blackboard>();
+        context = GetComponent<SteeringContext>();
         //wanderPlusAvoid = GetComponent<WanderPlusAvoid>();
         flockingPlusAvoid = GetComponent<FlockingAroundPlusAvoidance>();
         arrive = GetComponent<ArrivePlusOA>();
@@ -49,10 +51,17 @@ public class FSM_FishFeed : FiniteStateMachine
             () => { flockingPlusAvoid.enabled = false; }
         );
 
+        State SPREAD = new State("SPREAD",
+            () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold *= 2f; context.m_RepulsionThreshold *= 2f; },
+            () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
+            () => { context.m_CohesionThreshold *= 2f; context.m_RepulsionThreshold *= 2f; flockingPlusAvoid.enabled = false;  }
+        );
+
         State REACHING = new State("REACHING PLANKTON",
             () => { arrive.target = plankton; arrive.enabled = true; },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-            () => {
+            () =>
+            {
                 arrive.enabled = false;
             }
         );
@@ -97,6 +106,16 @@ public class FSM_FishFeed : FiniteStateMachine
            () => { plankton = blackboard.globalBlackboard.announcedPlankton; }
         );
 
+        Transition hungryAndNoPlankton = new Transition("Hungry NoPlankton",
+           () => {
+               if (!blackboard.Hungry()) return false;
+               plankton = SensingUtils.FindInstanceWithinRadius(gameObject,
+                                    blackboard.planktonLabel, blackboard.planktonDetectableRadius);
+               return plankton == null;
+           },
+           () => { }
+        );
+
         Transition planktonVanished = new Transition("Plankton vanished",
             () => { return plankton == null || plankton.Equals(null); }
         );
@@ -113,10 +132,13 @@ public class FSM_FishFeed : FiniteStateMachine
          * ---------------------------------------------- */
 
 
-        AddStates(WANDERING, REACHING, EATING);
+        AddStates(WANDERING, SPREAD, REACHING, EATING);
 
         AddTransition(WANDERING, hungryAndPlanktonDetected, REACHING);
         AddTransition(WANDERING, hungryAndPlanktonAnnounced, REACHING);
+        AddTransition(WANDERING, hungryAndNoPlankton, SPREAD);
+        AddTransition(SPREAD, hungryAndPlanktonDetected, REACHING);
+        AddTransition(SPREAD, hungryAndPlanktonAnnounced, REACHING);
         AddTransition(REACHING, planktonVanished, WANDERING);
         AddTransition(REACHING, planktonReached, EATING);
         AddTransition(EATING, planktonVanished, WANDERING);
