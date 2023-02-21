@@ -74,12 +74,14 @@ MonoBehaviour:
   planktonDetectableRadius: 20
   planktonReachedRadius: 1
   planktonLabel: PLANKTON
+  noPlanktonLabel: NO_PLANKTON
+  plankton: {fileID: 0}
   perilDetectableRadius: 100
   perilSafetyRadius: 200
   perilLabel: SHARK
-  coral: {fileID: 0}
+  coral: {fileID: 74251234105571896, guid: b74b3f01dc911864cbaeefabaff6a771, type: 3}
   coralLabel: CORAL
-  coralReackedRadius: 2
+  coralReachedRadius: 2
   globalBlackboard: {fileID: 0}
 --- !u!114 &4263251416633172584
 MonoBehaviour:

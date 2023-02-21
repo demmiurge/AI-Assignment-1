@@ -1,13 +1,14 @@
 using UnityEngine;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 using UnityEditor.Search;
+using System.ComponentModel;
 
 [CreateAssetMenu(fileName = "FSM_PlanktonCollection", menuName = "Finite State Machines/FSM_PlanktonCollection", order = 1)]
 public class FSM_PlanktonCollection : FiniteStateMachine
 {
     private FISH_Blackboard blackboard;
-    private Arrive arrive;
-    private GameObject seed;
+    private ArrivePlusOA arrive;
+    private float timeSinceLastBite;
 
     public override void OnEnter()
     {
@@ -16,7 +17,7 @@ public class FSM_PlanktonCollection : FiniteStateMachine
          * Usually this code includes .GetComponent<...> invocations */
 
         blackboard = GetComponent<FISH_Blackboard>();
-        arrive = GetComponent<Arrive>();
+        arrive = GetComponent<ArrivePlusOA>();
 
         base.OnEnter(); // do not remove
     }
@@ -27,10 +28,10 @@ public class FSM_PlanktonCollection : FiniteStateMachine
          * It's equivalent to the on exit action of any state 
          * Usually this code turns off behaviours that shouldn't be on when one the FSM has
          * been exited. */
-        if (seed != null)
+        if (blackboard.plankton != null)
         {
-            seed.transform.SetParent(null);
-            seed.tag = blackboard.planktonLabel;
+            blackboard.plankton.transform.SetParent(null);
+            blackboard.plankton.tag = blackboard.planktonLabel;
         }
 
         //Disable Steerings
@@ -42,66 +43,110 @@ public class FSM_PlanktonCollection : FiniteStateMachine
     public override void OnConstruction()
     {
         //FSM
-        //FiniteStateMachine TWO_POINT_WANDERING = ScriptableObject.CreateInstance<FSM_TwoPointWandering>();
-        //TWO_POINT_WANDERING.Name = "TWO_POINT_WANDERING";
+        FiniteStateMachine FISH_FEED = ScriptableObject.CreateInstance<FSM_FishFeed>();
+        FISH_FEED.Name = "FISH_FEED";
 
 
         //States
 
-        State goingToSeed = new State("Going_To_Seed",
-           () => { arrive.target = seed; arrive.enabled = true; },
-           () => { },
-           () => { arrive.enabled = false; }
+        State REACHING = new State("REACHING PLANKTON",
+            () => { arrive.target = blackboard.plankton; arrive.enabled = true;},
+            () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
+            () =>
+            {
+                arrive.enabled = false;
+            }
+        );
+
+        State TRANSPORTING = new State("TRANSPORTING",
+           () => { arrive.target = blackboard.coral; arrive.enabled = true; blackboard.plankton.transform.SetParent(gameObject.transform); },
+           () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
+           () => { arrive.enabled = false; blackboard.plankton.transform.SetParent(null); }
        );
 
-        State transportingSeedToNest = new State("Transporting_Seed_To_Nest",
-           () => { arrive.target = blackboard.coral; arrive.enabled = true; seed.transform.SetParent(gameObject.transform); },
-           () => { },
-           () => { arrive.enabled = false; seed.transform.SetParent(null); }
-       );
+        State EATING = new State("EATING",
+            () => { timeSinceLastBite = 100; },
+            () => {
+                if (timeSinceLastBite >= 1 / blackboard.bitesPerSecond)
+                {
+                    blackboard.plankton.SendMessage("BeBitten");
+                    blackboard.hunger -= blackboard.planktonHungerDecrement;
+                    timeSinceLastBite = 0;
+                }
+                else
+                {
+                    timeSinceLastBite += Time.deltaTime;
+                }
+            },
+            () => { /* do nothing in particular when exiting*/ }
+        );
 
 
         //Transitions
 
-        Transition nearbySeedDetected = new Transition("NearbySeedDetected",
-            () => {
-                seed = SensingUtils.FindRandomInstanceWithinRadius(gameObject, blackboard.planktonLabel, blackboard.planktonDetectableRadius);
-                return seed != null;
-            },
-
-            () => { }
+        Transition hungryAndPlanktonDetected = new Transition("Plankton Detected",
+           () => {
+               Debug.Log("Checking out");
+               if (!blackboard.Hungry()) return false;
+               blackboard.plankton = SensingUtils.FindInstanceWithinRadius(gameObject,
+                                    blackboard.planktonLabel, blackboard.planktonDetectableRadius);
+               return blackboard.plankton != null;
+           },
+           () => { blackboard.globalBlackboard.AnnouncePlankton(blackboard.plankton); }
         );
 
-        Transition seedReached = new Transition("Seed Reached",
+        Transition hungryAndPlanktonAnnounced = new Transition("Plankton Announced",
+           () => {
+               return blackboard.Hungry()
+                           && blackboard.globalBlackboard.announcedPlankton != null;
+           },
+           () => { blackboard.plankton = blackboard.globalBlackboard.announcedPlankton; }
+        );
+
+        Transition planktonVanished = new Transition("Plankton vanished",
+            () => { return blackboard.plankton == null || blackboard.plankton.Equals(null); }
+        );
+
+        Transition planktonReached = new Transition("Plankton Reached",
             () =>
             {
-                return SensingUtils.DistanceToTarget(gameObject, seed)
+                return SensingUtils.DistanceToTarget(gameObject, blackboard.plankton)
                 < blackboard.planktonReachedRadius;
             },
 
-            () => { seed.tag = "NO_SEED"; }
+            () => { /*blackboard.plankton.tag = blackboard.noPlanktonLabel;*/ }
          );
 
-        Transition nestReached = new Transition("Nest Reached",
+        Transition coralReached = new Transition("Coral Reached",
             () =>
             {
                 return SensingUtils.DistanceToTarget(gameObject, blackboard.coral)
-                < blackboard.coralReackedRadius;
+                < blackboard.coralReachedRadius;
             },
 
-            () => { }
+            () => { blackboard.plankton.tag = blackboard.noPlanktonLabel; }
          );
+
+        Transition satiated = new Transition("satiated",
+            () => { return blackboard.Satiated(); }
+        );
 
 
         //Add States and Transitions
-        //AddStates(TWO_POINT_WANDERING, goingToSeed, transportingSeedToNest);
+        AddStates(FISH_FEED, REACHING, TRANSPORTING, EATING);
 
-        //AddTransition(goingToSeed, seedReached, transportingSeedToNest);
-        //AddTransition(transportingSeedToNest, nestReached, TWO_POINT_WANDERING);
-        //AddTransition(TWO_POINT_WANDERING, nearbySeedDetected, goingToSeed);
 
-        ////Initial State
-        //initialState = TWO_POINT_WANDERING;
+        AddTransition(REACHING, planktonVanished, FISH_FEED);
+        AddTransition(REACHING, planktonReached, TRANSPORTING);
+        AddTransition(TRANSPORTING, planktonVanished, FISH_FEED);
+        AddTransition(TRANSPORTING, coralReached, EATING);
+        AddTransition(EATING, planktonVanished, FISH_FEED);
+        AddTransition(EATING, satiated, FISH_FEED);
+        AddTransition(FISH_FEED, hungryAndPlanktonDetected, REACHING);
+        AddTransition(FISH_FEED, hungryAndPlanktonAnnounced, REACHING);
+
+        //Initial State
+        initialState = FISH_FEED;
 
     }
 }

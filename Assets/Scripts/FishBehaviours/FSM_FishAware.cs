@@ -53,8 +53,8 @@ public class FSM_FishAware : FiniteStateMachine
         /* STAGE 1: create the states with their logic(s)
          *-----------------------------------------------*/
 
-        FiniteStateMachine FEED = ScriptableObject.CreateInstance<FSM_FishFeed>();
-        FEED.Name = "FEED";
+        FiniteStateMachine PLANKTON_COLLECTION = ScriptableObject.CreateInstance<FSM_PlanktonCollection>();
+        PLANKTON_COLLECTION.Name = "PLANKTON_COLLECTION";
 
         State FLEE_PERIL = new State("FLEEING",
             () =>
@@ -93,7 +93,7 @@ public class FSM_FishAware : FiniteStateMachine
             () => { }
         );
 
-        Transition perilVanished = new Transition("Peril vanished",
+        Transition perilEvaded = new Transition("Peril evaded",
             () =>
             {
                 return SensingUtils.DistanceToTarget(gameObject, peril) >= blackboard.perilSafetyRadius;
@@ -105,13 +105,13 @@ public class FSM_FishAware : FiniteStateMachine
          * ---------------------------------------------- */
 
 
-        AddStates(FEED, FLEE_PERIL);
-        AddTransition(FEED, perilDetected, FLEE_PERIL);
-        AddTransition(FLEE_PERIL, perilVanished, FEED);
+        AddStates(PLANKTON_COLLECTION, FLEE_PERIL);
+        AddTransition(PLANKTON_COLLECTION, perilDetected, FLEE_PERIL);
+        AddTransition(FLEE_PERIL, perilEvaded, PLANKTON_COLLECTION);
 
 
         /* STAGE 4: set the initial state */
 
-        initialState = FEED;
+        initialState = PLANKTON_COLLECTION;
     }
 }

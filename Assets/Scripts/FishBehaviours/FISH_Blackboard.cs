@@ -15,17 +15,19 @@ public class FISH_Blackboard : MonoBehaviour
     public float planktonDetectableRadius = 20f; // at this distance cheese is detectable
     public float planktonReachedRadius = 5f; // at this distance, cheese is reachable (can be bitten)
     public string planktonLabel = "PLANKTON";
+    public string noPlanktonLabel = "NO_PLANKTON";
+    public GameObject plankton;
     public float perilDetectableRadius = 20f; // at this distance enenmy is detectable
     public float perilSafetyRadius = 40f; // at this distance, enemy is no longer a peril
     public string perilLabel = "SHARK";
     public GameObject coral;
     public string coralLabel = "CORAL";
-    public float coralReackedRadius = 2f;
+    public float coralReachedRadius = 2f;
 
     public FISH_GLOBAL_Blackboard globalBlackboard; // the blackboard that all fish share
 
     // aux. methods
     public bool Hungry() { return hunger >= hungerTooHigh; }
-    public bool Satited() { return hunger <= hungerLowEnough; }
+    public bool Satiated() { return hunger <= hungerLowEnough; }
 
 }
