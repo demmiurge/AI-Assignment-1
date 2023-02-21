@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Main_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 00b10fd8fd999204dbbd76cb9158b786, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Map:
@@ -51,14 +51,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientFactor: 1
-    - _Brightness: 0.43
-    - _Distortion_Factor: 1
-    - _Distortion_Speed: 0
+    - _Brightness: 0.73
+    - _Distortion_Factor: 1.48
+    - _Distortion_Speed: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotation: 104
     - _Speed: 0.1
-    - _Tile: 0.1
+    - _Tile: 0.03
+    - _Tile_Main: 0.035
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &284301203375037490
