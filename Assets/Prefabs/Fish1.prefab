@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1281347604214868390}
   - component: {fileID: 1591012657718564878}
   - component: {fileID: 5858454323904002518}
+  - component: {fileID: -5282846574961589038}
   m_Layer: 0
   m_Name: Fish1
   m_TagString: FISH
@@ -76,10 +77,11 @@ MonoBehaviour:
   planktonLabel: PLANKTON
   noPlanktonLabel: NO_PLANKTON
   plankton: {fileID: 0}
-  perilDetectableRadius: 100
-  perilSafetyRadius: 200
+  waitTime: 8
+  perilDetectableRadius: 10
+  perilSafetyRadius: 20
   perilLabel: SHARK
-  coral: {fileID: 74251234105571896, guid: b74b3f01dc911864cbaeefabaff6a771, type: 3}
+  coral: {fileID: 0}
   coralLabel: CORAL
   coralReachedRadius: 2
   defaultAttractor: {fileID: 4217584091696050898, guid: ccd7d6f3f79100d4abf6695abd738987,
@@ -101,7 +103,7 @@ MonoBehaviour:
   m_MaxSpeed: 2
   m_ClipVelocity: 1
   m_MaxAngularAcceleration: 360
-  m_MaxAngularSpeed: 90
+  m_MaxAngularSpeed: 120
   m_ClipAngularSpeed: 1
   m_TimeToDesiredSpeed: 0.1
   m_CloseEnoughRadius: 1
@@ -181,6 +183,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   backToInitial: 1
+--- !u!114 &-5282846574961589038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463730944262204904}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e213488296fe41825ce78bb281f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RotationalPolicy: 0
+  target: {fileID: 0}
+  peril: {fileID: 0}
 --- !u!1 &7058730382544254308
 GameObject:
   m_ObjectHideFlags: 0

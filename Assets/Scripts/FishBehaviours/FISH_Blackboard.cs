@@ -17,8 +17,9 @@ public class FISH_Blackboard : MonoBehaviour
     public string planktonLabel = "PLANKTON";
     public string noPlanktonLabel = "NO_PLANKTON";
     public GameObject plankton;
-    public float perilDetectableRadius = 20f; // at this distance enenmy is detectable
-    public float perilSafetyRadius = 40f; // at this distance, enemy is no longer a peril
+    public float waitTime = 8f;
+    public float perilDetectableRadius = 10f; // at this distance enenmy is detectable
+    public float perilSafetyRadius = 20f; // at this distance, enemy is no longer a peril
     public string perilLabel = "SHARK";
     public GameObject coral;
     public string coralLabel = "CORAL";
@@ -29,6 +30,20 @@ public class FISH_Blackboard : MonoBehaviour
 
     // aux. methods
     public bool Hungry() { return hunger >= hungerTooHigh; }
+    public bool VeryHungry() { return hunger >= hungerTooHigh * 2f; }
     public bool Satiated() { return hunger <= hungerLowEnough; }
+
+    public void SetNearestCoralHideout()
+    {
+        GameObject nearestHideout = globalBlackboard.coralHideouts[0];
+        for (int i = 1; i < globalBlackboard.coralHideouts.Length; i++)
+        {
+            if (SensingUtils.DistanceToTarget(gameObject, globalBlackboard.coralHideouts[i]) < SensingUtils.DistanceToTarget(gameObject, nearestHideout))
+            {
+                nearestHideout = globalBlackboard.coralHideouts[i];
+            }
+        }
+        coral = nearestHideout;
+    }
 
 }

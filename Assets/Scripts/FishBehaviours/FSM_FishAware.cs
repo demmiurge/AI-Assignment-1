@@ -9,9 +9,11 @@ public class FSM_FishAware : FiniteStateMachine
      * states and transitions and/or set in OnEnter or used in OnExit 
      * For instance: steering behaviours, blackboard, ...*/
     private FleePlusOA flee;
+    private ArrivePlusFlee arrivePlusFlee;
     private FISH_Blackboard blackboard;
     private SteeringContext steeringContext;
     private GameObject peril;
+    private float elapsedTime = 0f;
     private float normalSpeed, normalAcceleration;
     private Color normalColor;
 
@@ -22,6 +24,7 @@ public class FSM_FishAware : FiniteStateMachine
          * Usually this code includes .GetComponent<...> invocations */
 
         flee = GetComponent<FleePlusOA>();
+        arrivePlusFlee = GetComponent<ArrivePlusFlee>();
         blackboard = GetComponent<FISH_Blackboard>();
         steeringContext = GetComponent<SteeringContext>();
 
@@ -56,6 +59,30 @@ public class FSM_FishAware : FiniteStateMachine
         FiniteStateMachine PLANKTON_COLLECTION = ScriptableObject.CreateInstance<FSM_PlanktonCollection>();
         PLANKTON_COLLECTION.Name = "PLANKTON_COLLECTION";
 
+        //State FLEE_PERIL = new State("FLEEING",
+        //    () =>
+        //    {
+        //        // sometimes scared fish get an "extra boost" of speed. But not always
+        //        if (Random.value > 0.6f)
+        //        {
+        //            float boostFactor = 1.3f + Random.value;
+        //            steeringContext.m_MaxSpeed *= boostFactor;
+        //            steeringContext.m_MaxAcceleration *= boostFactor;
+        //        }
+        //        //GetComponent<SpriteRenderer>().color = new Color(3f / 256, 120f / 256, 7f / 256);
+        //        flee.target = peril;
+        //        flee.enabled = true;
+        //    },
+        //    () => {/* do nothing in particular, just flee */ },
+        //    () =>
+        //    {
+        //        steeringContext.m_MaxSpeed = normalSpeed;
+        //        steeringContext.m_MaxAcceleration = normalAcceleration;
+        //        //GetComponent<SpriteRenderer>().color = normalColor;
+        //        flee.enabled = false;
+        //    }
+        //);
+
         State FLEE_PERIL = new State("FLEEING",
             () =>
             {
@@ -67,8 +94,9 @@ public class FSM_FishAware : FiniteStateMachine
                     steeringContext.m_MaxAcceleration *= boostFactor;
                 }
                 //GetComponent<SpriteRenderer>().color = new Color(3f / 256, 120f / 256, 7f / 256);
-                flee.target = peril;
-                flee.enabled = true;
+                arrivePlusFlee.target = blackboard.coral;
+                arrivePlusFlee.peril = peril;
+                arrivePlusFlee.enabled = true;
             },
             () => {/* do nothing in particular, just flee */ },
             () =>
@@ -76,9 +104,15 @@ public class FSM_FishAware : FiniteStateMachine
                 steeringContext.m_MaxSpeed = normalSpeed;
                 steeringContext.m_MaxAcceleration = normalAcceleration;
                 //GetComponent<SpriteRenderer>().color = normalColor;
-                flee.enabled = false;
+                arrivePlusFlee.enabled = false;
             }
         );
+
+        State HIDING = new State("Hiding",
+           () => { },
+           () => { },
+           () => { }
+       );
 
 
         /* STAGE 2: create the transitions with their logic(s)
@@ -101,13 +135,25 @@ public class FSM_FishAware : FiniteStateMachine
             () => { }
         );
 
+        Transition hidden = new Transition("Hidden",
+            () =>
+            {
+                return SensingUtils.DistanceToTarget(gameObject, blackboard.coral) <= blackboard.coralReachedRadius;
+            }, // write the condition checkeing code in {}
+            () => { }
+        );
+
+
         /* STAGE 3: add states and transitions to the FSM 
          * ---------------------------------------------- */
 
 
-        AddStates(PLANKTON_COLLECTION, FLEE_PERIL);
+        AddStates(PLANKTON_COLLECTION, FLEE_PERIL, HIDING);
+
         AddTransition(PLANKTON_COLLECTION, perilDetected, FLEE_PERIL);
+        AddTransition(FLEE_PERIL, hidden, HIDING);
         AddTransition(FLEE_PERIL, perilEvaded, PLANKTON_COLLECTION);
+        AddTransition(HIDING, perilEvaded, PLANKTON_COLLECTION);
 
 
         /* STAGE 4: set the initial state */

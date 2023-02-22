@@ -54,7 +54,13 @@ public class FSM_FishFeed : FiniteStateMachine
         State SPREAD = new State("SPREAD",
             () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold *= 2f; context.m_RepulsionThreshold *= 2f;  },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-            () => { context.m_CohesionThreshold *= 2f; context.m_RepulsionThreshold *= 2f; flockingPlusAvoid.enabled = false;  }
+            () => { context.m_CohesionThreshold /= 2f; context.m_RepulsionThreshold /= 2f; flockingPlusAvoid.enabled = false;  }
+        );
+
+        State WIDE_SPREAD = new State("WIDE_SPREAD",
+            () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold *= 4f; context.m_RepulsionThreshold *= 4f; },
+            () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
+            () => { context.m_CohesionThreshold /= 4f; context.m_RepulsionThreshold /= 4f; flockingPlusAvoid.enabled = false; }
         );
 
         //State REACHING = new State("REACHING PLANKTON",
@@ -106,9 +112,17 @@ public class FSM_FishFeed : FiniteStateMachine
         //   () => { blackboard.plankton = blackboard.globalBlackboard.announcedPlankton; }
         //);
 
-           Transition hungryAndNoPlankton = new Transition("Hungry NoPlankton",
+        Transition hungryAndNoPlankton = new Transition("Hungry NoPlankton",
            () => {
                if (blackboard.Hungry()) return true;
+               else return false;
+           },
+           () => { }
+        );
+
+        Transition veryHungryAndNoPlankton = new Transition("Very Hungry NoPlankton",
+           () => {
+               if (blackboard.VeryHungry()) return true;
                else return false;
            },
            () => { }
@@ -141,11 +155,12 @@ public class FSM_FishFeed : FiniteStateMachine
 
 
         //AddStates(WANDERING, SPREAD, REACHING, EATING);
-        AddStates(WANDERING, SPREAD);
+        AddStates(WANDERING, SPREAD, WIDE_SPREAD);
 
         //AddTransition(WANDERING, hungryAndPlanktonDetected, REACHING);
         //AddTransition(WANDERING, hungryAndPlanktonAnnounced, REACHING);
         AddTransition(WANDERING, hungryAndNoPlankton, SPREAD);
+        AddTransition(SPREAD, veryHungryAndNoPlankton, WIDE_SPREAD);
         //AddTransition(SPREAD, hungryAndPlanktonDetected, REACHING);
         //AddTransition(SPREAD, hungryAndPlanktonAnnounced, REACHING);
         //AddTransition(REACHING, planktonVanished, WANDERING);
