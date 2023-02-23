@@ -20,5 +20,7 @@ public class PLANKTON_Blackboard : MonoBehaviour
     // AUX METHODS
     public bool Hungry() { return hunger >= HUNGER_TOO_HIGH; }
 
-    public bool Satiated() { return hunger <= HUNGER_TOO_LOW; }
+    public bool AteEnough() { return feedingTime >= TIME_TO_FEED; }
+
+    public void ResetHunger() { hunger = 0f; feedingTime = 0; }
 }

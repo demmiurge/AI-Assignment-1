@@ -6,23 +6,21 @@ public class FSM_Plankton : FiniteStateMachine
     /* Declare here, as attributes, all the variables that need to be shared among
      * states and transitions and/or set in OnEnter or used in OnExit 
      * For instance: steering behaviours, blackboard, ...*/
-    private Wander wander;
-    private Arrive arrive;
-    private GameObject seaweed;
-    private PLANKTON_Blackboard blackboard;
-    private float timeEating;
-    private ParticleSystem particleSystem;
+    private WanderAround _wanderAround;
+    private Arrive _arrive;
+    private GameObject _light;
+    private PLANKTON_Blackboard _blackboard;
+    private ParticleSystem _particleSystem;
 
     public override void OnEnter()
     {
         /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
          * It's equivalent to the on enter action of any state 
          * Usually this code includes .GetComponent<...> invocations */
-        wander = GetComponent<Wander>();
-        arrive = GetComponent<Arrive>();
-        blackboard = GetComponent<PLANKTON_Blackboard>();
-        particleSystem = GetComponent<ParticleSystem>();
-        seaweed = blackboard.seaweed;
+        _wanderAround = GetComponent<WanderAround>();
+        _arrive = GetComponent<Arrive>();
+        _blackboard = GetComponent<PLANKTON_Blackboard>();
+        _particleSystem = GetComponent<ParticleSystem>();
         base.OnEnter(); // do not remove
     }
 
@@ -33,6 +31,7 @@ public class FSM_Plankton : FiniteStateMachine
          * Usually this code turns off behaviours that shouldn't be on when one the FSM has
          * been exited. */
         DisableAllSteerings();
+        _particleSystem.Stop();
         base.OnExit();
     }
 
@@ -49,19 +48,19 @@ public class FSM_Plankton : FiniteStateMachine
 
          */
         State WANDERING = new("WANDERING",
-            () => { wander.enabled = true; particleSystem.Play(); },
-            () => { blackboard.hunger += blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
-            () => { wander.enabled = false; });
+            () => { _wanderAround.enabled = true; _particleSystem.Play(); },
+            () => { _blackboard.hunger += _blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
+            () => { _wanderAround.enabled = false; });
 
         State REACHING = new("REACHING LIGHT",
-            () => { arrive.target = seaweed; arrive.enabled = true; },
-            () => { blackboard.hunger += blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
-            () => { arrive.enabled = false; });
+            () => { _arrive.enabled = true; _arrive.target = _light; },
+            () => { _blackboard.hunger += _blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
+            () => { _arrive.enabled = false; });
 
         State PHOTOSYNTHESIS = new("PHOTOSYNTHESIS",
-            () => { timeEating = 0f; },
-            () => { if (timeEating < blackboard.TIME_TO_FEED) blackboard.feedingTime += Time.deltaTime; },
-            () => { });
+            () => { },
+            () => { _blackboard.feedingTime += Time.deltaTime; },
+            () => { _blackboard.ResetHunger(); });
 
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------
@@ -75,16 +74,16 @@ public class FSM_Plankton : FiniteStateMachine
         Transition hungryAndLightDetected = new("Light Detected",
             () =>
             {
-                if (!blackboard.Hungry()) return false;
-                seaweed = SensingUtils.FindInstanceWithinRadius(gameObject, "LIGHT", blackboard.LIGHT_DETECTABLE_RADIUS);
-                return seaweed != null;
+                if (!_blackboard.Hungry()) return false;
+                _light = SensingUtils.FindInstanceWithinRadius(gameObject, "LIGHT", _blackboard.LIGHT_DETECTABLE_RADIUS);
+                return _light != null;
             });
 
         Transition lightReached = new("Light Reached",
-            () => { return SensingUtils.DistanceToTarget(gameObject, seaweed) < blackboard.LIGHT_REACHED_RADIUS; });
+            () => { return SensingUtils.DistanceToTarget(gameObject, _light) < _blackboard.LIGHT_REACHED_RADIUS; });
 
         Transition satiated = new("Satiated",
-            () => { return blackboard.Satiated(); });
+            () => { return _blackboard.AteEnough(); });
 
 
         /* STAGE 3: add states and transitions to the FSM 
