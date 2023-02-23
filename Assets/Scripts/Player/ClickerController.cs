@@ -32,7 +32,7 @@ public class ClickerController : MonoBehaviour
         RaycastHit l_RayCast = new RaycastHit();
 
         if (Physics.Raycast(l_Ray, out l_RayCast)) {
-            if (m_Meet)
+            if (m_Meet && l_RayCast.collider.tag == "AREATOPUTFOOD")
             {
                 m_Meet.transform.position = new Vector3(l_RayCast.point.x, l_RayCast.point.y, 0);
                 m_Meet.SetActive(true);
