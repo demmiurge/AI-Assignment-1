@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
+    public KeyCode m_PrimaryPauseMenu = KeyCode.Escape;
+    public KeyCode m_SecondaryPauseMenu = KeyCode.P;
+
     public GameObject m_BasicInfoScreen;
     public GameObject m_PauseScreen;
     public GameObject m_SharkBehaviour;
@@ -20,7 +24,13 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (m_BasicInfoScreen.activeSelf) {
+            if (Input.GetKeyDown(m_PrimaryPauseMenu) || Input.GetKeyDown(m_SecondaryPauseMenu))
+                GoToPauseScreen();
+        }
+        else
+            if (Input.GetKeyDown(m_PrimaryPauseMenu) || Input.GetKeyDown(m_SecondaryPauseMenu))
+                GoToBasicInfoScreen();
     }
 
     public void TurnOffAllInterface()
@@ -69,11 +79,13 @@ public class HUDManager : MonoBehaviour
 
     public void RestartGame()
     {
-        
+        Debug.Log("RestartGameClicked");
+        SceneManager.LoadScene("Work");
     }
 
     public void ExitGame()
     {
-        
+        Debug.Log("ExitGameClicked");
+        Application.Quit();
     }
 }
