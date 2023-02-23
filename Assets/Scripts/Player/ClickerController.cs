@@ -27,6 +27,9 @@ public class ClickerController : MonoBehaviour
 
     void Clicked()
     {
+        // Force a code detection if the game is paused
+        if (Time.timeScale == 0) return;
+
         Ray l_Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit l_RayCast = new RaycastHit();
