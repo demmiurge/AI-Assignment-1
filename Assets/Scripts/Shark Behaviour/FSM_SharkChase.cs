@@ -5,25 +5,21 @@ public class FSM_SharkChase : FiniteStateMachine
 {
     private GameObject m_Fish, m_OtherFish;
     private PursuePlusOA m_Pursue;
-    private ArrivePlusOA m_Arrive;
     private Shark_Blackboard m_Blackboard;
-    private SteeringContext m_SteeringContext;
     private float m_PursueTime;
     private float m_RestingTime;
 
     public override void OnEnter()
     {
         m_Pursue = GetComponent<PursuePlusOA>();
-        m_Arrive = GetComponent<ArrivePlusOA>();
         m_Blackboard = GetComponent<Shark_Blackboard>();
-        m_SteeringContext = GetComponent<SteeringContext>();
         m_PursueTime = 0;
         base.OnEnter(); // do not remove
     }
 
     public override void OnExit()
     {
-        DisableAllSteerings();
+        base.DisableAllSteerings();
         base.OnExit();
     }
 
@@ -31,16 +27,11 @@ public class FSM_SharkChase : FiniteStateMachine
     {
         /* STAGE 1: create the states with their logic(s)
          *-----------------------------------------------*/
-        FiniteStateMachine Wandering = ScriptableObject.CreateInstance<FSM_SharkSalmon>(); 
+        FiniteStateMachine SALMON = ScriptableObject.CreateInstance<FSM_SharkSalmon>();
+        SALMON.Name = "SALMON";
 
-        State Hiding = new State("Hiding",
-            () => { }, 
-            () => { }, 
-            () => { }  
-        );
-
-        State Pursuing = new State("Pursuing",
-           () => { m_PursueTime = 0; m_Pursue.target = m_Fish; m_Pursue.enabled = true; },
+        State PursuingFish = new State("Pursuing",
+           () => { m_Pursue.enabled = true; m_PursueTime = 0; m_Pursue.target = m_Fish; },
            () => { m_PursueTime += Time.deltaTime; },
            () => { m_Pursue.enabled = false; }
        );
@@ -87,7 +78,7 @@ public class FSM_SharkChase : FiniteStateMachine
            () => { m_Fish = m_OtherFish; }
        );
 
-        Transition fishEscaped = new Transition("Fish escaped",
+        Transition fishVanished = new Transition("Fish Vanished",
             () => {
                 return SensingUtils.DistanceToTarget(gameObject, m_Fish)
                        >= m_Blackboard.m_FishEscaped;
@@ -102,21 +93,20 @@ public class FSM_SharkChase : FiniteStateMachine
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------*/
             
-        AddStates(Wandering, Hiding, Pursuing, Eating);
+        AddStates(SALMON, PursuingFish, Eating);
 
-        AddTransition(Wandering, fishDetected, Pursuing);
+        AddTransition(SALMON, fishDetected, PursuingFish);
 
-        AddTransition(Pursuing, fishReached, Eating);
-        AddTransition(Pursuing, fishEscaped, Wandering);
-        AddTransition(Pursuing, pursueTooLong, Resting);
-        AddTransition(Pursuing, fishCloser, Pursuing);
+        AddTransition(PursuingFish, fishReached, Eating);
+        AddTransition(PursuingFish, fishVanished, SALMON);
+        AddTransition(PursuingFish, pursueTooLong, Resting);
+        AddTransition(PursuingFish, fishCloser, PursuingFish);
 
-        AddTransition(Resting, readyHunt, Wandering);
+        AddTransition(Resting, readyHunt, SALMON);
 
         /* STAGE 4: set the initial state*/
 
-        initialState = Wandering;
-
+        initialState = SALMON;
 
     }
 }

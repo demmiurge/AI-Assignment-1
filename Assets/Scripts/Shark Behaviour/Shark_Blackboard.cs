@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Shark_Blackboard : MonoBehaviour
 {
-    [Header("Two point wandering")]
+    public float m_Hunger = 0f;
+
     public GameObject target_A;
     public GameObject target_B;
     public float intervalBetweenTimeOuts = 10f;
@@ -19,6 +20,9 @@ public class Shark_Blackboard : MonoBehaviour
     public float m_FishEscaped = 100f;
     public float m_RestingTime = 3f;
     public float m_PursueTime = 7f;
+    public float m_HungerTooHigh = 100; 
+    public float m_HungerLowEnough = 10; 
+    public float m_NormalHungerIncrement = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +49,6 @@ public class Shark_Blackboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        m_Hunger += m_NormalHungerIncrement * Time.deltaTime;
     }
 }

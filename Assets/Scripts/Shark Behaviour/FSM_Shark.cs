@@ -31,54 +31,35 @@ public class FSM_Shark : FiniteStateMachine
         /* STAGE 1: create the states with their logic(s)
          *-----------------------------------------------*/
 
-        FiniteStateMachine Chase = ScriptableObject.CreateInstance<FSM_SharkChase>();
-
-        State goingA = new State("Going_A",
-           () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.target_A; elapsedTime = 0; },
-           () => { elapsedTime += Time.deltaTime; }, 
-           () => { m_WanderAround.enabled = false; }
-       );
-
-        State goingB = new State("Going_B",
-           () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.target_B; elapsedTime = 0; },
-           () => { elapsedTime += Time.deltaTime; },
-           () => { m_WanderAround.enabled = false; }
-       );
+        FiniteStateMachine SalmonState = ScriptableObject.CreateInstance<FSM_SharkSalmon>();
 
 
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------*/
-
-         Transition locationAReached = new Transition("Location A Reached",
-            () => { return SensingUtils.DistanceToTarget(gameObject, m_Blackboard.target_A) <= m_Blackboard.locationReachedRadius; },
-            () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight = 0.2f; }          
-        );
-
-        Transition locationBReached = new Transition("Location B Reached",
-            () => { return SensingUtils.DistanceToTarget(gameObject, m_Blackboard.target_B) <= m_Blackboard.locationReachedRadius; },
-            () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight = 0.2f; }
-        );
 
         Transition TimeOut = new Transition("Time Out",
             () => { return elapsedTime >= m_Blackboard.intervalBetweenTimeOuts; },
             () => { gameObject.GetComponent<SteeringContext>().m_SeekWeight += m_Blackboard.incrementOfSeek; elapsedTime = 0; }
         );
 
+        Transition notHungry = new Transition("Not Hungry",
+
+            () => { return m_Blackboard.m_Hunger <= m_Blackboard.m_HungerLowEnough; }
+        );
+
+
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------*/
 
-        AddStates(goingA, goingB);
+        AddStates(SalmonState);
 
-        AddTransition(goingA, locationAReached, goingB);
-        AddTransition(goingB, locationBReached, goingA);
-        //AddTransition(goingA, TimeOut, goingA);
-        //AddTransition(goingB, TimeOut, goingB);
-
+        AddTransition(SalmonState, TimeOut, SalmonState);
+        //AddTransition(goingB, locationBReached, goingA);
 
 
         /* STAGE 4: set the initial state*/
          
-        initialState = goingA;
+        initialState = SalmonState;
          
 
     }
