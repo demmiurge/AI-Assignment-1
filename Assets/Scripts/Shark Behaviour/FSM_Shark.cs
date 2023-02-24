@@ -31,7 +31,7 @@ public class FSM_Shark : FiniteStateMachine
         /* STAGE 1: create the states with their logic(s)
          *-----------------------------------------------*/
 
-        FiniteStateMachine SalmonState = ScriptableObject.CreateInstance<FSM_SharkSalmon>();
+        FiniteStateMachine SalmonState = ScriptableObject.CreateInstance<FSM_SharkHunt>();
 
 
         /* STAGE 2: create the transitions with their logic(s)

@@ -69,7 +69,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
         );
 
         Transition TimeOut = new Transition("Time Out",
-           () => { return m_elapsedTime >= m_Blackboard.m_TimeToEatSalmon; },
+           () => { return m_elapsedTime >= m_Blackboard.m_TimeToEat; },
            () => { }
        );
 

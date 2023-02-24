@@ -8,12 +8,14 @@ public class FSM_SharkHunt : FiniteStateMachine
     private Shark_Blackboard m_Blackboard;
     private float m_PursueTime;
     private float m_RestingTime;
+    private float m_ElapsedTime;
 
     public override void OnEnter()
     {
         m_Pursue = GetComponent<PursuePlusOA>();
         m_Blackboard = GetComponent<Shark_Blackboard>();
         m_PursueTime = 0;
+        m_ElapsedTime = 0;
         base.OnEnter(); // do not remove
     }
 
@@ -41,11 +43,18 @@ public class FSM_SharkHunt : FiniteStateMachine
           () => { m_Pursue.enabled = false; }
       );
 
+        State RESTING = new State("RESTING",
+          () => { m_RestingTime = 0; },
+          () => { m_RestingTime += Time.deltaTime; },
+          () => { }
+      );
+
         State Eating = new State("EatingFish",
-           () => { m_Fish.transform.parent = transform; m_Fish.tag = "TRAPPED"; },
-           () => { },
+           () => { m_ElapsedTime = 0f; m_Fish.transform.parent = transform; m_Fish.tag = "TRAPPED"; },
+           () => { m_ElapsedTime += Time.deltaTime; },
            () => { Destroy(m_Fish); }
        );
+
 
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------*/
@@ -58,8 +67,44 @@ public class FSM_SharkHunt : FiniteStateMachine
             () => { }
         );
 
+        Transition readyHunt = new Transition("Ready to Hunt",
+          () => { return m_RestingTime >= m_Blackboard.m_RestingTime; },
+          () => { }
+      );
+
+        Transition pursueTooLong = new Transition("Pursue too long",
+            () => { return m_PursueTime >= m_Blackboard.m_PursueTime; },
+            () => { }
+        );
+
+        Transition fishCloser = new Transition("Fish Closer",
+           () => {
+               m_OtherFish = SensingUtils.FindInstanceWithinRadius(gameObject, "FISH",
+                                                                  m_Blackboard.m_FishDetectionRadius);
+               return
+                   m_OtherFish != null &&
+                   SensingUtils.DistanceToTarget(gameObject, m_OtherFish)
+                   < SensingUtils.DistanceToTarget(gameObject, m_Fish);
+           },
+           () => { m_Fish = m_OtherFish; }
+       );
+
+        Transition fishVanished = new Transition("Fish Vanished",
+            () => {
+                return SensingUtils.DistanceToTarget(gameObject, m_Fish)
+                       >= m_Blackboard.m_FishEscaped;
+            },
+            () => { }
+        );
+
+        Transition fishEaten= new Transition("Fish Eaten",
+           () => { return m_ElapsedTime >= m_Blackboard.m_TimeToEat; },
+           () => { }
+       );
+
         Transition fishReached = new Transition("Fish Reached",
-          () => { return SensingUtils.DistanceToTarget(gameObject, m_Fish) <= m_Blackboard.m_FishReachedRadius; }
+          () => { return SensingUtils.DistanceToTarget(gameObject, m_Fish) <= m_Blackboard.m_FishReachedRadius; },
+          () => { }
       );
 
         /* STAGE 3: add states and transitions to the FSM 
@@ -68,8 +113,15 @@ public class FSM_SharkHunt : FiniteStateMachine
         AddStates(SALMON, PursuingFish, Eating);
 
         AddTransition(SALMON, fishDetected, PursuingFish);
-        AddTransition(PursuingFish, fishReached, Eating);
 
+        AddTransition(PursuingFish, fishReached, Eating);
+        AddTransition(PursuingFish, fishCloser, PursuingFish);
+        AddTransition(PursuingFish, fishVanished, SALMON);
+        //AddTransition(PursuingFish, pursueTooLong, RESTING);
+
+        AddTransition(Eating, fishEaten, SALMON);
+
+        //AddTransition(RESTING, readyHunt, SALMON);
 
         /* STAGE 4: set the initial state*/
 
