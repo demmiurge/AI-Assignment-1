@@ -10,6 +10,7 @@ public class SliderListener : MonoBehaviour
     private TextMeshProUGUI m_MinText;
     private TextMeshProUGUI m_MaxText;
     private TextMeshProUGUI m_CurrVal;
+    private TextMeshProUGUI m_LabelText;
     private Slider m_Slider;
 
     private object[] m_Pars = new object[1];
@@ -17,6 +18,36 @@ public class SliderListener : MonoBehaviour
     public GameObject m_ListenerObject;
     public string m_ComponentType;
     public string m_FieldName;
+
+    void AutoFix()
+    {
+        if (m_MinText)
+        {
+            Debug.Log("FOUND MIN VALUE");
+        }
+        else
+        {
+            Debug.LogError("NotFoundMinValue");
+        }
+
+        if (m_MaxText)
+        {
+            Debug.Log("FOUND MAX VALUE");
+        }
+        else
+        {
+            Debug.LogError("NotFoundMaxValue");
+        }
+
+        if (m_CurrVal)
+        {
+            Debug.Log("FOUND CURRENT VALUE");
+        }
+        else
+        {
+            Debug.LogError("NotFoundCurrentValue");
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +58,10 @@ public class SliderListener : MonoBehaviour
         m_MinText = transform.Find("MinNumber").GetComponent<TextMeshProUGUI>();
         m_MaxText = transform.Find("MaxNumber").GetComponent<TextMeshProUGUI>();
         m_CurrVal = transform.Find("CurrentValue").GetComponent<TextMeshProUGUI>();
+        m_LabelText = transform.Find("Title").GetComponent<TextMeshProUGUI>();
+
+        AutoFix();
+        ConvertText();
 
         m_MinText.text = m_Slider.minValue.ToString();
         m_MaxText.text = m_Slider.maxValue.ToString();
@@ -75,6 +110,16 @@ public class SliderListener : MonoBehaviour
             else if (field != null) // if no setter available change the field directly, if it is non-null
                 field.SetValue(component, x);
         });
+    }
+
+    void ConvertText()
+    {
+        m_LabelText.text = RemovePrefix(m_FieldName, 2);
+    }
+
+    public string RemovePrefix(string text, int prefixLenght)
+    {
+        return text.Length < prefixLenght ? string.Empty : text.Remove(0, prefixLenght);
     }
 
     // Update is called once per frame
