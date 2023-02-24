@@ -74,5 +74,5 @@ Material:
     m_Colors:
     - _Color: {r: 0, g: 0, b: 5, a: 0}
     - _Second_Color: {r: 0.14249945, g: 0.12646839, b: 0.5471698, a: 1}
-    - _WaterColor: {r: 0.18396229, g: 0.9300539, b: 1, a: 1}
+    - _WaterColor: {r: 0.18431371, g: 0.75052154, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -2214,6 +2214,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1521072702830734666, guid: 3302921babe81344280eae1ec5773be9,
+        type: 3}
+      propertyPath: m_RotationalPolicy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4943370304776474146, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: target
