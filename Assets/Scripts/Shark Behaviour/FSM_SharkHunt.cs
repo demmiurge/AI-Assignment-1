@@ -21,10 +21,6 @@ public class FSM_SharkHunt : FiniteStateMachine
 
     public override void OnExit()
     {
-        /* Write here the FSM exiting code. This code is execute every time the FSM is exited.
-         * It's equivalent to the on exit action of any state 
-         * Usually this code turns off behaviours that shouldn't be on when one the FSM has
-         * been exited. */
         base.DisableAllSteerings();
         base.OnExit();
     }
