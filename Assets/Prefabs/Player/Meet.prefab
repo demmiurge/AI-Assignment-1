@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 2658202467222803772}
   m_Layer: 0
   m_Name: Meet
-  m_TagString: Untagged
+  m_TagString: SALMON
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

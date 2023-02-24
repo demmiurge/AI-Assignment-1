@@ -52,7 +52,7 @@ public class FSM_SharkHunt : FiniteStateMachine
         State Eating = new State("EatingFish",
            () => { m_ElapsedTime = 0f; m_Fish.transform.parent = transform; m_Fish.tag = "TRAPPED"; },
            () => { m_ElapsedTime += Time.deltaTime; },
-           () => { Destroy(m_Fish); }
+           () => { m_Fish.SetActive(false); }
        );
 
 

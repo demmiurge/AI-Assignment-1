@@ -43,7 +43,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
         State eatSalmon = new State("Eating_Salmon",
            () => { m_elapsedTime = 0; },
            () => { m_elapsedTime += Time.deltaTime; },
-           () => { Destroy(m_Salmon); }
+           () => { m_Salmon.SetActive(false); }
        );
 
         /* STAGE 2: create the transitions with their logic(s)
@@ -81,6 +81,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
         AddTransition(wanderState, SalmonDetected, reachSalmon);
         AddTransition(reachSalmon, SalmonVanished, wanderState);
         AddTransition(reachSalmon, SalmonReached, eatSalmon);
+        AddTransition(eatSalmon, SalmonVanished, wanderState);
         AddTransition(eatSalmon, TimeOut, wanderState);
 
 
