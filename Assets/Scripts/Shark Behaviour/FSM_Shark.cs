@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FSM_Shark", menuName = "Finite State Machines/FSM_Shark", order = 1)]
 public class FSM_Shark : FiniteStateMachine
 {
-    private WanderAround m_WanderAround;
+    private WanderAroundPlusAvoid m_WanderAround;
     private SteeringContext m_SteeringContext;
     private Shark_Blackboard m_Blackboard;
 
@@ -12,7 +12,7 @@ public class FSM_Shark : FiniteStateMachine
     public override void OnEnter()
     {
         m_Blackboard = GetComponent<Shark_Blackboard>();
-        m_WanderAround = GetComponent<WanderAround>();
+        m_WanderAround = GetComponent<WanderAroundPlusAvoid>();
         base.OnEnter(); // do not remove
     }
 

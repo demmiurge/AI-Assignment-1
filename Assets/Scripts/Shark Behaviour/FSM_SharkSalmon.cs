@@ -4,7 +4,7 @@ using UnityEngine;
 public class FSM_SharkSalmon : FiniteStateMachine
 {
     private Shark_Blackboard m_Blackboard;
-    private WanderAround m_WanderAround;
+    private WanderAroundPlusAvoid m_WanderAround;
     private Arrive m_Arrive;
     private GameObject m_Salmon;
     private float m_elapsedTime = 0;
@@ -12,7 +12,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
     public override void OnEnter()
     {
         m_Blackboard = GetComponent<Shark_Blackboard>();
-        m_WanderAround = GetComponent<WanderAround>();
+        m_WanderAround = GetComponent<WanderAroundPlusAvoid>();
         m_Arrive = GetComponent<Arrive>();
         base.OnEnter(); // do not remove
     }
