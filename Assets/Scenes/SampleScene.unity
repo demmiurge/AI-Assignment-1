@@ -774,7 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationalPolicy: 0
   target: {fileID: 1436263100}
-  requiredDistance: 1
+  requiredDistance: 2
   requiredAngle: 270
 --- !u!114 &646502062
 MonoBehaviour:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationalPolicy: 0
   target: {fileID: 1436263100}
-  requiredDistance: 1
+  requiredDistance: 2
   requiredAngle: 90
 --- !u!114 &870680205
 MonoBehaviour:
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationalPolicy: 0
   target: {fileID: 1436263100}
-  requiredDistance: 1
+  requiredDistance: 2
   requiredAngle: 180
 --- !u!114 &1086523668
 MonoBehaviour:
