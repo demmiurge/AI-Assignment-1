@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ObstacleAvoidance : SteeringBehaviour
 {
+    private void Start()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8);
+    }
+
     public override Vector3 GetLinearAcceleration()
     {
         return ObstacleAvoidance.GetLinearAcceleration(m_Context);
@@ -98,6 +103,10 @@ public class ObstacleAvoidance : SteeringBehaviour
         hit = Physics2D.Raycast(me.transform.position, whisker1Direction, me.m_LookAheadLength);
         if (hit.collider != null)
         {
+            if(hit.collider.tag == "AREATOPUTFOOD")
+            {
+                Physics2D.IgnoreLayerCollision(7, 8);
+            }
             // obstacle found
             SURROGATE_TARGET.transform.position = hit.point + hit.normal * me.m_AvoidDistance;
 

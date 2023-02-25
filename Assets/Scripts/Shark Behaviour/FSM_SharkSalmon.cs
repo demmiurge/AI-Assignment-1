@@ -43,7 +43,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
         State eatSalmon = new State("Eating_Salmon",
            () => { m_elapsedTime = 0; },
            () => { m_elapsedTime += Time.deltaTime; },
-           () => { m_Salmon.SetActive(false); }
+           () => { m_Salmon.SetActive(false); m_Salmon.tag = "NOTSALMON"; }
        );
 
         /* STAGE 2: create the transitions with their logic(s)
@@ -58,13 +58,14 @@ public class FSM_SharkSalmon : FiniteStateMachine
 
         Transition SalmonReached = new Transition("Salmon Reached",
             () => {
-                return SensingUtils.DistanceToTarget(gameObject, m_Salmon) <= m_Blackboard.m_SalmonReachedRadius;},
+                return SensingUtils.DistanceToTarget(gameObject, m_Salmon) < m_Blackboard.m_SalmonReachedRadius;},
             () => { }
         );
 
-        Transition SalmonVanished = new Transition("Salmon Eaten",
-            () => {
-                return m_Salmon == null;},
+        Transition SalmonVanished = new Transition("Salmon Vanished",
+            () =>
+            {
+                return m_Salmon.tag == "NOTSALMON"; },
             () => { }
         );
 

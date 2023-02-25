@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4943370304776474144}
   - component: {fileID: 4943370304776474145}
   - component: {fileID: 3428616785835821769}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ Transform:
   m_Children:
   - {fileID: 4832600327842011069}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4943370304776474151
 MonoBehaviour:
@@ -76,16 +76,16 @@ MonoBehaviour:
   m_RepulsionWeight: 0.5
   m_AlignmentWeight: 0.2
   m_AddWanderIfZero: 1
-  m_WanderRate: 7
-  m_WanderRadius: 5
-  m_WanderOffset: 10
+  m_WanderRate: 15
+  m_WanderRadius: 2
+  m_WanderOffset: 5
   m_ShowWanderGizmos: 1
   m_WanderTargetOrientation: 0
   m_SeekWeight: 0.2
-  m_LookAheadLength: 6
-  m_AvoidDistance: 4
-  m_SecondaryWhiskerAngle: 30
-  m_SecondaryWhiskerRatio: 0.9
+  m_LookAheadLength: 8
+  m_AvoidDistance: 8
+  m_SecondaryWhiskerAngle: 20
+  m_SecondaryWhiskerRatio: 0.7
   m_PerseveranceTime: 0
   m_ShowAvoidanceGizmos: 1
   m_PerseveranceElapsed: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c743f60d5aaa5448b8cdd3146e8a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationalPolicy: 0
+  m_RotationalPolicy: 1
   target: {fileID: 0}
 --- !u!114 &4943370304776474146
 MonoBehaviour:
@@ -295,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SharkSmoothV01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ec490d040552194085441b2e72890b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec490d040552194085441b2e72890b2,
         type: 3}

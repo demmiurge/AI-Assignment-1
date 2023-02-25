@@ -22,7 +22,10 @@ public class ClickerController : MonoBehaviour
             Clicked();
 
         if (Input.GetMouseButtonDown(1))
+        {
             m_Meet.SetActive(false);
+            m_Meet.tag = "NOTSALMON";
+        }
     }
 
     void Clicked()
@@ -39,6 +42,7 @@ public class ClickerController : MonoBehaviour
             {
                 m_Meet.transform.position = new Vector3(l_RayCast.point.x, l_RayCast.point.y, 0);
                 m_Meet.SetActive(true);
+                m_Meet.tag = "SALMON";
             }
         }
     }
