@@ -7,6 +7,7 @@ public class ObstacleAvoidance : SteeringBehaviour
     private void Start()
     {
         Physics2D.IgnoreLayerCollision(7, 8);
+        Physics2D.IgnoreLayerCollision(7, 6);
     }
 
     public override Vector3 GetLinearAcceleration()

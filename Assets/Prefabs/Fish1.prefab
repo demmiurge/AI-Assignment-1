@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1591012657718564878}
   - component: {fileID: 5858454323904002518}
   - component: {fileID: -5282846574961589038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fish1
   m_TagString: FISH
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 3195047506377003403}
   - component: {fileID: 7269759792448336469}
   - component: {fileID: 3406294041201970660}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
