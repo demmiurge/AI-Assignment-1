@@ -1837,20 +1837,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4943370304030321895}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1436263110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436263100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487c99d55a6042c4db6be40e98f7026a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ObjetToRotate: {fileID: 0}
-  m_ThisObject: {fileID: 1436263100}
 --- !u!1 &1473270432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,21 +2214,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1521072702830734666, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_RotationalPolicy
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4943370304776474146, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1060033915}
-    - target: {fileID: 4943370304776474148, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: attractor
-      value: 
-      objectReference: {fileID: 1350704315}
     - target: {fileID: 4943370304776474149, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: m_RootOrder
@@ -2298,12 +2274,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474200, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: fsm
-      value: 
-      objectReference: {fileID: 11400000, guid: ea81df3bae00d474c8017bc8af8754e7,
-        type: 2}
     - target: {fileID: 4943370304776474201, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: target_A
