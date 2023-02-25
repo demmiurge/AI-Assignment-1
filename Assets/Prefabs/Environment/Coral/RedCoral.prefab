@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6865686221137745929}
   m_Layer: 0
   m_Name: RedCoral
-  m_TagString: Untagged
+  m_TagString: CORAL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ Transform:
   m_Children:
   - {fileID: 5257557246888126479}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6865686221137745929
 CircleCollider2D:
