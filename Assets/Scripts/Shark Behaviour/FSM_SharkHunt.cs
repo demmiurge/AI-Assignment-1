@@ -5,6 +5,7 @@ using UnityEngine;
 public class FSM_SharkHunt : FiniteStateMachine
 {
     private GameObject m_Fish, m_OtherFish;
+    private SteeringContext m_SteeringContext;
     private Pursue m_Pursue;
     private Shark_Blackboard m_Blackboard;
     private float m_PursueTime;
@@ -14,6 +15,7 @@ public class FSM_SharkHunt : FiniteStateMachine
     {
         m_Pursue = GetComponent<Pursue>();
         m_Blackboard = GetComponent<Shark_Blackboard>();
+        m_SteeringContext = GetComponent<SteeringContext>();
         m_PursueTime = 0;
         m_ElapsedTime = 0;
         base.OnEnter(); // do not remove
@@ -34,9 +36,9 @@ public class FSM_SharkHunt : FiniteStateMachine
         SALMON.Name = "SALMON";
 
         State PursuingFish = new State("Pursuing",
-          () => { m_Pursue.enabled = true; m_PursueTime = 0; m_Pursue.target = m_Fish; },
+          () => { m_Pursue.enabled = true; m_PursueTime = 0; m_Pursue.target = m_Fish; m_SteeringContext.m_MaxSpeed = 8f; },
           () => { m_PursueTime += Time.deltaTime; },
-          () => { m_Pursue.enabled = false; }
+          () => { m_Pursue.enabled = false; m_SteeringContext.m_MaxSpeed = 5f; }
       );
 
 

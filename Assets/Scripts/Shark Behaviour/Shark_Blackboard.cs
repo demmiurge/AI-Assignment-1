@@ -18,9 +18,9 @@ public class Shark_Blackboard : MonoBehaviour
     public float m_NormalTiredIncrement = 0.8f;
     public float m_RestingTime = 3f;
     [Header("Salmon Parameters")]
-    public float m_SalmonDetectionRadius = 25f;
+    public float m_SalmonDetectionRadius = 35f;
     public float m_SalmonReachedRadius = 4f;
-    public float m_TimeToEat = 3f;
+    public float m_TimeToEat = 2f;
     [Header("Fish Parameters")]
     public float m_FishDetectionRadius = 30f;
     public float m_FishReachedRadius = 4f;

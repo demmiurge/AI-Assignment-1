@@ -40,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 4832600327842011069}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4943370304776474151
 MonoBehaviour:
@@ -115,12 +115,12 @@ MonoBehaviour:
   initialSeekWeight: 0.2
   incrementOfSeek: 0.2
   locationReachedRadius: 10
-  m_RestingTime: 3
   m_MaxTiredLevel: 100
   m_NormalTiredIncrement: 0.8
-  m_SalmonDetectionRadius: 25
+  m_RestingTime: 3
+  m_SalmonDetectionRadius: 35
   m_SalmonReachedRadius: 4
-  m_TimeToEat: 3
+  m_TimeToEat: 2
   m_FishDetectionRadius: 30
   m_FishReachedRadius: 4
   m_FishEscaped: 50
@@ -130,6 +130,9 @@ MonoBehaviour:
   m_HungerLowEnough: 10
   m_NormalHungerIncrement: 1
   m_SalmonHungerDecrement: 3
+  m_FishPoints: 5
+  m_SalmonPoints: 1
+  m_HUDManager: {fileID: 0}
 --- !u!114 &4943370304776474200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c743f60d5aaa5448b8cdd3146e8a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationalPolicy: 0
+  m_RotationalPolicy: 1
   target: {fileID: 0}
 --- !u!114 &4943370304776474146
 MonoBehaviour:
@@ -199,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bb84cbbed67724ca3b5b5c0d2b1566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationalPolicy: 0
+  m_RotationalPolicy: 1
   target: {fileID: 0}
 --- !u!114 &4943370304776474145
 MonoBehaviour:
