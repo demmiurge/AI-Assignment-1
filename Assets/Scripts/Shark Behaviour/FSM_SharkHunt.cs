@@ -4,7 +4,7 @@ using UnityEngine;
 public class FSM_SharkHunt : FiniteStateMachine
 {
     private GameObject m_Fish, m_OtherFish;
-    private PursuePlusOA m_Pursue;
+    private Pursue m_Pursue;
     private Shark_Blackboard m_Blackboard;
     private float m_PursueTime;
     private float m_RestingTime;
@@ -12,7 +12,7 @@ public class FSM_SharkHunt : FiniteStateMachine
 
     public override void OnEnter()
     {
-        m_Pursue = GetComponent<PursuePlusOA>();
+        m_Pursue = GetComponent<Pursue>();
         m_Blackboard = GetComponent<Shark_Blackboard>();
         m_PursueTime = 0;
         m_ElapsedTime = 0;
