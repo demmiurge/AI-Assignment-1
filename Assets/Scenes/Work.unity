@@ -309,6 +309,8 @@ GameObject:
   - component: {fileID: 257325217}
   - component: {fileID: 257325219}
   - component: {fileID: 257325218}
+  - component: {fileID: 257325221}
+  - component: {fileID: 257325220}
   m_Layer: 0
   m_Name: Plankton
   m_TagString: PLANKTON
@@ -5203,6 +5205,34 @@ MonoBehaviour:
   m_Speed: 0
   m_AngularSpeed: 0
   m_GroupManager: {fileID: 0}
+--- !u!114 &257325220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257325213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c743f60d5aaa5448b8cdd3146e8a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RotationalPolicy: 1
+  target: {fileID: 0}
+--- !u!114 &257325221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257325213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4663ce7f111f5d439c37b05d77d7f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RotationalPolicy: 0
+  attractor: {fileID: 1121041735}
 --- !u!1 &278427571
 GameObject:
   m_ObjectHideFlags: 0
