@@ -105,18 +105,18 @@ public class FSM_SharkHunt : FiniteStateMachine
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------*/
 
-        AddStates(SALMON, PursuingFish, Eating);
+        AddStates(SALMON, PursuingFish, Eating, RESTING);
 
         AddTransition(SALMON, fishDetected, PursuingFish);
 
         AddTransition(PursuingFish, fishReached, Eating);
         AddTransition(PursuingFish, fishCloser, PursuingFish);
         AddTransition(PursuingFish, fishVanished, SALMON);
-        //AddTransition(PursuingFish, pursueTooLong, RESTING);
+        AddTransition(PursuingFish, pursueTooLong, RESTING);
 
         AddTransition(Eating, fishEaten, SALMON);
 
-        //AddTransition(RESTING, readyHunt, SALMON);
+        AddTransition(RESTING, readyHunt, SALMON);
 
         /* STAGE 4: set the initial state*/
 
