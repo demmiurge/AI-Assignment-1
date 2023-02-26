@@ -5162,7 +5162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxAcceleration: 40
-  m_MaxSpeed: 10
+  m_MaxSpeed: 3
   m_ClipVelocity: 1
   m_MaxAngularAcceleration: 360
   m_MaxAngularSpeed: 90
@@ -5187,9 +5187,9 @@ MonoBehaviour:
   m_WanderRate: 30
   m_WanderRadius: 10
   m_WanderOffset: 20
-  m_ShowWanderGizmos: 0
+  m_ShowWanderGizmos: 1
   m_WanderTargetOrientation: 0
-  m_SeekWeight: 0.4
+  m_SeekWeight: 0.5
   m_LookAheadLength: 10
   m_AvoidDistance: 12
   m_SecondaryWhiskerAngle: 30
