@@ -5,14 +5,18 @@ using UnityEngine;
 public class Shark_Blackboard : MonoBehaviour
 {
     public float m_Hunger = 0f;
+    public float m_Tiredness = 0f;
 
     [Header("Wandering")]
     public GameObject target_A;
     public GameObject target_B;
-    public float intervalBetweenTimeOuts = 10f;
     public float initialSeekWeight = 0.2f;
     public float incrementOfSeek = 0.2f;
     public float locationReachedRadius = 10f;
+    [Header("Tiredness")]
+    public float m_MaxTiredLevel = 100f;
+    public float m_NormalTiredIncrement = 0.8f;
+    public float m_RestingTime = 3f;
     [Header("Salmon Parameters")]
     public float m_SalmonDetectionRadius = 25f;
     public float m_SalmonReachedRadius = 4f;
@@ -21,12 +25,13 @@ public class Shark_Blackboard : MonoBehaviour
     public float m_FishDetectionRadius = 30f;
     public float m_FishReachedRadius = 4f;
     public float m_FishEscaped = 50f;
-    public float m_RestingTime = 3f;
     public float m_PursueTime = 7f;
+    public float m_FishHungerDecrement = 8f;
     [Header("Hunger Parameters")]
-    public float m_HungerTooHigh = 100; 
+    public float m_HungerTooHigh = 30; 
     public float m_HungerLowEnough = 10; 
-    public float m_NormalHungerIncrement = 0.5f;
+    public float m_NormalHungerIncrement = 1f;
+    public float m_SalmonHungerDecrement = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -54,5 +59,6 @@ public class Shark_Blackboard : MonoBehaviour
     void Update()
     {
         m_Hunger += m_NormalHungerIncrement * Time.deltaTime;
+        m_Tiredness += m_NormalTiredIncrement * Time.deltaTime;
     }
 }

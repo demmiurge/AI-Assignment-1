@@ -5542,26 +5542,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &727565284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4943370304776474203, guid: 3302921babe81344280eae1ec5773be9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1462713107}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &727565295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727565284}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50cd66699789a874fa78e4a21c2bb69d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RotationalPolicy: 0
-  target: {fileID: 0}
 --- !u!1001 &800158156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6504,16 +6484,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4943370304776474144, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_RotationalPolicy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474145, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_RotationalPolicy
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4943370304776474149, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: m_RootOrder
@@ -6569,30 +6539,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474151, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_CloseEnoughRadius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474151, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_TimeToDesiredSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474202, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_RotationalPolicy
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4943370304776474203, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: m_Name
       value: Shark
-      objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474203, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
@@ -6604,26 +6554,6 @@ PrefabInstance:
       propertyPath: target_B
       value: 
       objectReference: {fileID: 1596457445}
-    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_FishReachedRadius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_FishDetectionRadius
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_SalmonReachedRadius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_SalmonDetectionRadius
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3302921babe81344280eae1ec5773be9, type: 3}
