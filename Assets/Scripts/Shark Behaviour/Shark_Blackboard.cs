@@ -38,7 +38,7 @@ public class Shark_Blackboard : MonoBehaviour
     {
         if (target_A == null)
         {
-            target_A = GameObject.Find("LOCATION_A");
+            target_A = GameObject.Find("TargetA");
             if (target_A == null)
             {
                 Debug.LogError("no location A found");
@@ -47,7 +47,7 @@ public class Shark_Blackboard : MonoBehaviour
 
         if (target_B == null)
         {
-            target_B = GameObject.Find("LOCATION_B");
+            target_B = GameObject.Find("TargetB");
             if (target_B == null)
             {
                 Debug.LogError("no location A found");

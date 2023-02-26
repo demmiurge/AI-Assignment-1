@@ -2360,6 +2360,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shark
       objectReference: {fileID: 0}
+    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
+        type: 3}
+      propertyPath: target_A
+      value: 
+      objectReference: {fileID: 1350704315}
+    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
+        type: 3}
+      propertyPath: target_B
+      value: 
+      objectReference: {fileID: 1060033915}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3302921babe81344280eae1ec5773be9, type: 3}
