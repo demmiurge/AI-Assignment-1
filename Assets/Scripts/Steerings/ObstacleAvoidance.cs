@@ -108,6 +108,11 @@ public class ObstacleAvoidance : SteeringBehaviour
             {
                 Physics2D.IgnoreLayerCollision(7, 8);
             }
+
+            if (hit.collider.tag == "CAMERABLOCKOUT")
+            {
+                Physics2D.IgnoreLayerCollision(7, 6);
+            }
             // obstacle found
             SURROGATE_TARGET.transform.position = hit.point + hit.normal * me.m_AvoidDistance;
 

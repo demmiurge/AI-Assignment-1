@@ -284,6 +284,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4610718345083821357, guid: ead57ca0c3192b746b3bb87860a7e93e,
+        type: 3}
+      propertyPath: m_TagString
+      value: CAMERABLOCKOUT
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2369392428213423853, guid: ead57ca0c3192b746b3bb87860a7e93e, type: 3}
     - {fileID: 5822184585782305439, guid: ead57ca0c3192b746b3bb87860a7e93e, type: 3}
@@ -1943,7 +1948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-11852
+  m_Name: pb_Mesh-902622
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
