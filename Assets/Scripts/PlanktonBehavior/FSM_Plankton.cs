@@ -62,6 +62,11 @@ public class FSM_Plankton : FiniteStateMachine
             () => { _blackboard.feedingTime += Time.deltaTime; },
             () => { _blackboard.ResetHunger(); });
 
+        State TRAPPED = new("TRAPPED",
+            () => { gameObject.tag = "PLANKTON_TRAPED"; },
+            () => { },
+            () => { _particleSystem.Stop(); });
+
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------
 
@@ -85,6 +90,12 @@ public class FSM_Plankton : FiniteStateMachine
         Transition satiated = new("Satiated",
             () => { return _blackboard.AteEnough(); });
 
+        Transition isTrapped = new("Is Trapped",
+            () => { return gameObject.tag == "PLANKTON_TRAPPED"; });
+
+        Transition isNotTrapped = new("Not Trapped",
+            () => { return transform.parent = null; });
+
 
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------
@@ -94,10 +105,14 @@ public class FSM_Plankton : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */
-        AddStates(WANDERING, REACHING, PHOTOSYNTHESIS);
+        AddStates(WANDERING, REACHING, PHOTOSYNTHESIS, TRAPPED);
         AddTransition(WANDERING, hungryAndLightDetected, REACHING);
         AddTransition(REACHING, lightReached, PHOTOSYNTHESIS);
         AddTransition(PHOTOSYNTHESIS, satiated, WANDERING);
+        AddTransition(WANDERING, isTrapped, TRAPPED);
+        AddTransition(REACHING, isTrapped, TRAPPED);
+        AddTransition(TRAPPED, isNotTrapped, WANDERING);
+
 
         /* STAGE 4: set the initial state
          

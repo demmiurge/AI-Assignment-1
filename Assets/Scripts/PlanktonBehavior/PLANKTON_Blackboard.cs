@@ -16,6 +16,7 @@ public class PLANKTON_Blackboard : MonoBehaviour
     public float LIGHT_DETECTABLE_RADIUS = 100f;
     public float LIGHT_REACHED_RADIUS = 10f;
     public float TIME_TO_FEED = 20f;
+    public float numberOfBites = 300f;
 
     // AUX METHODS
     public bool Hungry() { return hunger >= HUNGER_TOO_HIGH; }
@@ -23,4 +24,13 @@ public class PLANKTON_Blackboard : MonoBehaviour
     public bool AteEnough() { return feedingTime >= TIME_TO_FEED; }
 
     public void ResetHunger() { hunger = 0f; feedingTime = 0; }
+
+    public void BeBitten()
+    {
+        numberOfBites--;
+        if (numberOfBites <= 0f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
