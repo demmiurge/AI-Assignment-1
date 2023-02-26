@@ -12,19 +12,23 @@ public class FISH_Blackboard : MonoBehaviour
     public float normalHungerIncrement = 5.5f; // speed of hunger increment
     public float bitesPerSecond = 1f; // one bite each 1/bitesPerSecond seconds
     public float planktonHungerDecrement = 10f; // decrement per bite
-    public float planktonDetectableRadius = 20f; // at this distance cheese is detectable
-    public float planktonReachedRadius = 5f; // at this distance, cheese is reachable (can be bitten)
+    public float planktonDetectableRadius = 50f; // at this distance cheese is detectable
+    public float planktonReachedRadius = 10f; // at this distance, cheese is reachable (can be bitten)
     public string planktonLabel = "PLANKTON";
     public string noPlanktonLabel = "NO_PLANKTON";
     public GameObject plankton;
     public float waitTime = 8f;
-    public float perilDetectableRadius = 10f; // at this distance enenmy is detectable
-    public float perilSafetyRadius = 20f; // at this distance, enemy is no longer a peril
+    public float perilDetectableRadius = 50f; // at this distance enenmy is detectable
+    public float perilSafetyRadius = 70f; // at this distance, enemy is no longer a peril
     public string perilLabel = "SHARK";
     public GameObject coral;
     public string coralLabel = "CORAL";
-    public float coralReachedRadius = 2f;
+    public float coralReachedRadius = 10f;
     public GameObject defaultAttractor;
+
+    public string hiddenTag = "HIDDEN_FISH";
+    public string defaultTag = "FISH";
+    public string trappedTag = "TRAPPED";
 
     public FISH_GLOBAL_Blackboard globalBlackboard; // the blackboard that all fish share
 

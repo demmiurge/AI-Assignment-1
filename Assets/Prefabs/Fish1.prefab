@@ -72,20 +72,22 @@ MonoBehaviour:
   normalHungerIncrement: 5.5
   bitesPerSecond: 1
   planktonHungerDecrement: 10
-  planktonDetectableRadius: 20
-  planktonReachedRadius: 1
+  planktonDetectableRadius: 50
+  planktonReachedRadius: 5
   planktonLabel: PLANKTON
   noPlanktonLabel: NO_PLANKTON
   plankton: {fileID: 0}
   waitTime: 8
-  perilDetectableRadius: 10
-  perilSafetyRadius: 20
+  perilDetectableRadius: 30
+  perilSafetyRadius: 60
   perilLabel: SHARK
   coral: {fileID: 0}
   coralLabel: CORAL
-  coralReachedRadius: 2
+  coralReachedRadius: 5
   defaultAttractor: {fileID: 4217584091696050898, guid: ccd7d6f3f79100d4abf6695abd738987,
     type: 3}
+  hiddenTag: HIDDEN_FISH
+  defaultTag: FISH
   globalBlackboard: {fileID: 0}
 --- !u!114 &4263251416633172584
 MonoBehaviour:

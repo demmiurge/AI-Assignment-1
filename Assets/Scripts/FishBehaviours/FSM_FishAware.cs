@@ -94,6 +94,7 @@ public class FSM_FishAware : FiniteStateMachine
                     steeringContext.m_MaxAcceleration *= boostFactor;
                 }
                 //GetComponent<SpriteRenderer>().color = new Color(3f / 256, 120f / 256, 7f / 256);
+                blackboard.SetNearestCoralHideout();
                 arrivePlusFlee.target = blackboard.coral;
                 arrivePlusFlee.peril = peril;
                 arrivePlusFlee.enabled = true;
@@ -109,6 +110,12 @@ public class FSM_FishAware : FiniteStateMachine
         );
 
         State HIDING = new State("Hiding",
+           () => { gameObject.tag = blackboard.hiddenTag; },
+           () => { },
+           () => { gameObject.tag = blackboard.defaultTag; }
+       );
+
+        State TRAPPED = new State("Trapped",
            () => { },
            () => { },
            () => { }
@@ -143,14 +150,23 @@ public class FSM_FishAware : FiniteStateMachine
             () => { }
         );
 
+        Transition isTrapped = new Transition("Is trapped",
+            () =>
+            {
+                return gameObject.tag == blackboard.trappedTag;
+            }, // write the condition checkeing code in {}
+            () => { }
+        );
+
 
         /* STAGE 3: add states and transitions to the FSM 
          * ---------------------------------------------- */
 
 
-        AddStates(PLANKTON_COLLECTION, FLEE_PERIL, HIDING);
+        AddStates(PLANKTON_COLLECTION, FLEE_PERIL, HIDING, TRAPPED);
 
         AddTransition(PLANKTON_COLLECTION, perilDetected, FLEE_PERIL);
+        AddTransition(FLEE_PERIL, isTrapped, TRAPPED);
         AddTransition(FLEE_PERIL, hidden, HIDING);
         AddTransition(FLEE_PERIL, perilEvaded, PLANKTON_COLLECTION);
         AddTransition(HIDING, perilEvaded, PLANKTON_COLLECTION);
