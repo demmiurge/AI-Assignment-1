@@ -19,6 +19,8 @@ public class ClickerController : MonoBehaviour
         Vector3 mousePos;
 
         if (Input.GetMouseButtonDown(0))
+            m_Meet.tag = "NOTSALMON";
+        if (Input.GetMouseButtonUp(0))
             Clicked();
 
         if (Input.GetMouseButtonDown(1))

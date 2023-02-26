@@ -6,20 +6,24 @@ public class Shark_Blackboard : MonoBehaviour
 {
     public float m_Hunger = 0f;
 
+    [Header("Wandering")]
     public GameObject target_A;
     public GameObject target_B;
     public float intervalBetweenTimeOuts = 10f;
     public float initialSeekWeight = 0.2f;
     public float incrementOfSeek = 0.2f;
     public float locationReachedRadius = 10f;
-    public float m_SalmonDetectionRadius = 10f;
-    public float m_SalmonReachedRadius = 0.01f;
+    [Header("Salmon Parameters")]
+    public float m_SalmonDetectionRadius = 25f;
+    public float m_SalmonReachedRadius = 4f;
     public float m_TimeToEat = 3f;
-    public float m_FishDetectionRadius = 10f;
-    public float m_FishReachedRadius = 0.01f;
+    [Header("Fish Parameters")]
+    public float m_FishDetectionRadius = 30f;
+    public float m_FishReachedRadius = 4f;
     public float m_FishEscaped = 50f;
     public float m_RestingTime = 3f;
     public float m_PursueTime = 7f;
+    [Header("Hunger Parameters")]
     public float m_HungerTooHigh = 100; 
     public float m_HungerLowEnough = 10; 
     public float m_NormalHungerIncrement = 0.5f;
