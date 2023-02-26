@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FSM_Plankton", menuName = "Finite State Machines/FSM_Plankton", order = 1)]
@@ -11,6 +12,7 @@ public class FSM_Plankton : FiniteStateMachine
     private GameObject _light;
     private PLANKTON_Blackboard _blackboard;
     private ParticleSystem _particleSystem;
+    private ParticleSystem _siblingParticleSystem;
 
     public override void OnEnter()
     {
@@ -21,6 +23,8 @@ public class FSM_Plankton : FiniteStateMachine
         _arrive = GetComponent<Arrive>();
         _blackboard = GetComponent<PLANKTON_Blackboard>();
         _particleSystem = GetComponent<ParticleSystem>();
+        _siblingParticleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
+
         base.OnEnter(); // do not remove
     }
 
@@ -31,7 +35,6 @@ public class FSM_Plankton : FiniteStateMachine
          * Usually this code turns off behaviours that shouldn't be on when one the FSM has
          * been exited. */
         DisableAllSteerings();
-        _particleSystem.Stop();
         base.OnExit();
     }
 
@@ -48,7 +51,7 @@ public class FSM_Plankton : FiniteStateMachine
 
          */
         State WANDERING = new("WANDERING",
-            () => { _wanderAround.enabled = true; _particleSystem.Play(); },
+            () => { _wanderAround.enabled = true; _particleSystem.Play(); _siblingParticleSystem.Stop(); },
             () => { _blackboard.hunger += _blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
             () => { _wanderAround.enabled = false; });
 
@@ -63,9 +66,9 @@ public class FSM_Plankton : FiniteStateMachine
             () => { _blackboard.ResetHunger(); });
 
         State TRAPPED = new("TRAPPED",
-            () => { gameObject.tag = "PLANKTON_TRAPPED"; },
+            () => { gameObject.tag = "PLANKTON_TRAPPED"; _particleSystem.Stop(); _siblingParticleSystem.Play(); },
             () => { },
-            () => { _particleSystem.Stop(); });
+            () => { _blackboard.ResetHunger(); _siblingParticleSystem.Play(); });
 
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------
@@ -91,10 +94,10 @@ public class FSM_Plankton : FiniteStateMachine
             () => { return _blackboard.AteEnough(); });
 
         Transition isTrapped = new("Is Trapped",
-            () => { return gameObject.tag == "PLANKTON_TRAPPED"; });
+            () => { return gameObject.CompareTag("PLANKTON_TRAPPED"); });
 
         Transition isNotTrapped = new("Not Trapped",
-            () => { return transform.parent = null; });
+            () => { return transform.parent == null; });
 
 
         /* STAGE 3: add states and transitions to the FSM 
@@ -106,11 +109,13 @@ public class FSM_Plankton : FiniteStateMachine
 
          */
         AddStates(WANDERING, REACHING, PHOTOSYNTHESIS, TRAPPED);
+
         AddTransition(WANDERING, hungryAndLightDetected, REACHING);
         AddTransition(REACHING, lightReached, PHOTOSYNTHESIS);
         AddTransition(PHOTOSYNTHESIS, satiated, WANDERING);
         AddTransition(WANDERING, isTrapped, TRAPPED);
         AddTransition(REACHING, isTrapped, TRAPPED);
+        AddTransition(PHOTOSYNTHESIS, isTrapped, TRAPPED);
         AddTransition(TRAPPED, isNotTrapped, WANDERING);
 
 

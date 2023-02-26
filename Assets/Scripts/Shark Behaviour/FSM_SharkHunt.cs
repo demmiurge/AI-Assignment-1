@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FSM_SharkHunt", menuName = "Finite State Machines/FSM_SharkHunt", order = 1)]
@@ -42,7 +43,12 @@ public class FSM_SharkHunt : FiniteStateMachine
         State Eating = new State("EatingFish",
            () => { m_ElapsedTime = 0f; m_Fish.transform.parent = transform; m_Fish.tag = "TRAPPED"; },
            () => { m_ElapsedTime += Time.deltaTime; },
-           () => { m_Blackboard.m_Hunger -= m_Blackboard.m_FishHungerDecrement; Destroy(m_Fish); }
+           () =>
+           {
+               m_Blackboard.m_Hunger -= m_Blackboard.m_FishHungerDecrement;
+               m_Blackboard.m_HUDManager.AddPoints(m_Blackboard.m_FishPoints);
+               Destroy(m_Fish);
+           }
        );
 
 

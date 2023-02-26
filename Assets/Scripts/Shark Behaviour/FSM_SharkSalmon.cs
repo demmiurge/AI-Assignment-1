@@ -43,7 +43,13 @@ public class FSM_SharkSalmon : FiniteStateMachine
         State eatSalmon = new State("Eating_Salmon",
            () => { m_elapsedTime = 0; },
            () => { m_elapsedTime += Time.deltaTime; },
-           () => { m_Blackboard.m_Hunger -= m_Blackboard.m_SalmonHungerDecrement; m_Salmon.SetActive(false); m_Salmon.tag = "NOTSALMON"; }
+           () =>
+           {
+               m_Blackboard.m_Hunger -= m_Blackboard.m_SalmonHungerDecrement;
+               m_Blackboard.m_HUDManager.AddPoints(m_Blackboard.m_SalmonPoints);
+               m_Salmon.SetActive(false); 
+               m_Salmon.tag = "NOTSALMON";
+           }
        );
 
         /* STAGE 2: create the transitions with their logic(s)

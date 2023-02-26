@@ -102,7 +102,7 @@ public class ObstacleAvoidance : SteeringBehaviour
 
         // cast the rays, in order. First the main...
         hit = Physics2D.Raycast(me.transform.position, whisker1Direction, me.m_LookAheadLength);
-        if (hit.collider != null)
+        if (hit.collider != null && hit.transform.tag != "MainCamera")
         {
             if(hit.collider.tag == "AREATOPUTFOOD")
             {
@@ -129,7 +129,7 @@ public class ObstacleAvoidance : SteeringBehaviour
 
         // when here, "main whisker" found nothing. Let's try with a secondary one...
         hit = Physics2D.Raycast(me.transform.position, whisker2Direction, me.m_LookAheadLength * me.m_SecondaryWhiskerRatio);
-        if (hit.collider != null)
+        if (hit.collider != null && hit.transform.tag != "MainCamera")
         {
             // obstacle found
             SURROGATE_TARGET.transform.position = hit.point + hit.normal * me.m_AvoidDistance;
@@ -146,7 +146,7 @@ public class ObstacleAvoidance : SteeringBehaviour
         }
         // and now with the other...
         hit = Physics2D.Raycast(me.transform.position, whisker3Direction, me.m_LookAheadLength * me.m_SecondaryWhiskerRatio);
-        if (hit.collider != null)
+        if (hit.collider != null && hit.transform.tag != "MainCamera")
         {
             // obstacle found
             SURROGATE_TARGET.transform.position = hit.point + hit.normal * me.m_AvoidDistance;

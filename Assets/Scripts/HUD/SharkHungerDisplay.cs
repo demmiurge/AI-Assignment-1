@@ -8,17 +8,22 @@ public class SharkHungerDisplay : MonoBehaviour
     public Slider m_Slider;
 
     public GameObject m_SharkAgent;
+    private Shark_Blackboard m_RefSharkBlackboard;
 
     public float m_TestHungry = 100;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (m_SharkAgent || true)
+        if (m_SharkAgent)
         {
-            m_Slider.maxValue = GetMaxHunger();
-            m_Slider.minValue = GetMinHunger();
-            m_Slider.value = GetFullHunger();
+            if (m_SharkAgent.GetComponent<Shark_Blackboard>())
+            {
+                m_RefSharkBlackboard = m_SharkAgent.GetComponent<Shark_Blackboard>();
+                m_Slider.maxValue = GetMaxHunger();
+                m_Slider.minValue = GetMinHunger();
+                m_Slider.value = GetFullHunger();
+            }
         }
     }
 
@@ -33,16 +38,16 @@ public class SharkHungerDisplay : MonoBehaviour
 
     float GetMinHunger()
     {
-        return 0;
+        return m_RefSharkBlackboard.m_HungerLowEnough;
     }
 
     float GetMaxHunger()
     {
-        return 100;
+        return m_RefSharkBlackboard.m_HungerTooHigh;
     }
 
     float GetFullHunger()
     {
-        return m_TestHungry;
+        return m_RefSharkBlackboard.m_Hunger;
     }
 }
