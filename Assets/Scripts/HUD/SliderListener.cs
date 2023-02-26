@@ -24,29 +24,29 @@ public class SliderListener : MonoBehaviour
     {
         if (m_MinText)
         {
-            Debug.Log("FOUND MIN VALUE");
+            //Debug.Log("FOUND MIN VALUE");
         }
         else
         {
-            Debug.LogError("NotFoundMinValue");
+            //Debug.LogError("NotFoundMinValue");
         }
 
         if (m_MaxText)
         {
-            Debug.Log("FOUND MAX VALUE");
+            //Debug.Log("FOUND MAX VALUE");
         }
         else
         {
-            Debug.LogError("NotFoundMaxValue");
+            //Debug.LogError("NotFoundMaxValue");
         }
 
         if (m_CurrVal)
         {
-            Debug.Log("FOUND CURRENT VALUE");
+            //Debug.Log("FOUND CURRENT VALUE");
         }
         else
         {
-            Debug.LogError("NotFoundCurrentValue");
+            //Debug.LogError("NotFoundCurrentValue");
         }
     }
 

@@ -8,9 +8,11 @@ public class HUDManager : MonoBehaviour
 {
     public KeyCode m_PrimaryPauseMenu = KeyCode.Escape;
     public KeyCode m_SecondaryPauseMenu = KeyCode.P;
+    private KeyCode m_StartingGame = KeyCode.Space;
 
     public string m_NameScene = "Work";
-    
+
+    public GameObject m_StartingScreen;
     public GameObject m_BasicInfoScreen;
     public GameObject m_PauseScreen;
     public GameObject m_SharkBehaviour;
@@ -27,29 +29,46 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // By default we show the interface inside the game
-        GoToBasicInfoScreen();
+        // We always show the beginning explained first
+        GoToStartingScreen();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_BasicInfoScreen.activeSelf) {
-            if (Input.GetKeyDown(m_PrimaryPauseMenu) || Input.GetKeyDown(m_SecondaryPauseMenu))
-                GoToPauseScreen();
+        if (m_StartingScreen.activeSelf) {
+            if (Input.GetKeyDown(m_StartingGame))
+                GoToBasicInfoScreen();
         }
         else
-            if (Input.GetKeyDown(m_PrimaryPauseMenu) || Input.GetKeyDown(m_SecondaryPauseMenu))
-                GoToBasicInfoScreen();
+        {
+            if (m_BasicInfoScreen.activeSelf)
+            {
+                if (Input.GetKeyDown(m_PrimaryPauseMenu) || Input.GetKeyDown(m_SecondaryPauseMenu))
+                    GoToPauseScreen();
+            }
+            else
+                if (Input.GetKeyDown(m_PrimaryPauseMenu) || Input.GetKeyDown(m_SecondaryPauseMenu))
+                    GoToBasicInfoScreen();
+        }
     }
 
     public void TurnOffAllInterface()
     {
+        m_StartingScreen.SetActive(false);
         m_BasicInfoScreen.SetActive(false);
         m_PauseScreen.SetActive(false);
         m_SharkBehaviour.SetActive(false);
         m_FishBehaviour.SetActive(false);
         m_PlanktonBehaviour.SetActive(false);
+    }
+
+    public void GoToStartingScreen()
+    {
+        // We turn off everything and activate what we want
+        StopTime();
+        TurnOffAllInterface();
+        m_StartingScreen.SetActive(true);
     }
 
     public void GoToBasicInfoScreen()
