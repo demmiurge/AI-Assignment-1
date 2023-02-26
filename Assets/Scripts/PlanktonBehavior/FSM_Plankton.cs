@@ -12,6 +12,7 @@ public class FSM_Plankton : FiniteStateMachine
     private GameObject _light;
     private PLANKTON_Blackboard _blackboard;
     private ParticleSystem _particleSystem;
+    private ParticleSystem _siblingParticleSystem;
 
     public override void OnEnter()
     {
@@ -22,6 +23,7 @@ public class FSM_Plankton : FiniteStateMachine
         _arrive = GetComponent<Arrive>();
         _blackboard = GetComponent<PLANKTON_Blackboard>();
         _particleSystem = GetComponent<ParticleSystem>();
+        _siblingParticleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
 
         base.OnEnter(); // do not remove
     }
@@ -49,7 +51,7 @@ public class FSM_Plankton : FiniteStateMachine
 
          */
         State WANDERING = new("WANDERING",
-            () => { _wanderAround.enabled = true; _particleSystem.Play(); },
+            () => { _wanderAround.enabled = true; _particleSystem.Play(); _siblingParticleSystem.Stop(); },
             () => { _blackboard.hunger += _blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
             () => { _wanderAround.enabled = false; });
 
@@ -64,9 +66,9 @@ public class FSM_Plankton : FiniteStateMachine
             () => { _blackboard.ResetHunger(); });
 
         State TRAPPED = new("TRAPPED",
-            () => { gameObject.tag = "PLANKTON_TRAPPED"; },
+            () => { gameObject.tag = "PLANKTON_TRAPPED"; _particleSystem.Stop(); _siblingParticleSystem.Play(); },
             () => { },
-            () => { _blackboard.ResetHunger(); });
+            () => { _blackboard.ResetHunger(); _siblingParticleSystem.Play(); });
 
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------
