@@ -5874,7 +5874,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-30514
+  m_Name: pb_Mesh-609438
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11882,6 +11882,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1802517715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4943370304776474203, guid: 3302921babe81344280eae1ec5773be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462713107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1989773823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12002,6 +12008,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 309554947, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SharkAgent
+      value: 
+      objectReference: {fileID: 1802517715}
+    - target: {fileID: 983704108, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983704108, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983704108, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3883157214844090455, guid: 12c1deceaf698094a869ec90fac3ece8,
         type: 3}
       propertyPath: m_Name
