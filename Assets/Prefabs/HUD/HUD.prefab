@@ -182,11 +182,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'The objective is to feed the shark with the fish in the area. You can
-    guide the shark through some breadcrumbs (salmon).
+    guide the shark by placing salmon peces pressing "Left Click".
 
 
-    The salmon will not
-    feed it much, the shark prefers a food that is alive.'
+    Salmon guide
+    has fewer points than eating a fish.
+
+    Try to get 100 points before time runs
+    out.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a487003db2f681d458e64def06f2c722, type: 2}
   m_sharedMaterial: {fileID: -2457779550404163858, guid: a487003db2f681d458e64def06f2c722,
@@ -889,7 +892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1240912545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2953,7 +2956,7 @@ RectTransform:
   - {fileID: 3883157215846670861}
   - {fileID: 1240912545}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3036,7 +3039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PrimaryPauseMenu: 27
   m_SecondaryPauseMenu: 112
-  m_NameScene: WillWork
+  m_NameScene: Work
   m_StartingScreen: {fileID: 1240912544}
   m_BasicInfoScreen: {fileID: 3883157215846670860}
   m_PauseScreen: {fileID: 3883157213839552114}
