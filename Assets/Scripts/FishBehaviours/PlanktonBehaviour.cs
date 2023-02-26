@@ -20,6 +20,6 @@ public class PlanktonBehaviour : MonoBehaviour
         numberOfBites--;
         transform.localScale = transform.localScale - originalSize / initialNumberOfBites;
         if (numberOfBites <= 0)
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 }

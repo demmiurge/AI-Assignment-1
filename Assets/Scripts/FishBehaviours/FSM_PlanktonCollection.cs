@@ -136,7 +136,7 @@ public class FSM_PlanktonCollection : FiniteStateMachine
         );
 
         Transition planktonVanished = new Transition("Plankton vanished",
-            () => { return blackboard.plankton == null || blackboard.plankton.Equals(null); }
+            () => { return blackboard.plankton == null || blackboard.plankton.Equals(null) || blackboard.plankton.tag == "NO_PLANKTON"; }
         );
 
         Transition planktonReached = new Transition("Plankton Reached",
