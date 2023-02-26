@@ -52,15 +52,15 @@ public class FSM_FishFeed : FiniteStateMachine
         );
 
         State SPREAD = new State("SPREAD",
-            () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold *= 2f; context.m_RepulsionThreshold *= 2f;  },
+            () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold = 4f; context.m_RepulsionThreshold = 2f; },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-            () => { context.m_CohesionThreshold /= 2f; context.m_RepulsionThreshold /= 2f; flockingPlusAvoid.enabled = false;  }
+            () => { context.m_CohesionThreshold = 2f; context.m_RepulsionThreshold = 1f; flockingPlusAvoid.enabled = false; }
         );
 
         State WIDE_SPREAD = new State("WIDE_SPREAD",
-            () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold *= 4f; context.m_RepulsionThreshold *= 4f; },
+            () => { flockingPlusAvoid.enabled = true; context.m_CohesionThreshold = 8f; context.m_RepulsionThreshold = 4f; },
             () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-            () => { context.m_CohesionThreshold /= 4f; context.m_RepulsionThreshold /= 4f; flockingPlusAvoid.enabled = false; }
+            () => { context.m_CohesionThreshold = 2f; context.m_RepulsionThreshold = 1f; flockingPlusAvoid.enabled = false; }
         );
 
         //State REACHING = new State("REACHING PLANKTON",

@@ -907,12 +907,12 @@ PrefabInstance:
     - target: {fileID: 331621921793849860, guid: bdd063d3a03605643b85f3a3de0e75b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29
+      value: 41.8
       objectReference: {fileID: 0}
     - target: {fileID: 331621921793849860, guid: bdd063d3a03605643b85f3a3de0e75b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 331621921793849860, guid: bdd063d3a03605643b85f3a3de0e75b0,
         type: 3}
@@ -968,7 +968,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-11236
+  m_Name: pb_Mesh-1250
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1514,6 +1514,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943370304776474203, guid: 3302921babe81344280eae1ec5773be9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
@@ -2113,12 +2118,12 @@ PrefabInstance:
     - target: {fileID: 5051813148241582978, guid: b7783c7a93f662542b7790440d26f7c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 41.5
       objectReference: {fileID: 0}
     - target: {fileID: 5051813148241582978, guid: b7783c7a93f662542b7790440d26f7c5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10.2
       objectReference: {fileID: 0}
     - target: {fileID: 5051813148241582978, guid: b7783c7a93f662542b7790440d26f7c5,
         type: 3}

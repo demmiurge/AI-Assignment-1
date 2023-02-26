@@ -68,12 +68,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hunger: 0
   hungerTooHigh: 100
-  hungerLowEnough: 10
-  normalHungerIncrement: 5.5
+  hungerLowEnough: 20
+  normalHungerIncrement: 2
   bitesPerSecond: 1
   planktonHungerDecrement: 10
   planktonDetectableRadius: 50
-  planktonReachedRadius: 5
+  planktonReachedRadius: 2
   planktonLabel: PLANKTON
   noPlanktonLabel: NO_PLANKTON
   plankton: {fileID: 0}
@@ -88,6 +88,7 @@ MonoBehaviour:
     type: 3}
   hiddenTag: HIDDEN_FISH
   defaultTag: FISH
+  trappedTag: TRAPPED
   globalBlackboard: {fileID: 0}
 --- !u!114 &4263251416633172584
 MonoBehaviour:
