@@ -32,6 +32,12 @@ public class Shark_Blackboard : MonoBehaviour
     public float m_HungerLowEnough = 10; 
     public float m_NormalHungerIncrement = 1f;
     public float m_SalmonHungerDecrement = 3f;
+    [Header("Points Agents Eated")]
+    public int m_FishPoints = 5;
+    public int m_SalmonPoints = 1;
+
+    [Header("HUD")]
+    public HUDManager m_HUDManager;
 
     // Start is called before the first frame update
     void Start()
