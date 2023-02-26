@@ -87,8 +87,7 @@ public class FSM_SharkHunt : FiniteStateMachine
 
         Transition fishVanished = new Transition("Fish Vanished",
             () => {
-                return SensingUtils.DistanceToTarget(gameObject, m_Fish)
-                       >= m_Blackboard.m_FishEscaped;
+                return m_Fish.tag == "HIDDEN_FISH";
             },
             () => { }
         );
