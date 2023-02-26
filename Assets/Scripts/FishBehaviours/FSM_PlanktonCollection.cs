@@ -76,6 +76,7 @@ public class FSM_PlanktonCollection : FiniteStateMachine
                blackboard.SetNearestCoralHideout();
                flockingPlusAvoid.attractor = blackboard.coral; 
                flockingPlusAvoid.enabled = true; context.m_SeekWeight = 0.8f; blackboard.plankton.transform.SetParent(gameObject.transform);
+               blackboard.plankton.tag = "PLANKTON_TRAPPED";
            },
            () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
            () => { 
@@ -92,7 +93,7 @@ public class FSM_PlanktonCollection : FiniteStateMachine
 
         State WAITING = new State("WAITING",
            () => { elapsedTime = 0f; },
-           () => { elapsedTime +=  Time.deltaTime; },
+           () => { elapsedTime +=  Time.deltaTime; blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
            () => { }
        );
 

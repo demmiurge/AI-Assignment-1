@@ -66,7 +66,7 @@ public class FSM_Plankton : FiniteStateMachine
             () => { _blackboard.ResetHunger(); });
 
         State TRAPPED = new("TRAPPED",
-            () => { gameObject.tag = "PLANKTON_TRAPPED"; _particleSystem.Stop(); _siblingParticleSystem.Play(); },
+            () => { _particleSystem.Stop(); _siblingParticleSystem.Play(); },
             () => { },
             () => { _blackboard.ResetHunger(); _siblingParticleSystem.Play(); });
 
@@ -97,7 +97,7 @@ public class FSM_Plankton : FiniteStateMachine
             () => { return gameObject.CompareTag("PLANKTON_TRAPPED"); });
 
         Transition isNotTrapped = new("Not Trapped",
-            () => { return transform.parent == null; });
+            () => { return transform.parent == null && gameObject.tag == "PLANKTON"; });
 
 
         /* STAGE 3: add states and transitions to the FSM 

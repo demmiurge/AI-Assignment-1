@@ -68,11 +68,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hunger: 0
-  hungerTooHigh: 100
+  hungerTooHigh: 60
   hungerLowEnough: 20
   normalHungerIncrement: 2
   bitesPerSecond: 1
-  planktonHungerDecrement: 10
+  planktonHungerDecrement: 5
   planktonDetectableRadius: 50
   planktonReachedRadius: 2
   planktonLabel: PLANKTON
@@ -84,7 +84,7 @@ MonoBehaviour:
   perilLabel: SHARK
   coral: {fileID: 0}
   coralLabel: CORAL
-  coralReachedRadius: 0.8
+  coralReachedRadius: 4
   defaultAttractor: {fileID: 4217584091696050898, guid: ccd7d6f3f79100d4abf6695abd738987,
     type: 3}
   hiddenTag: HIDDEN_FISH
