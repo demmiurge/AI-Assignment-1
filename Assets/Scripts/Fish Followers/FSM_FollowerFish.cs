@@ -34,7 +34,7 @@ public class FSM_FollowerFish : FiniteStateMachine
             () => { m_KeepPosition.enabled = false; }  
         );
 
-        State reachSalmon = new State("FollowingShark",
+        State reachSalmon = new State("Reach_Salmon",
            () => { m_Arrive.enabled = true; m_Arrive.target = m_Blackboard.m_Shark; m_Arrive.attractor = m_Food; },
            () => { },
            () => { m_Arrive.enabled = false; }
