@@ -63,7 +63,7 @@ public class FSM_Plankton : FiniteStateMachine
             () => { _blackboard.ResetHunger(); });
 
         State TRAPPED = new("TRAPPED",
-            () => { gameObject.tag = "PLANKTON_TRAPED"; },
+            () => { gameObject.tag = "PLANKTON_TRAPPED"; },
             () => { },
             () => { _particleSystem.Stop(); });
 
