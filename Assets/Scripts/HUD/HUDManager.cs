@@ -91,7 +91,6 @@ public class HUDManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Debug.Log("RestartGameClicked");
         SceneManager.LoadScene(m_NameScene);
     }
 

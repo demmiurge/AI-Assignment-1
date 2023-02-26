@@ -18,6 +18,7 @@ public class SliderListener : MonoBehaviour
     public GameObject m_ListenerObject;
     public string m_ComponentType;
     public string m_FieldName;
+    public string m_VisualHUDFieldName = null;
 
     void AutoFix()
     {
@@ -114,12 +115,7 @@ public class SliderListener : MonoBehaviour
 
     void ConvertText()
     {
-        m_LabelText.text = RemovePrefix(m_FieldName, 2);
-    }
-
-    public string RemovePrefix(string text, int prefixLenght)
-    {
-        return text.Length < prefixLenght ? string.Empty : text.Remove(0, prefixLenght);
+        m_LabelText.text = m_VisualHUDFieldName?.Length > 0 ? m_VisualHUDFieldName : m_FieldName;
     }
 
     // Update is called once per frame
