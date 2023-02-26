@@ -7,7 +7,6 @@ public class FSM_SharkHunt : FiniteStateMachine
     private Pursue m_Pursue;
     private Shark_Blackboard m_Blackboard;
     private float m_PursueTime;
-    private float m_RestingTime;
     private float m_ElapsedTime;
 
     public override void OnEnter()
@@ -39,16 +38,11 @@ public class FSM_SharkHunt : FiniteStateMachine
           () => { m_Pursue.enabled = false; }
       );
 
-        State RESTING = new State("RESTING",
-          () => { m_RestingTime = 0; },
-          () => { m_RestingTime += Time.deltaTime; },
-          () => { }
-      );
 
         State Eating = new State("EatingFish",
            () => { m_ElapsedTime = 0f; m_Fish.transform.parent = transform; m_Fish.tag = "TRAPPED"; },
            () => { m_ElapsedTime += Time.deltaTime; },
-           () => { Destroy(m_Fish); }
+           () => { m_Blackboard.m_Hunger -= m_Blackboard.m_FishHungerDecrement; Destroy(m_Fish); }
        );
 
 
@@ -56,15 +50,17 @@ public class FSM_SharkHunt : FiniteStateMachine
          * ---------------------------------------------------*/
 
         Transition fishDetected = new Transition("Fish Detected",
-            () => {
-                m_Fish = SensingUtils.FindInstanceWithinRadius(gameObject, "FISH", m_Blackboard.m_FishDetectionRadius);
+            () => { if (m_Blackboard.m_Hunger >= m_Blackboard.m_HungerTooHigh)
+                {
+                    m_Fish = SensingUtils.FindInstanceWithinRadius(gameObject, "FISH", m_Blackboard.m_FishDetectionRadius);
+                }
                 return m_Fish != null;
             },
             () => { }
         );
 
         Transition readyHunt = new Transition("Ready to Hunt",
-          () => { return m_RestingTime >= m_Blackboard.m_RestingTime; },
+          () => { return m_Blackboard.m_Hunger >= m_Blackboard.m_HungerTooHigh; },
           () => { }
       );
 
@@ -105,18 +101,15 @@ public class FSM_SharkHunt : FiniteStateMachine
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------*/
 
-        AddStates(SALMON, PursuingFish, Eating, RESTING);
+        AddStates(SALMON, PursuingFish, Eating);
 
         AddTransition(SALMON, fishDetected, PursuingFish);
 
         AddTransition(PursuingFish, fishReached, Eating);
         AddTransition(PursuingFish, fishCloser, PursuingFish);
         AddTransition(PursuingFish, fishVanished, SALMON);
-        AddTransition(PursuingFish, pursueTooLong, RESTING);
 
         AddTransition(Eating, fishEaten, SALMON);
-
-        AddTransition(RESTING, readyHunt, SALMON);
 
         /* STAGE 4: set the initial state*/
 

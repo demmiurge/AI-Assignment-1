@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4943370304776474144}
   - component: {fileID: 4943370304776474145}
   - component: {fileID: 3428616785835821769}
+  - component: {fileID: 727565295}
   m_Layer: 7
   m_Name: Shark
   m_TagString: SHARK
@@ -39,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 4832600327842011069}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4943370304776474151
 MonoBehaviour:
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_MaxAngularSpeed: 360
   m_ClipAngularSpeed: 1
   m_TimeToDesiredSpeed: 0.1
-  m_CloseEnoughRadius: 0.5
+  m_CloseEnoughRadius: 0.1
   m_SlowDownRadius: 5
   m_TimeToDesiredAngularSpeed: 0.1
   m_CloseEnoughAngle: 2
@@ -108,23 +109,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Hunger: 0
+  m_Tiredness: 0
   target_A: {fileID: 0}
   target_B: {fileID: 0}
-  intervalBetweenTimeOuts: 10
   initialSeekWeight: 0.2
   incrementOfSeek: 0.2
   locationReachedRadius: 10
-  m_SalmonDetectionRadius: 10
-  m_SalmonReachedRadius: 0.01
-  m_TimeToEat: 3
-  m_FishDetectionRadius: 10
-  m_FishReachedRadius: 5
-  m_FishEscaped: 50
   m_RestingTime: 3
+  m_MaxTiredLevel: 100
+  m_NormalTiredIncrement: 0.8
+  m_SalmonDetectionRadius: 25
+  m_SalmonReachedRadius: 4
+  m_TimeToEat: 3
+  m_FishDetectionRadius: 30
+  m_FishReachedRadius: 4
+  m_FishEscaped: 50
   m_PursueTime: 7
-  m_HungerTooHigh: 100
+  m_FishHungerDecrement: 8
+  m_HungerTooHigh: 30
   m_HungerLowEnough: 10
-  m_NormalHungerIncrement: 0.5
+  m_NormalHungerIncrement: 1
+  m_SalmonHungerDecrement: 3
 --- !u!114 &4943370304776474200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d0df6e0e3d1a840a54850fdf84b1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 11400000, guid: ea81df3bae00d474c8017bc8af8754e7, type: 2}
+  fsm: {fileID: 11400000, guid: 9eac9e36133649540b522adbef683b46, type: 2}
   currentState: 
   textMesh: {fileID: 0}
 --- !u!114 &1521072702830734666
@@ -166,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c743f60d5aaa5448b8cdd3146e8a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationalPolicy: 1
+  m_RotationalPolicy: 0
   target: {fileID: 0}
 --- !u!114 &4943370304776474146
 MonoBehaviour:
@@ -208,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6bde2d9213f2943828f08318e440e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationalPolicy: 0
+  m_RotationalPolicy: 1
   target: {fileID: 0}
 --- !u!114 &3428616785835821769
 MonoBehaviour:
@@ -223,6 +228,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Model: {fileID: 5213770649784667399}
+--- !u!114 &727565295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943370304776474203}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cd66699789a874fa78e4a21c2bb69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RotationalPolicy: 0
+  target: {fileID: 0}
 --- !u!1001 &4943370303759249494
 PrefabInstance:
   m_ObjectHideFlags: 0
