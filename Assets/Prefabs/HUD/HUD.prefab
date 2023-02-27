@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 1, a: 0.29803923}
+  m_Color: {r: 0, g: 1, b: 1, a: 0.20392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4410,6 +4410,10 @@ MonoBehaviour:
   m_PlanktonBehaviour: {fileID: 3883157214196726312}
   m_VictoryScreen: {fileID: 1114237996}
   m_DefeatScreen: {fileID: 738292837}
+  m_Shark: {fileID: 0}
+  m_Fish: {fileID: 0}
+  m_FishSpawner: {fileID: 0}
+  m_Plankton: {fileID: 0}
   m_MaxPointsToWin: 100
   m_TextScore: {fileID: 339434156}
   m_TimerLeft: 300
