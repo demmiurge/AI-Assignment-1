@@ -5808,6 +5808,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5143316124812297654, guid: 6aa916738ac0d0d419405cea89a821d6,
+        type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143316124812297654, guid: 6aa916738ac0d0d419405cea89a821d6,
+        type: 3}
+      propertyPath: m_RendererIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5143316124812297655, guid: 6aa916738ac0d0d419405cea89a821d6,
         type: 3}
       propertyPath: m_RootOrder
@@ -6063,7 +6073,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949514399}
   m_LocalRotation: {x: -0, y: 0.14058731, z: 0.9900683, w: 0}
-  m_LocalPosition: {x: 0, y: 7.5, z: -35.3}
+  m_LocalPosition: {x: 0, y: -8, z: -88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12206,6 +12216,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126518227, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 309554947, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SharkAgent
       value: 
@@ -12377,6 +12391,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3883157214844090794, guid: 12c1deceaf698094a869ec90fac3ece8,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883157214844090794, guid: 12c1deceaf698094a869ec90fac3ece8,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3883157214844090795, guid: 12c1deceaf698094a869ec90fac3ece8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -12481,6 +12505,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518447904675999949, guid: 12c1deceaf698094a869ec90fac3ece8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.4310303
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959538170703397338, guid: 12c1deceaf698094a869ec90fac3ece8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.4874268
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
