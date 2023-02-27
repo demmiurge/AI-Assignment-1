@@ -399,7 +399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sfxSource: {fileID: 1883036463}
   _musicSource: {fileID: 700572571}
-  _timeToFade: 2.5
+  _fadeIntensity: 0.25
+  _maxVolume: 1
 --- !u!4 &167223783
 Transform:
   m_ObjectHideFlags: 0

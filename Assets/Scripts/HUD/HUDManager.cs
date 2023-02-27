@@ -176,6 +176,7 @@ public class HUDManager : MonoBehaviour
     public void GoToBasicInfoScreen()
     {
         // We turn off everything and activate what we want
+        AudioManager.Instance.FadeInMusic();
         TurnOffAllInterface();
         m_BasicInfoScreen.SetActive(true);
         ResumeTime();
@@ -184,6 +185,7 @@ public class HUDManager : MonoBehaviour
     public void GoToPauseScreen()
     {
         // We turn off everything and activate what we want
+        AudioManager.Instance.FadeOutMusic();
         TurnOffAllInterface();
         m_PauseScreen.SetActive(true);
         StopTime();

@@ -8,7 +8,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [SerializeField] private AudioSource _sfxSource, _musicSource;
-    [SerializeField] private float _timeToFade;
+    [SerializeField][Range(0f, 1f)] private float _fadeIntensity;
+    [SerializeField] private float _maxVolume;
+    private readonly float _volumeSteps = 0.001f;
 
     private void Awake()
     {
@@ -35,35 +37,39 @@ public class AudioManager : MonoBehaviour
 
     public void FadeOutMusic()
     {
-        StartCoroutine(DecreaseVolumeOverTime());
+        if (_musicSource.volume == _maxVolume)
+        {
+            StartCoroutine(FadeOutVolume());
+        }
     }
 
     public void FadeInMusic()
     {
-        StartCoroutine(IncreaseVolumeOverTime());
+        if (_musicSource.volume != _maxVolume)
+        {
+            StartCoroutine(FadeInVolume());
+        }        
     }
 
-    private IEnumerator IncreaseVolumeOverTime()
+    private IEnumerator FadeOutVolume()
     {
-        float time = 0f;
-
-        while (time < _timeToFade)
+        while (_musicSource.volume >= _fadeIntensity)
         {
-            _musicSource.volume = 0f + (time / _timeToFade);
-            time += Time.deltaTime;
-            yield return null;
+            _musicSource.volume -= _volumeSteps;
+            yield return new WaitForEndOfFrame();
         }
+
+        _musicSource.volume = _fadeIntensity;
     }
 
-    private IEnumerator DecreaseVolumeOverTime()
+    private IEnumerator FadeInVolume()
     {
-        float time = 0f;
-
-        while (time < _timeToFade)
+        while (_musicSource.volume <= _maxVolume)
         {
-            _musicSource.volume = 1f - (time / _timeToFade);
-            time += Time.deltaTime;
-            yield return null;
+            _musicSource.volume += _volumeSteps;
+            yield return new WaitForEndOfFrame();
         }
+
+        _musicSource.volume = _maxVolume;
     }
 }
