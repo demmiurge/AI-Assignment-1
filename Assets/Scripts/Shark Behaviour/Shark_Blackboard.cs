@@ -28,6 +28,7 @@ public class Shark_Blackboard : MonoBehaviour
     public float m_FishEscaped = 50f;
     public float m_PursueTime = 7f;
     public float m_FishHungerDecrement = 5f;
+    public float m_TimeToEatFish = 1f;
     [Header("Hunger Parameters")]
     public float m_HungerTooHigh = 30; 
     public float m_HungerLowEnough = 10; 

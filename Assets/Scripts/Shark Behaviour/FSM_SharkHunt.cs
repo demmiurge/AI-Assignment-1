@@ -36,7 +36,7 @@ public class FSM_SharkHunt : FiniteStateMachine
         SALMON.Name = "SALMON";
 
         State PursuingFish = new State("Pursuing",
-          () => { m_Pursue.enabled = true; m_PursueTime = 0; m_Pursue.target = m_Fish; m_SteeringContext.m_MaxSpeed = 8f; },
+          () => { m_Pursue.enabled = true; m_PursueTime = 0; m_Pursue.target = m_Fish; m_SteeringContext.m_MaxSpeed = 10f; },
           () => { m_PursueTime += Time.deltaTime; },
           () => { m_Pursue.enabled = false; m_SteeringContext.m_MaxSpeed = 5f; }
       );
@@ -97,7 +97,7 @@ public class FSM_SharkHunt : FiniteStateMachine
         );
 
         Transition fishEaten= new Transition("Fish Eaten",
-           () => { return m_ElapsedTime >= m_Blackboard.m_TimeToEat; },
+           () => { return m_ElapsedTime >= m_Blackboard.m_TimeToEatFish; },
            () => { }
        );
 
