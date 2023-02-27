@@ -25,6 +25,12 @@ public class HUDManager : MonoBehaviour
     public GameObject m_VictoryScreen;
     public GameObject m_DefeatScreen;
 
+    [Foldout("Objects to Activate", styled = true)]
+    public GameObject m_Shark;
+    public GameObject m_Fish;
+    public GameObject m_FishSpawner;
+    public GameObject m_Plankton;
+
     [Foldout("Points", styled = true)]
     public int m_MaxPointsToWin = 100;
     private int m_CurrentPoints = 0;
@@ -77,6 +83,7 @@ public class HUDManager : MonoBehaviour
 
     public void Playing()
     {
+        Activate();
         if (m_BasicInfoScreen.activeSelf)
         {
             m_TimerOn = true;
@@ -160,7 +167,8 @@ public class HUDManager : MonoBehaviour
     public void GoToStartingScreen()
     {
         // We turn off everything and activate what we want
-        StopTime();
+        //StopTime();
+        Deactivate();
         TurnOffAllInterface();
         m_StartingScreen.SetActive(true);
     }
@@ -233,5 +241,21 @@ public class HUDManager : MonoBehaviour
     public void ResumeTime()
     {
         Time.timeScale = m_TimeScale;
+    }
+
+    public void Deactivate()
+    {
+        m_Shark.SetActive(false);
+        m_Fish.SetActive(false);
+        m_FishSpawner.SetActive(false);
+        m_Plankton.SetActive(false);
+    }
+
+    public void Activate()
+    {
+        m_Shark.SetActive(true);
+        m_Fish.SetActive(true);
+        m_FishSpawner.SetActive(true);
+        m_Plankton.SetActive(true);
     }
 }

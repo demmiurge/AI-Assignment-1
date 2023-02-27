@@ -60,6 +60,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Ambient_Factor: 0.55
+    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueOffset: 0
     - _Brightness: 1
     - _Distortion_Factor: 1.79
     - _Distortion_Speed: 0
