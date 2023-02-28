@@ -6085,7 +6085,7 @@ GameObject:
   - component: {fileID: 661153882}
   m_Layer: 0
   m_Name: HIDDEN_FISH
-  m_TagString: CORAL
+  m_TagString: HIDDEN_FISH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12523,7 +12523,7 @@ GameObject:
   - component: {fileID: 1785475003}
   m_Layer: 0
   m_Name: TRAPPED
-  m_TagString: CORAL
+  m_TagString: TRAPPED
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
