@@ -20,36 +20,6 @@ public class SliderListener : MonoBehaviour
     public string m_FieldName;
     public string m_VisualHUDFieldName = null;
 
-    void AutoFix()
-    {
-        if (m_MinText)
-        {
-            //Debug.Log("FOUND MIN VALUE");
-        }
-        else
-        {
-            //Debug.LogError("NotFoundMinValue");
-        }
-
-        if (m_MaxText)
-        {
-            //Debug.Log("FOUND MAX VALUE");
-        }
-        else
-        {
-            //Debug.LogError("NotFoundMaxValue");
-        }
-
-        if (m_CurrVal)
-        {
-            //Debug.Log("FOUND CURRENT VALUE");
-        }
-        else
-        {
-            //Debug.LogError("NotFoundCurrentValue");
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +31,6 @@ public class SliderListener : MonoBehaviour
         m_CurrVal = transform.Find("CurrentValue").GetComponent<TextMeshProUGUI>();
         m_LabelText = transform.Find("Title").GetComponent<TextMeshProUGUI>();
 
-        AutoFix();
         ConvertText();
 
         m_MinText.text = m_Slider.minValue.ToString();

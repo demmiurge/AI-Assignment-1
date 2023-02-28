@@ -6,6 +6,7 @@ public class ClickerController : MonoBehaviour
 {
     [SerializeField] 
     private GameObject m_Meet;
+    [SerializeField]
     private HUDManager m_HUDManager;
 
     // Start is called before the first frame update
