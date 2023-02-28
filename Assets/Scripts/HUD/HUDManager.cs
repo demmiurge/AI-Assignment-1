@@ -116,10 +116,7 @@ public class HUDManager : MonoBehaviour
     private void DevMode()
     {
         if (Input.GetKeyDown(m_AddPoints))
-        {
-            Debug.Log("HOLA");
             AddPoints(10);
-        }
     }
 
     public void AddPoints(int Points)
@@ -132,7 +129,6 @@ public class HUDManager : MonoBehaviour
         if (m_CurrentPoints == m_MaxPointsToWin)
             GoToVictoryScreen();
 
-        Debug.Log("Called");
         m_TextScore.text = $"Score: {m_CurrentPoints}/{m_MaxPointsToWin}";
     }
 

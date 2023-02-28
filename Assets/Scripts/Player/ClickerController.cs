@@ -6,6 +6,7 @@ public class ClickerController : MonoBehaviour
 {
     [SerializeField] 
     private GameObject m_Meet;
+    private HUDManager m_HUDManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,9 @@ public class ClickerController : MonoBehaviour
 
     void Clicked()
     {
+        // Force a code detection if the game is starting
+        if (m_HUDManager.m_StartingScreen.activeSelf) return;
+
         // Force a code detection if the game is paused
         if (Time.timeScale == 0) return;
 
