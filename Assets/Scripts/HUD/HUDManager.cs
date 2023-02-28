@@ -246,7 +246,7 @@ public class HUDManager : MonoBehaviour
         m_Shark.SetActive(false);
         m_Fish.SetActive(false);
         m_FishSpawner.SetActive(false);
-        m_Plankton.SetActive(false);
+        //m_Plankton.SetActive(false);
     }
 
     public void Activate()
@@ -254,6 +254,6 @@ public class HUDManager : MonoBehaviour
         m_Shark.SetActive(true);
         m_Fish.SetActive(true);
         m_FishSpawner.SetActive(true);
-        m_Plankton.SetActive(true);
+        //m_Plankton.SetActive(true);
     }
 }

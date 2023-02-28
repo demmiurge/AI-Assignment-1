@@ -24,7 +24,7 @@ public class FSM_Plankton : FiniteStateMachine
         _blackboard = GetComponent<PLANKTON_Blackboard>();
         _particleSystem = GetComponent<ParticleSystem>();
         _siblingParticleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
-
+        _siblingParticleSystem.Stop();
         base.OnEnter(); // do not remove
     }
 
