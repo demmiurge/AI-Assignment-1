@@ -11,6 +11,10 @@ TagManager:
   - SHARK
   - PLANKTON
   - CORAL
+  - LIGHT
+  - PLANKTON_TRAPPED
+  - CAMERABLOCKOUT
+  - COSORANDOM
   layers:
   - Default
   - TransparentFX
