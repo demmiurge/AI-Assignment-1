@@ -213,6 +213,7 @@ public class HUDManager : MonoBehaviour
 
         // Load scene
         SceneManager.LoadScene(m_NameScene);
+        AudioManager.Instance.ResetMusic();
     }
 
     public void ExitGame()
