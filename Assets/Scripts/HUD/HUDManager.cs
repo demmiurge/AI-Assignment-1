@@ -46,14 +46,12 @@ public class HUDManager : MonoBehaviour
 
     private float m_TimeScale;
 
-    void Awake()
-    {
-        m_TimeScale = Time.timeScale;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        // First we get the current time
+        m_TimeScale = Time.timeScale;
+
         // We always show the beginning explained first
         GoToStartingScreen();
     }
@@ -210,6 +208,10 @@ public class HUDManager : MonoBehaviour
 
     public void RestartGame()
     {
+        // Patch to restart level needs to call resume time
+        ResumeTime();
+
+        // Load scene
         SceneManager.LoadScene(m_NameScene);
     }
 
@@ -238,7 +240,7 @@ public class HUDManager : MonoBehaviour
 
     public void ResumeTime()
     {
-        Time.timeScale = m_TimeScale;
+        Time.timeScale = 1;
     }
 
     public void Deactivate()
