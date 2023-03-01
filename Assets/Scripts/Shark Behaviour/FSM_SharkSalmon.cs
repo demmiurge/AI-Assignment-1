@@ -29,7 +29,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
          *-----------------------------------------------*/
          
         State wanderState = new State("Wandering",
-            () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.target_B; }, 
+            () => { m_WanderAround.enabled = true; m_WanderAround.attractor = m_Blackboard.m_CurrentTarget; }, 
             () => { }, 
             () => { m_WanderAround.enabled = false; }   
         );

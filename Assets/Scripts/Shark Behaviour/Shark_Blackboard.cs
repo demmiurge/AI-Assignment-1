@@ -10,6 +10,8 @@ public class Shark_Blackboard : MonoBehaviour
     [Header("Wandering")]
     public GameObject target_A;
     public GameObject target_B;
+    [HideInInspector]
+    public GameObject m_CurrentTarget;
     public float initialSeekWeight = 0.2f;
     public float incrementOfSeek = 0.2f;
     public float locationReachedRadius = 10f;
@@ -40,6 +42,12 @@ public class Shark_Blackboard : MonoBehaviour
     [Header("HUD")]
     public HUDManager m_HUDManager;
 
+    private float m_ChangeTarget = 0f;
+
+    private void Awake()
+    {
+        m_CurrentTarget = target_A;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +68,8 @@ public class Shark_Blackboard : MonoBehaviour
                 Debug.LogError("no location A found");
             }
         }
+
+      
     }
 
     // Update is called once per frame
@@ -67,5 +77,19 @@ public class Shark_Blackboard : MonoBehaviour
     {
         m_Hunger += m_NormalHungerIncrement * Time.deltaTime;
         m_Tiredness += m_NormalTiredIncrement * Time.deltaTime;
+
+        m_ChangeTarget += Time.deltaTime;
+        if(m_ChangeTarget > 25f)
+        {
+            if(m_CurrentTarget == target_A)
+            {
+                m_CurrentTarget = target_B;
+            }
+            else if(m_CurrentTarget == target_B)
+            {
+                m_CurrentTarget = target_A;
+            }
+            m_ChangeTarget = 0f;
+        }
     }
 }

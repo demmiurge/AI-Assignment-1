@@ -7565,11 +7565,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4943370304776474144, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_RotationalPolicy
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4943370304776474149, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: m_RootOrder
@@ -7625,11 +7620,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4943370304776474202, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_RotationalPolicy
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4943370304776474203, guid: 3302921babe81344280eae1ec5773be9,
         type: 3}
       propertyPath: m_Name
@@ -7650,11 +7640,6 @@ PrefabInstance:
       propertyPath: m_HUDManager
       value: 
       objectReference: {fileID: 753723780}
-    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
-        type: 3}
-      propertyPath: m_FishHungerDecrement
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3302921babe81344280eae1ec5773be9, type: 3}
@@ -7783,7 +7768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596457445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.6, y: 4.5, z: 0}
+  m_LocalPosition: {x: 15.4, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13207,7 +13192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084285131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.6, y: 9.9, z: 0}
+  m_LocalPosition: {x: -34.1, y: 4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

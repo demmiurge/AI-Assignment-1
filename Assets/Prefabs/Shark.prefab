@@ -77,9 +77,9 @@ MonoBehaviour:
   m_RepulsionWeight: 0.5
   m_AlignmentWeight: 0.2
   m_AddWanderIfZero: 1
-  m_WanderRate: 8
-  m_WanderRadius: 5
-  m_WanderOffset: 5
+  m_WanderRate: 10
+  m_WanderRadius: 15
+  m_WanderOffset: 10
   m_ShowWanderGizmos: 1
   m_WanderTargetOrientation: 0
   m_SeekWeight: 0.2
@@ -120,16 +120,17 @@ MonoBehaviour:
   m_RestingTime: 3
   m_SalmonDetectionRadius: 35
   m_SalmonReachedRadius: 4
+  m_SalmonHungerDecrement: 3
   m_TimeToEat: 2
   m_FishDetectionRadius: 30
   m_FishReachedRadius: 4
   m_FishEscaped: 50
   m_PursueTime: 7
-  m_FishHungerDecrement: 8
+  m_FishHungerDecrement: 5
+  m_TimeToEatFish: 1
   m_HungerTooHigh: 30
   m_HungerLowEnough: 10
   m_NormalHungerIncrement: 1
-  m_SalmonHungerDecrement: 3
   m_FishPoints: 5
   m_SalmonPoints: 1
   m_HUDManager: {fileID: 0}
