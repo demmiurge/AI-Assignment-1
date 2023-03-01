@@ -49,6 +49,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void ResetMusic()
+    {
+        _musicSource.Stop();
+        _musicSource.volume = _maxVolume;
+        _musicSource.Play();
+    }
+
     public void FadeInMusic()
     {
         if (_musicSource.volume ==_fadeIntensity)
