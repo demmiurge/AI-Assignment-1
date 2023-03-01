@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField][Range(0f, 1f)] private float _fadeIntensity;
     [SerializeField] private float _maxVolume;
     private readonly float _volumeSteps = 0.001f;
+    [SerializeField] private AudioClip _menuHoverClip;
 
     private void Awake()
     {
@@ -35,25 +36,30 @@ public class AudioManager : MonoBehaviour
         _sfxSource.PlayOneShot(clip, volume);
     }
 
+    public void PlayHoverSound()
+    {
+        _sfxSource.PlayOneShot(_menuHoverClip, 0.1f);
+    }
+
     public void FadeOutMusic()
     {
         if (_musicSource.volume == _maxVolume)
         {
-            StartCoroutine(FadeOutVolume());
+            StartCoroutine(FadeOutTrackWithSteps());
         }
     }
 
     public void FadeInMusic()
     {
-        if (_musicSource.volume != _maxVolume)
+        if (_musicSource.volume ==_fadeIntensity)
         {
-            StartCoroutine(FadeInVolume());
-        }        
+            StartCoroutine(FadeInTrackWithSteps());
+        }
     }
 
-    private IEnumerator FadeOutVolume()
+    private IEnumerator FadeOutTrackWithSteps()
     {
-        while (_musicSource.volume >= _fadeIntensity)
+        while (_musicSource.volume > _fadeIntensity)
         {
             _musicSource.volume -= _volumeSteps;
             yield return new WaitForEndOfFrame();
@@ -62,9 +68,9 @@ public class AudioManager : MonoBehaviour
         _musicSource.volume = _fadeIntensity;
     }
 
-    private IEnumerator FadeInVolume()
+    private IEnumerator FadeInTrackWithSteps()
     {
-        while (_musicSource.volume <= _maxVolume)
+        while (_musicSource.volume < _maxVolume)
         {
             _musicSource.volume += _volumeSteps;
             yield return new WaitForEndOfFrame();
