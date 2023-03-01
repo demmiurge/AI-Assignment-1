@@ -500,7 +500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sfxSource: {fileID: 1883036463}
   _musicSource: {fileID: 700572571}
-  _timeToFade: 5
   _fadeIntensity: 0.25
   _maxVolume: 1
   _menuHoverClip: {fileID: 8300000, guid: 0ba338b9dbfb12d4ea62906fb9642f91, type: 3}
@@ -6657,7 +6656,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2718
+  m_Name: pb_Mesh-1262
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6853,7 +6852,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5380
+  m_Name: pb_Mesh-3912
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7086,7 +7085,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5350
+  m_Name: pb_Mesh-3882
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7784,7 +7783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596457445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.3, y: 4.5, z: 0}
+  m_LocalPosition: {x: -11.6, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13229,11 +13228,11 @@ PrefabInstance:
       objectReference: {fileID: 1802517715}
     - target: {fileID: 1122114647, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 260
+      value: 260.00003
       objectReference: {fileID: 0}
     - target: {fileID: 1122114647, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -70.000015
       objectReference: {fileID: 0}
     - target: {fileID: 1824225352545123102, guid: 12c1deceaf698094a869ec90fac3ece8,
         type: 3}
