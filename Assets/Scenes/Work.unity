@@ -5319,17 +5319,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67f6e2c0718d5b4792874edec89087a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 0
-  feedingTime: 0
-  seaweed: {fileID: 1121041735}
-  HUNGER_TOO_HIGH: 100
-  HUNGER_TOO_LOW: 5
-  DEFAULT_HUNGER_INCREMENT: 5
-  DEFAULT_HUNGER_DECREMENT: 10
-  LIGHT_DETECTABLE_RADIUS: 100
-  LIGHT_REACHED_RADIUS: 10
-  TIME_TO_FEED: 20
-  numberOfBites: 180
+  Hunger: 0
+  FeedingTime: 0
+  Attractor: {fileID: 0}
+  HungerTooHigh: 100
+  HungerTooLow: 5
+  DefaultHungerIncrement: 5
+  DefaultHungerDecrement: 10
+  LightDetectableRadius: 100
+  LightReachedRadius: 10
+  TimeToFeed: 20
+  NumberOfBites: 300
 --- !u!114 &257325218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6551,7 +6551,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3152
+  m_Name: pb_Mesh-14410
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6747,7 +6747,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5924
+  m_Name: pb_Mesh-15100
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6980,7 +6980,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5894
+  m_Name: pb_Mesh-15070
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -13011,7 +13011,7 @@ PrefabInstance:
       objectReference: {fileID: 1802517715}
     - target: {fileID: 331720924, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -709.99994
+      value: -710
       objectReference: {fileID: 0}
     - target: {fileID: 753723786, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Agent
@@ -13051,11 +13051,11 @@ PrefabInstance:
       objectReference: {fileID: 167223782}
     - target: {fileID: 1769659740, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -709.99994
+      value: -710
       objectReference: {fileID: 0}
     - target: {fileID: 2072295866, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -599.99994
+      value: -600
       objectReference: {fileID: 0}
     - target: {fileID: 2046544260891249660, guid: 12c1deceaf698094a869ec90fac3ece8,
         type: 3}
@@ -13306,7 +13306,7 @@ PrefabInstance:
     - target: {fileID: 2881768135256325897, guid: 48623df68e583b64fa5c1415e3a871cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.2
+      value: -6.7
       objectReference: {fileID: 0}
     - target: {fileID: 2881768135256325897, guid: 48623df68e583b64fa5c1415e3a871cc,
         type: 3}
@@ -13350,18 +13350,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2881768135256325898, guid: 48623df68e583b64fa5c1415e3a871cc,
         type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.9622642
-      objectReference: {fileID: 0}
-    - target: {fileID: 2881768135256325898, guid: 48623df68e583b64fa5c1415e3a871cc,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.88697624
-      objectReference: {fileID: 0}
-    - target: {fileID: 2881768135256325898, guid: 48623df68e583b64fa5c1415e3a871cc,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.46751517
+      propertyPath: ShapeModule.radius.value
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 2881768135256325900, guid: 48623df68e583b64fa5c1415e3a871cc,
         type: 3}
