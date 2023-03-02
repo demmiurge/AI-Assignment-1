@@ -31,6 +31,26 @@ public class AudioManager : MonoBehaviour
         _musicSource.Play();
     }
 
+    public void DisableMusicSource()
+    {
+        _musicSource.mute = true;
+    }
+
+    public void DisableEffectsSource()
+    {
+        _sfxSource.mute = true;
+    }
+
+    public void EnableMusicSource()
+    {
+        _musicSource.mute = false;
+    }
+
+    public void EnableEffectsSource()
+    {
+        _musicSource.mute = false;
+    }
+
     public void PlaySound(AudioClip clip, float volume = 1f)
     {
         _sfxSource.PlayOneShot(clip, volume);
