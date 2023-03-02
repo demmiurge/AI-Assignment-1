@@ -52,17 +52,17 @@ public class FSM_Plankton : FiniteStateMachine
          */
         State WANDERING = new("WANDERING",
             () => { _wanderAround.enabled = true; _particleSystem.Play(); _siblingParticleSystem.Stop(); },
-            () => { _blackboard.hunger += _blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
+            () => { _blackboard.Hunger += _blackboard.DefaultHungerIncrement * Time.deltaTime; },
             () => { _wanderAround.enabled = false; });
 
         State REACHING = new("REACHING LIGHT",
             () => { _arrive.enabled = true; _arrive.target = _light; },
-            () => { _blackboard.hunger += _blackboard.DEFAULT_HUNGER_INCREMENT * Time.deltaTime; },
+            () => { _blackboard.Hunger += _blackboard.DefaultHungerIncrement * Time.deltaTime; },
             () => { _arrive.enabled = false; });
 
         State PHOTOSYNTHESIS = new("PHOTOSYNTHESIS",
             () => { },
-            () => { _blackboard.feedingTime += Time.deltaTime; },
+            () => { _blackboard.FeedingTime += Time.deltaTime; },
             () => { _blackboard.ResetHunger(); });
 
         State TRAPPED = new("TRAPPED",
@@ -83,12 +83,12 @@ public class FSM_Plankton : FiniteStateMachine
             () =>
             {
                 if (!_blackboard.Hungry()) return false;
-                _light = SensingUtils.FindInstanceWithinRadius(gameObject, "LIGHT", _blackboard.LIGHT_DETECTABLE_RADIUS);
+                _light = SensingUtils.FindInstanceWithinRadius(gameObject, "LIGHT", _blackboard.LightDetectableRadius);
                 return _light != null;
             });
 
         Transition lightReached = new("Light Reached",
-            () => { return SensingUtils.DistanceToTarget(gameObject, _light) < _blackboard.LIGHT_REACHED_RADIUS; });
+            () => { return SensingUtils.DistanceToTarget(gameObject, _light) < _blackboard.LightReachedRadius; });
 
         Transition satiated = new("Satiated",
             () => { return _blackboard.AteEnough(); });
