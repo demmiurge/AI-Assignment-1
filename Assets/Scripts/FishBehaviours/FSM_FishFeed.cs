@@ -9,7 +9,6 @@ public class FSM_FishFeed : FiniteStateMachine
 {
 
     private FISH_Blackboard blackboard;
-    //private WanderPlusAvoid wanderPlusAvoid;
     private FlockingAroundPlusAvoidance flockingPlusAvoid;
     private ArrivePlusOA arrive;
     private float timeSinceLastBite;
@@ -17,9 +16,6 @@ public class FSM_FishFeed : FiniteStateMachine
 
     public override void OnEnter()
     {
-        /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
-         * It's equivalent to the on enter action of any state 
-         * Usually this code includes .GetComponent<...> invocations */
         blackboard = GetComponent<FISH_Blackboard>();
         context = GetComponent<SteeringContext>();
         //wanderPlusAvoid = GetComponent<WanderPlusAvoid>();
@@ -30,10 +26,6 @@ public class FSM_FishFeed : FiniteStateMachine
 
     public override void OnExit()
     {
-        /* Write here the FSM exiting code. This code is execute every time the FSM is exited.
-         * It's equivalent to the on exit action of any state 
-         * Usually this code turns off behaviours that shouldn't be on when one the FSM has
-         * been exited. */
 
         DisableAllSteerings();
         base.OnExit();
@@ -41,9 +33,6 @@ public class FSM_FishFeed : FiniteStateMachine
 
     public override void OnConstruction()
     {
-
-
-        /* STAGE 1: create the states with their logic(s) */
 
         State WANDERING = new State("WANDERING",
             () => { flockingPlusAvoid.enabled = true; },
@@ -63,55 +52,6 @@ public class FSM_FishFeed : FiniteStateMachine
             () => { context.m_CohesionThreshold = 2f; context.m_RepulsionThreshold = 1f; flockingPlusAvoid.enabled = false; }
         );
 
-        //State REACHING = new State("REACHING PLANKTON",
-        //    () => { arrive.target = blackboard.plankton; arrive.enabled = true; },
-        //    () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-        //    () =>
-        //    {
-        //        arrive.enabled = false;
-        //    }
-        //);
-
-        //State EATING = new State("EATING",
-        //    () => { timeSinceLastBite = 100; },
-        //    () => {
-        //        if (timeSinceLastBite >= 1 / blackboard.bitesPerSecond)
-        //        {
-        //            blackboard.plankton.SendMessage("BeBitten");
-        //            blackboard.hunger -= blackboard.planktonHungerDecrement;
-        //            timeSinceLastBite = 0;
-        //        }
-        //        else
-        //        {
-        //            timeSinceLastBite += Time.deltaTime;
-        //        }
-        //    },
-        //    () => { /* do nothing in particular when exiting*/ }
-        //);
-
-
-
-        /* STAGE 2: create the transitions with their logic(s)
-         * --------------------------------------------------- */
-
-        //Transition hungryAndPlanktonDetected = new Transition("Plankton Detected",
-        //   () => {
-        //       if (!blackboard.Hungry()) return false;
-        //       blackboard.plankton = SensingUtils.FindInstanceWithinRadius(gameObject,
-        //                            blackboard.planktonLabel, blackboard.planktonDetectableRadius);
-        //       return blackboard.plankton != null;
-        //   },
-        //   () => { blackboard.globalBlackboard.AnnouncePlankton(blackboard.plankton); }
-        //);
-
-        //Transition hungryAndPlanktonAnnounced = new Transition("Plankton Announced",
-        //   () => {
-        //       return blackboard.Hungry()
-        //                   && blackboard.globalBlackboard.announcedPlankton != null;
-        //   },
-        //   () => { blackboard.plankton = blackboard.globalBlackboard.announcedPlankton; }
-        //);
-
         Transition hungryAndNoPlankton = new Transition("Hungry NoPlankton",
            () => {
                if (blackboard.Hungry()) return true;
@@ -128,47 +68,10 @@ public class FSM_FishFeed : FiniteStateMachine
            () => { }
         );
 
-        //Transition hungryAndNoPlankton = new Transition("Hungry NoPlankton",
-        //   () => {
-        //       if (!blackboard.Hungry()) return false;
-        //       blackboard.plankton = SensingUtils.FindInstanceWithinRadius(gameObject,
-        //                            blackboard.planktonLabel, blackboard.planktonDetectableRadius);
-        //       return blackboard.plankton == null;
-        //   },
-        //   () => { }
-        //);
-
-        //Transition planktonVanished = new Transition("Plankton vanished",
-        //    () => { return blackboard.plankton == null || blackboard.plankton.Equals(null); }
-        //);
-
-        //Transition planktonReached = new Transition("Plankton reached",
-        //    () => { return SensingUtils.DistanceToTarget(gameObject, blackboard.plankton) < blackboard.planktonReachedRadius; } // write the condition checkeing code in {}
-        //);
-
-        //Transition satiated = new Transition("satiated",
-        //    () => { return blackboard.Satited(); }
-        //);
-
-        /* STAGE 3: add states and transitions to the FSM 
-         * ---------------------------------------------- */
-
-
-        //AddStates(WANDERING, SPREAD, REACHING, EATING);
         AddStates(WANDERING, SPREAD, WIDE_SPREAD);
 
-        //AddTransition(WANDERING, hungryAndPlanktonDetected, REACHING);
-        //AddTransition(WANDERING, hungryAndPlanktonAnnounced, REACHING);
         AddTransition(WANDERING, hungryAndNoPlankton, SPREAD);
         AddTransition(SPREAD, veryHungryAndNoPlankton, WIDE_SPREAD);
-        //AddTransition(SPREAD, hungryAndPlanktonDetected, REACHING);
-        //AddTransition(SPREAD, hungryAndPlanktonAnnounced, REACHING);
-        //AddTransition(REACHING, planktonVanished, WANDERING);
-        //AddTransition(REACHING, planktonReached, EATING);
-        //AddTransition(EATING, planktonVanished, WANDERING);
-        //AddTransition(EATING, satiated, WANDERING);
-
-        /* STAGE 4: set the initial state */
 
         initialState = WANDERING;
     }

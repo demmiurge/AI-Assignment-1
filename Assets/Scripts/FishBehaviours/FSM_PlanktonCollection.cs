@@ -15,9 +15,6 @@ public class FSM_PlanktonCollection : FiniteStateMachine
 
     public override void OnEnter()
     {
-        /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
-         * It's equivalent to the on enter action of any state 
-         * Usually this code includes .GetComponent<...> invocations */
 
         blackboard = GetComponent<FISH_Blackboard>();
         arrive = GetComponent<ArrivePlusOA>();
@@ -29,16 +26,12 @@ public class FSM_PlanktonCollection : FiniteStateMachine
 
     public override void OnExit()
     {
-        /* Write here the FSM exiting code. This code is execute every time the FSM is exited.
-         * It's equivalent to the on exit action of any state 
-         * Usually this code turns off behaviours that shouldn't be on when one the FSM has
-         * been exited. */
         if (blackboard.plankton != null)
         {
             blackboard.plankton.transform.SetParent(null);
             blackboard.plankton.tag = blackboard.planktonLabel;
         }
-        //Disable Steerings
+
         base.DisableAllSteerings();
 
         base.OnExit();
@@ -62,15 +55,6 @@ public class FSM_PlanktonCollection : FiniteStateMachine
             }
         );
 
-        //State REACHING = new State("REACHING PLANKTON",
-        //    () => { arrive.target = blackboard.plankton; arrive.enabled = true;},
-        //    () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-        //    () =>
-        //    {
-        //        arrive.enabled = false;
-        //    }
-        //);
-
         State TRANSPORTING = new State("TRANSPORTING",
            () => {
                blackboard.SetNearestCoralHideout();
@@ -84,12 +68,6 @@ public class FSM_PlanktonCollection : FiniteStateMachine
                context.m_SeekWeight = 0.09f; blackboard.plankton.transform.SetParent(null);
            }
        );
-
-        // State TRANSPORTING = new State("TRANSPORTING",
-        //    () => { arrive.target = blackboard.coral; arrive.enabled = true; blackboard.plankton.transform.SetParent(gameObject.transform); },
-        //    () => { blackboard.hunger += blackboard.normalHungerIncrement * Time.deltaTime; },
-        //    () => { arrive.enabled = false; blackboard.plankton.transform.SetParent(null); }
-        //);
 
         State WAITING = new State("WAITING",
            () => { elapsedTime = 0f; },

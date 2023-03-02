@@ -4,22 +4,20 @@ using UnityEngine;
 public class FISH_Blackboard : MonoBehaviour
 {
 
-    public float hunger = 0f;   // How hungry am I?
-
-    // CONSTANTS
-    public float hungerTooHigh = 100; // when this level is reachead I'M HUNGRY
-    public float hungerLowEnough = 20; // when this level is reached I'M SATIATED
-    public float normalHungerIncrement = 2f; // speed of hunger increment
-    public float bitesPerSecond = 1f; // one bite each 1/bitesPerSecond seconds
-    public float planktonHungerDecrement = 10f; // decrement per bite
-    public float planktonDetectableRadius = 50f; // at this distance cheese is detectable
-    public float planktonReachedRadius = 2f; // at this distance, cheese is reachable (can be bitten)
+    public float hunger = 0f;   
+    public float hungerTooHigh = 100; 
+    public float hungerLowEnough = 20; 
+    public float normalHungerIncrement = 2f; 
+    public float bitesPerSecond = 1f;
+    public float planktonHungerDecrement = 10f; 
+    public float planktonDetectableRadius = 50f; 
+    public float planktonReachedRadius = 2f;
     public string planktonLabel = "PLANKTON";
     public string noPlanktonLabel = "NO_PLANKTON";
     public GameObject plankton;
     public float waitTime = 8f;
-    public float perilDetectableRadius = 50f; // at this distance enenmy is detectable
-    public float perilSafetyRadius = 70f; // at this distance, enemy is no longer a peril
+    public float perilDetectableRadius = 50f; 
+    public float perilSafetyRadius = 70f;
     public string perilLabel = "SHARK";
     public GameObject coral;
     public string coralLabel = "CORAL";
@@ -30,9 +28,8 @@ public class FISH_Blackboard : MonoBehaviour
     public string defaultTag = "FISH";
     public string trappedTag = "TRAPPED";
 
-    public FISH_GLOBAL_Blackboard globalBlackboard; // the blackboard that all fish share
+    public FISH_GLOBAL_Blackboard globalBlackboard;
 
-    // aux. methods
     public bool Hungry() { return hunger >= hungerTooHigh; }
     public bool VeryHungry() { return hunger >= hungerTooHigh * 2f; }
     public bool Satiated() { return hunger <= hungerLowEnough; }
