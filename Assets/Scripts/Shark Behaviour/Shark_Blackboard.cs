@@ -78,6 +78,13 @@ public class Shark_Blackboard : MonoBehaviour
         m_Hunger += m_NormalHungerIncrement * Time.deltaTime;
         m_Tiredness += m_NormalTiredIncrement * Time.deltaTime;
 
+        // Maximum hunger and fatigue limiter
+        if (m_Hunger >= m_HungerTooHigh)
+            m_Hunger = m_HungerTooHigh;
+
+        if (m_Tiredness >= m_MaxTiredLevel)
+            m_Tiredness = m_MaxTiredLevel;
+
         m_ChangeTarget += Time.deltaTime;
         if(m_ChangeTarget > 25f)
         {
