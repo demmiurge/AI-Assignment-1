@@ -1,17 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    [Foldout("General sound settings", styled = true)]
     [SerializeField] private AudioSource _sfxSource, _musicSource;
     [SerializeField][Range(0f, 1f)] private float _fadeIntensity;
     [SerializeField] private float _maxVolume;
     private readonly float _volumeSteps = 0.001f;
     [SerializeField] private AudioClip _menuHoverClip;
+
+    [Foldout("Sliders references", styled = true)]
+    [SerializeField] private GameObject _sliderSFXSource;
+    [SerializeField] private string _nameSFXSource = "SFX";
+    [SerializeField] private GameObject _sliderMusicSource;
+    [SerializeField] private string _nameMusicSource = "Music";
 
     private void Awake()
     {
@@ -26,9 +34,37 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    void WriteBasicInfo(GameObject slider, string text, float minValue, float maxValue)
+    {
+        TextMeshProUGUI _minText;
+        TextMeshProUGUI _maxText;
+        TextMeshProUGUI _labelText;
+
+        _minText = slider.transform.Find("MinNumber").GetComponent<TextMeshProUGUI>();
+        _maxText = slider.transform.Find("MaxNumber").GetComponent<TextMeshProUGUI>();
+        _labelText = slider.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+
+        _labelText.text = text;
+        _minText.text = minValue.ToString();
+        _maxText.text = maxValue.ToString();
+    }
+
     private void Start()
     {
+        WriteBasicInfo(_sliderSFXSource, _nameSFXSource, 0, _maxVolume);
+        WriteBasicInfo(_sliderMusicSource, _nameMusicSource, 0, _maxVolume);
+
         _musicSource.Play();
+    }
+
+    public void SFXChanged(float newValueVolumen)
+    {
+        _sfxSource.volume = newValueVolumen;
+    }
+
+    public void MusicChanged(float newValueVolumen)
+    {
+        _musicSource.volume = newValueVolumen;
     }
 
     public void DisableMusicSource()
@@ -88,7 +124,7 @@ public class AudioManager : MonoBehaviour
 
     public void FadeInMusic()
     {
-        if (_musicSource.volume ==_fadeIntensity)
+        if (_musicSource.volume == _fadeIntensity)
         {
             StartCoroutine(FadeInTrackWithSteps());
         }

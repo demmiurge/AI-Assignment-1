@@ -19,6 +19,7 @@ public class HUDManager : MonoBehaviour
     public GameObject m_StartingScreen;
     public GameObject m_BasicInfoScreen;
     public GameObject m_PauseScreen;
+    public GameObject m_SoundSettingsScreen;
     public GameObject m_SharkBehaviour;
     public GameObject m_FishBehaviour;
     public GameObject m_PlanktonBehaviour;
@@ -135,6 +136,7 @@ public class HUDManager : MonoBehaviour
         m_StartingScreen.SetActive(false);
         m_BasicInfoScreen.SetActive(false);
         m_PauseScreen.SetActive(false);
+        m_SoundSettingsScreen.SetActive(false);
         m_SharkBehaviour.SetActive(false);
         m_FishBehaviour.SetActive(false);
         m_PlanktonBehaviour.SetActive(false);
@@ -183,6 +185,13 @@ public class HUDManager : MonoBehaviour
         TurnOffAllInterface();
         m_PauseScreen.SetActive(true);
         StopTime();
+    }
+
+    public void GoToSoundSettingsScreen()
+    {
+        // We turn off everything and activate what we want
+        TurnOffAllInterface();
+        m_SoundSettingsScreen.SetActive(true);
     }
 
     public void GoToSharkBehaviour()
