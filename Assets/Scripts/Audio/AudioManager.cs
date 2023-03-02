@@ -51,6 +51,16 @@ public class AudioManager : MonoBehaviour
         _musicSource.mute = false;
     }
 
+    public void UpdateMusicSourceVolume(float volume)
+    {
+        _musicSource.volume = volume;
+    }
+
+    public void UpdateEffectSourceVolume(float volume)
+    {
+        _sfxSource.volume = volume;
+    }
+
     public void PlaySound(AudioClip clip, float volume = 1f)
     {
         _sfxSource.PlayOneShot(clip, volume);
