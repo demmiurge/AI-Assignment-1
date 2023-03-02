@@ -2547,7 +2547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HUNGER
+  m_text: HUNGRY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e178789f1ca66d0428c3d174e203987b, type: 2}
   m_sharedMaterial: {fileID: -2457779550404163858, guid: e178789f1ca66d0428c3d174e203987b,
@@ -2839,7 +2839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HUNGER
+  m_text: HUNGRY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e178789f1ca66d0428c3d174e203987b, type: 2}
   m_sharedMaterial: {fileID: -2457779550404163858, guid: e178789f1ca66d0428c3d174e203987b,
