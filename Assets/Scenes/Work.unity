@@ -12645,6 +12645,40 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1462713107}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1845095140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1267779815, guid: 12c1deceaf698094a869ec90fac3ece8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211314233967594728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1845095143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1267779818, guid: 12c1deceaf698094a869ec90fac3ece8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211314233967594728}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845095140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1845095145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845095140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e9930866a83974f86d82a53a4dc38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonSprites:
+  - {fileID: 21300000, guid: 1e58ded67f180aa49827c38097b5e026, type: 3}
+  - {fileID: 21300000, guid: 2f71f3990a625374f90edeec8af024dd, type: 3}
+  _targetButton: {fileID: 1845095143}
 --- !u!1 &1861258228
 GameObject:
   m_ObjectHideFlags: 0
@@ -12807,6 +12841,40 @@ Transform:
   m_Father: {fileID: 167223783}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1894558907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1711155908, guid: 12c1deceaf698094a869ec90fac3ece8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211314233967594728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1894558910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1711155911, guid: 12c1deceaf698094a869ec90fac3ece8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211314233967594728}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894558907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1894558912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894558907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e9930866a83974f86d82a53a4dc38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonSprites:
+  - {fileID: 21300000, guid: a5b53b15c0b6dbe48acc9f9ec5c4a266, type: 3}
+  - {fileID: 21300000, guid: 48982a73d03a1ad42bb16b33fcb815f2, type: 3}
+  _targetButton: {fileID: 1894558910}
 --- !u!1 &1925023396
 GameObject:
   m_ObjectHideFlags: 0
@@ -13096,8 +13164,7 @@ PrefabInstance:
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1e58ded67f180aa49827c38097b5e026,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SpriteState.m_DisabledSprite
       value: 
@@ -13105,14 +13172,17 @@ PrefabInstance:
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2f71f3990a625374f90edeec8af024dd,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
@@ -13120,7 +13190,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 167223782}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1845095145}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
@@ -13128,11 +13206,23 @@ PrefabInstance:
       value: ToggleEffects
       objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ButtonSpriteToggle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1302199403, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
@@ -13158,8 +13248,7 @@ PrefabInstance:
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: a5b53b15c0b6dbe48acc9f9ec5c4a266,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SpriteState.m_DisabledSprite
       value: 
@@ -13167,14 +13256,17 @@ PrefabInstance:
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 48982a73d03a1ad42bb16b33fcb815f2,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
@@ -13182,7 +13274,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 167223782}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1894558912}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
@@ -13190,11 +13290,23 @@ PrefabInstance:
       value: ToggleMusic
       objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ButtonSpriteToggle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1769659740, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
