@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using UnityEditor.Search;
 using System.ComponentModel;
 
 [CreateAssetMenu(fileName = "FSM_PlanktonCollection", menuName = "Finite State Machines/FSM_PlanktonCollection", order = 1)]
