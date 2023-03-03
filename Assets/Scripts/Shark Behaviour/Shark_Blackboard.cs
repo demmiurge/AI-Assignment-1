@@ -22,18 +22,17 @@ public class Shark_Blackboard : MonoBehaviour
     [Header("Salmon Parameters")]
     public float m_SalmonDetectionRadius = 35f;
     public float m_SalmonReachedRadius = 4f;
-    public float m_SalmonHungerDecrement = 3f;
+    public float m_SalmonHungerDecrement = 1f;
     public float m_TimeToEat = 2f;
     [Header("Fish Parameters")]
     public float m_FishDetectionRadius = 30f;
     public float m_FishReachedRadius = 4f;
-    public float m_FishEscaped = 50f;
     public float m_PursueTime = 7f;
     public float m_FishHungerDecrement = 5f;
     public float m_TimeToEatFish = 1f;
     [Header("Hunger Parameters")]
-    public float m_HungerTooHigh = 30; 
-    public float m_HungerLowEnough = 10; 
+    public float m_HungerTooHigh = 20; 
+    public float m_HungerMax = 40; 
     public float m_NormalHungerIncrement = 1f;
     [Header("Points Agents Eated")]
     public int m_FishPoints = 5;
@@ -79,8 +78,8 @@ public class Shark_Blackboard : MonoBehaviour
         m_Tiredness += m_NormalTiredIncrement * Time.deltaTime;
 
         // Maximum hunger and fatigue limiter
-        if (m_Hunger >= m_HungerTooHigh)
-            m_Hunger = m_HungerTooHigh;
+        if (m_Hunger >= m_HungerMax)
+            m_Hunger = m_HungerMax;
 
         if (m_Tiredness >= m_MaxTiredLevel)
             m_Tiredness = m_MaxTiredLevel;

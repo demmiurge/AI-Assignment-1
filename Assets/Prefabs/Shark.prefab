@@ -40,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 4832600327842011069}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4943370304776474151
 MonoBehaviour:
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Tiredness: 0
   target_A: {fileID: 0}
   target_B: {fileID: 0}
+  m_CurrentTarget: {fileID: 0}
   initialSeekWeight: 0.2
   incrementOfSeek: 0.2
   locationReachedRadius: 10
@@ -120,16 +121,15 @@ MonoBehaviour:
   m_RestingTime: 3
   m_SalmonDetectionRadius: 35
   m_SalmonReachedRadius: 4
-  m_SalmonHungerDecrement: 3
+  m_SalmonHungerDecrement: 1
   m_TimeToEat: 2
   m_FishDetectionRadius: 30
   m_FishReachedRadius: 4
-  m_FishEscaped: 50
   m_PursueTime: 7
-  m_FishHungerDecrement: 5
+  m_FishHungerDecrement: 4
   m_TimeToEatFish: 1
   m_HungerTooHigh: 30
-  m_HungerLowEnough: 10
+  m_HungerMax: 40
   m_NormalHungerIncrement: 1
   m_FishPoints: 5
   m_SalmonPoints: 1

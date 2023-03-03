@@ -147,7 +147,8 @@ public class HUDManager : MonoBehaviour
     public void GoToVictoryScreen()
     {
         // We turn off everything and activate what we want
-        StopTime();
+        //StopTime();
+        Deactivate();
         TurnOffAllInterface();
         m_VictoryScreen.SetActive(true);
     }
@@ -155,7 +156,8 @@ public class HUDManager : MonoBehaviour
     public void GoToDefeatScreen()
     {
         // We turn off everything and activate what we want
-        StopTime();
+        //StopTime();
+        Deactivate();
         TurnOffAllInterface();
         m_DefeatScreen.SetActive(true);
     }

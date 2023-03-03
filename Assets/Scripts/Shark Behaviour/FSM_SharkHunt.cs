@@ -6,14 +6,14 @@ public class FSM_SharkHunt : FiniteStateMachine
 {
     private GameObject m_Fish, m_OtherFish;
     private SteeringContext m_SteeringContext;
-    private Pursue m_Pursue;
+    private PursuePlusOA m_Pursue;
     private Shark_Blackboard m_Blackboard;
     private float m_PursueTime;
     private float m_ElapsedTime;
 
     public override void OnEnter()
     {
-        m_Pursue = GetComponent<Pursue>();
+        m_Pursue = GetComponent<PursuePlusOA>();
         m_Blackboard = GetComponent<Shark_Blackboard>();
         m_SteeringContext = GetComponent<SteeringContext>();
         m_PursueTime = 0;
@@ -39,7 +39,7 @@ public class FSM_SharkHunt : FiniteStateMachine
           () => { m_Pursue.enabled = true; m_PursueTime = 0; m_Pursue.target = m_Fish; m_SteeringContext.m_MaxSpeed = 10f; },
           () => { m_PursueTime += Time.deltaTime; },
           () => { m_Pursue.enabled = false; m_SteeringContext.m_MaxSpeed = 5f; }
-      );
+        );
 
 
         State Eating = new State("EatingFish",
@@ -58,7 +58,7 @@ public class FSM_SharkHunt : FiniteStateMachine
          * ---------------------------------------------------*/
 
         Transition fishDetected = new Transition("Fish Detected",
-            () => { if (m_Blackboard.m_Hunger >= m_Blackboard.m_HungerTooHigh)
+            () => { if (m_Blackboard.m_Hunger >= m_Blackboard.m_HungerTooHigh  )
                 {
                     m_Fish = SensingUtils.FindInstanceWithinRadius(gameObject, "FISH", m_Blackboard.m_FishDetectionRadius);
                 }
@@ -66,11 +66,6 @@ public class FSM_SharkHunt : FiniteStateMachine
             },
             () => { }
         );
-
-        Transition readyHunt = new Transition("Ready to Hunt",
-          () => { return m_Blackboard.m_Hunger >= m_Blackboard.m_HungerTooHigh; },
-          () => { }
-      );
 
         Transition pursueTooLong = new Transition("Pursue too long",
             () => { return m_PursueTime >= m_Blackboard.m_PursueTime; },

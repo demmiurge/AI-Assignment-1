@@ -103,7 +103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press  "Space"  to continue.
+  m_text: Press  "Space"  to exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a487003db2f681d458e64def06f2c722, type: 2}
   m_sharedMaterial: {fileID: -2457779550404163858, guid: a487003db2f681d458e64def06f2c722,
@@ -7445,7 +7445,7 @@ RectTransform:
   - {fileID: 738292840}
   - {fileID: 7709942636328674851}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
