@@ -13001,6 +13001,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 14277158, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 14277159, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13045,6 +13049,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -710
       objectReference: {fileID: 0}
+    - target: {fileID: 661677569, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -70
+      objectReference: {fileID: 0}
     - target: {fileID: 753723786, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Agent
       value: 
@@ -13069,10 +13077,64 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1122114647, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 1122114647, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -70
+      objectReference: {fileID: 0}
     - target: {fileID: 1216386181, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 167223782}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e58ded67f180aa49827c38097b5e026,
+        type: 3}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f71f3990a625374f90edeec8af024dd,
+        type: 3}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 167223782}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleEffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267779817, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1302199403, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13085,6 +13147,56 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 167223782}
+    - target: {fileID: 1711155908, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a5b53b15c0b6dbe48acc9f9ec5c4a266,
+        type: 3}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48982a73d03a1ad42bb16b33fcb815f2,
+        type: 3}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 167223782}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711155910, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1769659740, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -710

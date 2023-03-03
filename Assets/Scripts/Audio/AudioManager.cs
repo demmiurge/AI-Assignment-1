@@ -67,24 +67,14 @@ public class AudioManager : MonoBehaviour
         _musicSource.volume = newValueVolumen;
     }
 
-    public void DisableMusicSource()
+    public void ToggleEffects()
     {
-        _musicSource.mute = true;
+        _sfxSource.mute = !_sfxSource.mute;
     }
 
-    public void DisableEffectsSource()
+    public void ToggleMusic()
     {
-        _sfxSource.mute = true;
-    }
-
-    public void EnableMusicSource()
-    {
-        _musicSource.mute = false;
-    }
-
-    public void EnableEffectsSource()
-    {
-        _musicSource.mute = false;
+        _musicSource.mute = !_musicSource.mute;
     }
 
     public void UpdateMusicSourceVolume(float volume)
