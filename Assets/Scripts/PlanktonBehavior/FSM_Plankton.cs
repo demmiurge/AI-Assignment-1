@@ -70,7 +70,7 @@ public class FSM_Plankton : FiniteStateMachine
             () => { },
             () => { });
 
-        State DIE = new("DIE",
+        State DEATH = new("DIE",
             () => gameObject.SetActive(false),
             () => { },
             () => { });
@@ -113,7 +113,7 @@ public class FSM_Plankton : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */
-        AddStates(WANDERING, REACHING, PHOTOSYNTHESIS, TRAPPED, DIE);
+        AddStates(WANDERING, REACHING, PHOTOSYNTHESIS, TRAPPED, DEATH);
 
         AddTransition(WANDERING, hungryAndLightDetected, REACHING);
         AddTransition(REACHING, lightReached, PHOTOSYNTHESIS);
@@ -121,7 +121,7 @@ public class FSM_Plankton : FiniteStateMachine
         AddTransition(WANDERING, isTrapped, TRAPPED);
         AddTransition(REACHING, isTrapped, TRAPPED);
         AddTransition(PHOTOSYNTHESIS, isTrapped, TRAPPED);
-        AddTransition(TRAPPED, death, DIE);
+        AddTransition(TRAPPED, death, DEATH);
 
 
         /* STAGE 4: set the initial state
