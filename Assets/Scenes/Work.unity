@@ -11403,7 +11403,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-157214
+  m_Name: pb_Mesh-4686
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11599,7 +11599,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-157844
+  m_Name: pb_Mesh-1862
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11832,7 +11832,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-157814
+  m_Name: pb_Mesh-1832
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -12030,16 +12030,36 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8259244214148055152, guid: d20b9b96d46e60a4ebf434b88bb08edb,
+    - target: {fileID: 6720409110535392034, guid: d20b9b96d46e60a4ebf434b88bb08edb,
         type: 3}
       propertyPath: m_Meet
       value: 
       objectReference: {fileID: 800158157}
-    - target: {fileID: 8259244214148055152, guid: d20b9b96d46e60a4ebf434b88bb08edb,
+    - target: {fileID: 6720409110535392034, guid: d20b9b96d46e60a4ebf434b88bb08edb,
         type: 3}
       propertyPath: m_HUDManager
       value: 
       objectReference: {fileID: 753723780}
+    - target: {fileID: 6720409110535392034, guid: d20b9b96d46e60a4ebf434b88bb08edb,
+        type: 3}
+      propertyPath: _salmonPlacedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 06bbabf2e269aed4eb1eb24f0116fc80, type: 3}
+    - target: {fileID: 6720409110535392034, guid: d20b9b96d46e60a4ebf434b88bb08edb,
+        type: 3}
+      propertyPath: _salmonRemovedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 02b2eea54b3159e4391d2aa340ad895b, type: 3}
+    - target: {fileID: 8259244214148055152, guid: d20b9b96d46e60a4ebf434b88bb08edb,
+        type: 3}
+      propertyPath: m_Meet
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259244214148055152, guid: d20b9b96d46e60a4ebf434b88bb08edb,
+        type: 3}
+      propertyPath: m_HUDManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8259244214148055153, guid: d20b9b96d46e60a4ebf434b88bb08edb,
         type: 3}
       propertyPath: m_Name
@@ -32724,7 +32744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 661677569, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -70.000015
       objectReference: {fileID: 0}
     - target: {fileID: 753723786, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Agent
@@ -32756,7 +32776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1122114647, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -70.000015
       objectReference: {fileID: 0}
     - target: {fileID: 1216386181, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
