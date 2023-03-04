@@ -70,7 +70,7 @@ public class FSM_Plankton : FiniteStateMachine
             () => { },
             () => { });
 
-        State DEATH = new("DIE",
+        State DEATH = new("DEATH",
             () => gameObject.SetActive(false),
             () => { },
             () => { });
@@ -102,7 +102,7 @@ public class FSM_Plankton : FiniteStateMachine
             () => { return gameObject.CompareTag("PLANKTON_TRAPPED"); });
 
         Transition death = new("Death",
-            () => { return gameObject.CompareTag("NO_PLANKTON") || _blackboard.NoPlanktonLeft(); });
+            () => { return gameObject.CompareTag("NO_PLANKTON"); });
 
 
         /* STAGE 3: add states and transitions to the FSM 
