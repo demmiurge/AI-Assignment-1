@@ -68,7 +68,12 @@ public class FSM_Plankton : FiniteStateMachine
         State TRAPPED = new("TRAPPED",
             () => { _particleSystem.Stop(); _siblingParticleSystem.Play(); },
             () => { },
-            () => { _blackboard.ResetHunger(); _siblingParticleSystem.Play(); });
+            () => { });
+
+        State DIE = new("DIE",
+            () => gameObject.SetActive(false),
+            () => { },
+            () => { });
 
         /* STAGE 2: create the transitions with their logic(s)
          * ---------------------------------------------------
@@ -96,8 +101,8 @@ public class FSM_Plankton : FiniteStateMachine
         Transition isTrapped = new("Is Trapped",
             () => { return gameObject.CompareTag("PLANKTON_TRAPPED"); });
 
-        Transition isNotTrapped = new("Not Trapped",
-            () => { return transform.parent == null && gameObject.tag == "PLANKTON"; });
+        Transition death = new("Death",
+            () => { return gameObject.CompareTag("NO_PLANKTON") || _blackboard.NoPlanktonLeft(); });
 
 
         /* STAGE 3: add states and transitions to the FSM 
@@ -108,7 +113,7 @@ public class FSM_Plankton : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */
-        AddStates(WANDERING, REACHING, PHOTOSYNTHESIS, TRAPPED);
+        AddStates(WANDERING, REACHING, PHOTOSYNTHESIS, TRAPPED, DIE);
 
         AddTransition(WANDERING, hungryAndLightDetected, REACHING);
         AddTransition(REACHING, lightReached, PHOTOSYNTHESIS);
@@ -116,7 +121,7 @@ public class FSM_Plankton : FiniteStateMachine
         AddTransition(WANDERING, isTrapped, TRAPPED);
         AddTransition(REACHING, isTrapped, TRAPPED);
         AddTransition(PHOTOSYNTHESIS, isTrapped, TRAPPED);
-        AddTransition(TRAPPED, isNotTrapped, WANDERING);
+        AddTransition(TRAPPED, death, DIE);
 
 
         /* STAGE 4: set the initial state

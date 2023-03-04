@@ -30,12 +30,7 @@ public class PLANKTON_Blackboard : MonoBehaviour
 
     public void ResetHunger() { Hunger = 0f; FeedingTime = 0f; }
 
-    public void BeBitten()
-    {
-        NumberOfBites--;
-        if (NumberOfBites <= 0f)
-        {
-            gameObject.SetActive(false);
-        }
-    }
+    public void BeBitten() { NumberOfBites--; }
+
+    public bool NoPlanktonLeft() { return NumberOfBites <= 0f; }
 }
