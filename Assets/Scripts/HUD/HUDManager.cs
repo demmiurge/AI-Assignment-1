@@ -151,6 +151,7 @@ public class HUDManager : MonoBehaviour
         Deactivate();
         TurnOffAllInterface();
         m_VictoryScreen.SetActive(true);
+        AudioManager.Instance.PlayWinScreenSound();
     }
 
     public void GoToDefeatScreen()
@@ -160,6 +161,7 @@ public class HUDManager : MonoBehaviour
         Deactivate();
         TurnOffAllInterface();
         m_DefeatScreen.SetActive(true);
+        AudioManager.Instance.PlayFailScreenSound();
     }
 
     public void GoToStartingScreen()

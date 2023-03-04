@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float _maxVolume;
     private readonly float _volumeSteps = 0.001f;
     [SerializeField] private AudioClip _menuHoverClip;
+    [SerializeField] private AudioClip _victoryScreenClip;
+    [SerializeField] private AudioClip _failureScreenClip;
 
     [Foldout("Sliders references", styled = true)]
     [SerializeField] private GameObject _sliderSFXSource;
@@ -90,6 +92,18 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(AudioClip clip, float volume = 1f)
     {
         _sfxSource.PlayOneShot(clip, volume);
+    }
+
+    public void PlayWinScreenSound()
+    {
+        _musicSource.clip = _victoryScreenClip;
+        _musicSource.Play();
+    }
+
+    public void PlayFailScreenSound()
+    {
+        _musicSource.clip = _failureScreenClip;
+        _musicSource.Play();
     }
 
     public void PlayHoverSound()
