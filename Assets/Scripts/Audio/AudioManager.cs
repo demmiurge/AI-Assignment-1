@@ -112,11 +112,6 @@ public class AudioManager : MonoBehaviour
         _sfxSource.PlayOneShot(_menuHoverClip, 0.1f);
     }
 
-    public void PlaySharkSound()
-    {
-        PlaySound(_sharkSound, 0.5f);
-    }
-
     public void FadeOutMusic()
     {
         if (_musicSource.volume == _maxVolume)

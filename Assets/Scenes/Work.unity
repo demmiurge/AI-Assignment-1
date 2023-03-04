@@ -22056,6 +22056,11 @@ PrefabInstance:
       propertyPath: m_HUDManager
       value: 
       objectReference: {fileID: 753723780}
+    - target: {fileID: 7828793251204097420, guid: 3302921babe81344280eae1ec5773be9,
+        type: 3}
+      propertyPath: m_SharkEatClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 276c51ddf6795984c824937f57f21136, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3302921babe81344280eae1ec5773be9, type: 3}
@@ -32744,7 +32749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 661677569, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70.000015
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 753723786, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Agent
@@ -32776,7 +32781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1122114647, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70.000015
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 1216386181, guid: 12c1deceaf698094a869ec90fac3ece8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -49,7 +49,7 @@ public class FSM_SharkSalmon : FiniteStateMachine
                m_Blackboard.m_HUDManager.AddPoints(m_Blackboard.m_SalmonPoints);
                m_Salmon.SetActive(false); 
                m_Salmon.tag = "NOTSALMON";
-               AudioManager.Instance.PlaySharkSound();
+               AudioManager.Instance.PlaySound(m_Blackboard.m_SharkEatClip);
            }
        );
 

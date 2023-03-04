@@ -41,6 +41,9 @@ public class Shark_Blackboard : MonoBehaviour
     [Header("HUD")]
     public HUDManager m_HUDManager;
 
+    [Header("Sounds")]
+    public AudioClip m_SharkEatClip;
+
     private float m_ChangeTarget = 0f;
 
     private void Awake()
