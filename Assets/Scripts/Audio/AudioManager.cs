@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip _menuHoverClip;
     [SerializeField] private AudioClip _victoryScreenClip;
     [SerializeField] private AudioClip _failureScreenClip;
+    [SerializeField] private AudioClip _sharkSound;
 
     [Foldout("Sliders references", styled = true)]
     [SerializeField] private GameObject _sliderSFXSource;
@@ -109,6 +110,11 @@ public class AudioManager : MonoBehaviour
     public void PlayHoverSound()
     {
         _sfxSource.PlayOneShot(_menuHoverClip, 0.1f);
+    }
+
+    public void PlaySharkSound()
+    {
+        PlaySound(_sharkSound, 0.5f);
     }
 
     public void FadeOutMusic()

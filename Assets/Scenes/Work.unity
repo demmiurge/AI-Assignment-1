@@ -5249,6 +5249,7 @@ MonoBehaviour:
   _menuHoverClip: {fileID: 8300000, guid: 0ba338b9dbfb12d4ea62906fb9642f91, type: 3}
   _victoryScreenClip: {fileID: 8300000, guid: ab955f627ff43404ebc68d286dad0b62, type: 3}
   _failureScreenClip: {fileID: 8300000, guid: 718c31fc1fbe88d43be4fe304226ddf0, type: 3}
+  _sharkSound: {fileID: 8300000, guid: 276c51ddf6795984c824937f57f21136, type: 3}
   _sliderSFXSource: {fileID: 1211314233967594730}
   _nameSFXSource: SFX
   _sliderMusicSource: {fileID: 1211314233967594729}

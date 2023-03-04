@@ -49,6 +49,7 @@ public class FSM_SharkHunt : FiniteStateMachine
                m_Blackboard.m_Hunger -= m_Blackboard.m_FishHungerDecrement;
                m_Blackboard.m_HUDManager.AddPoints(m_Blackboard.m_FishPoints);
                Destroy(m_Fish);
+               AudioManager.Instance.PlaySharkSound();
            }
        );
 
