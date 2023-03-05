@@ -1246,14 +1246,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'The objective is to feed the shark with the fish in the area. You can
-    guide the shark by placing pieces of salmon pressing "Left Click".
+    guide the shark by placing pieces of salmon pressing "Left Click". You can also
+    control the camera with WASD and Shift.
 
+    Salmon pieces add fewer points than
+    eating a fish.
 
-    Salmon
-    pieces add fewer points than eating a fish.
-
-    Try to get 100 points before
-    the time runs out.'
+    Try to get 100 points before the time runs out.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a487003db2f681d458e64def06f2c722, type: 2}
   m_sharedMaterial: {fileID: -2457779550404163858, guid: a487003db2f681d458e64def06f2c722,
@@ -1706,7 +1705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 75}
+  m_AnchoredPosition: {x: 0, y: 43}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1042842715
@@ -7763,7 +7762,7 @@ RectTransform:
   - {fileID: 738292840}
   - {fileID: 7709942636328674851}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

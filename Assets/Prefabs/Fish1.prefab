@@ -80,7 +80,7 @@ MonoBehaviour:
   plankton: {fileID: 0}
   waitTime: 8
   perilDetectableRadius: 30
-  perilSafetyRadius: 50
+  perilSafetyRadius: 40
   perilLabel: SHARK
   coral: {fileID: 0}
   coralLabel: CORAL
