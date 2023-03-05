@@ -84,7 +84,7 @@ MonoBehaviour:
   perilLabel: SHARK
   coral: {fileID: 0}
   coralLabel: CORAL
-  coralReachedRadius: 4
+  coralReachedRadius: 3
   defaultAttractor: {fileID: 4217584091696050898, guid: ccd7d6f3f79100d4abf6695abd738987,
     type: 3}
   hiddenTag: HIDDEN_FISH
